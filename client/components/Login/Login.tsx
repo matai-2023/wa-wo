@@ -1,17 +1,32 @@
+import { useAuth0 } from '@auth0/auth0-react'
+import { IfAuthenticated, IfNotAuthenticated } from '../Authenticated'
+
 function LoginButton() {
-//   const { loginWithRedirect } = useAuth0()
+  const { user, logout, loginWithRedirect } = useAuth0()
 
   function handleLogin() {
-    // loginWithRedirect({
-    //   authorizationParams: {
-    //     redirect_uri: `${window.location.origin}/my-songs`,
-    //   },
-    // })
+    loginWithRedirect({
+      authorizationParams: {
+        redirect_uri: `${window.location.origin}/my-wardrobe`,
+      },
+    })
     console.log('login button')
   }
 
+  const handleSignOut = () => {
+    logout()
+  }
+
   return (
-    <button onClick={handleLogin}>Login</button>
+    <>
+      <IfAuthenticated>
+        <button onClick={handleSignOut}>Log Out</button>
+        {user && <p>Signed in as: {user?.nickname}</p>}
+      </IfAuthenticated>
+      <IfNotAuthenticated>
+        <button onClick={handleLogin}>Log In</button>
+      </IfNotAuthenticated>
+    </>
   )
 }
 
