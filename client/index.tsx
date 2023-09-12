@@ -18,7 +18,7 @@ import Home from './Pages/Home/Home'
 import ErrorPage from './Pages/ErrorPage/ErrorPage'
 
 export const routes = createRoutesFromElements(
-  <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+  <Route path="*" element={<App />} errorElement={<ErrorPage />}>
     <Route index element={<Home />} />
   </Route>
 )
