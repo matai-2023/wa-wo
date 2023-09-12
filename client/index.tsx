@@ -6,12 +6,6 @@ import App from './components/App.tsx'
 
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
-    /**
-     * Auth0Provider is a component that has a hook that provides
-     * all authentication operations
-     *
-     * TODO: replace the empty strings below with your own domain, clientId, and audience
-     */
     <Auth0Provider
       domain="youn.au.auth0.com"
       clientId="6BcrxurWcfVZiNadfzUFs7kyxSwFx908"
