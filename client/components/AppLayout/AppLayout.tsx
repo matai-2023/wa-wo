@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import Header from '../Header/Header'
 function AppLayout() {
   const { pathname } = useLocation()
 
@@ -30,10 +31,14 @@ function AppLayout() {
     document.title = editPath(pathname)
   }, [pathname])
   return (
-    <div>
-      {/* <Header /> */}
-      <Outlet />
-    </div>
+    <>
+      <div className="flex items-center justify-center ">
+        <Header />
+      </div>
+      <div>
+        <Outlet />
+      </div>
+    </>
   )
 }
 

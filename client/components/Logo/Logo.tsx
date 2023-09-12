@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function Title() {
   return (
     <Link to="/">
-      <h1 className="text-3xl font-bold text-primary">WardrobeWonders</h1>
+      <img src="/wawo2.png" alt="logo" className="" />
     </Link>
   )
 }
