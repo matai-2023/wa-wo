@@ -2,7 +2,7 @@ import type { Fruit, NewFruit } from '../../models/fruit.ts'
 
 import { useState, useEffect } from 'react'
 
-import { addFruit, deleteFruit, getFruits, updateFruit } from '../api.ts'
+import { addFruit, deleteFruit, getFruits, updateFruit } from '../apis/api.ts'
 import SelectedFruitForm from './SelectedFruit.tsx'
 import AddFruitForm from './AddFruit.tsx'
 import { ErrorMessage } from './Styled.tsx'
