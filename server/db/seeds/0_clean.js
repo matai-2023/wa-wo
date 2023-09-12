@@ -1,3 +1,5 @@
 export function seed(knex) {
-  return knex('fruits').del()
+  knex('wardrobe').del()
+  knex('friendList').del()
+  knex('users').del()
 }
