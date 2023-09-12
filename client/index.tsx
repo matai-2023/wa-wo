@@ -16,9 +16,10 @@ import { Auth0Provider } from '@auth0/auth0-react'
 
 import App from './components/App'
 import Home from './Pages/Home/Home'
+import ErrorPage from './Pages/ErrorPage/ErrorPage'
 
 export const routes = createRoutesFromElements(
-  <Route path="/" element={<App />}>
+  <Route path="/" element={<App />} errorElement={<ErrorPage />}>
     <Route index element={<Home />} />
   </Route>
 )
