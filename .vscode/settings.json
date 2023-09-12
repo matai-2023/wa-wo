@@ -6,5 +6,5 @@
     "statusBar.background": "#3503fc",
     "statusBar.foreground": "#ffffff"
   },
-  "window.title": "~[client api]~${separator}${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}${appName}"
+  "window.title": "~[client api]~${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}${appName}"
 }
