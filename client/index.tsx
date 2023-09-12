@@ -15,16 +15,7 @@ import { Auth0Provider } from '@auth0/auth0-react'
 
 
 import App from './components/App'
-// import AppLayout from './components/AppLayout/AppLayout'
-
-// const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
-const Home = lazy(() => import('./Pages/Home/Home'))
-// const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends'))
-// const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
-// const MySongs = lazy(() => import('./Pages/MySongs/MySongs'))
-// const EditSong = lazy(() => import('./Pages/MySongs/EditSong'))
-// import ErrorPage from './Pages/ErrorPage/ErrorPage'
-
+import Home from './Pages/Home/Home'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<App />}>
