@@ -5,7 +5,6 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom'
-import { Suspense, lazy } from 'react'
 
 import {
   QueryClient,
@@ -33,10 +32,10 @@ const queryClient = new QueryClient()
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
-      domain=""
-      clientId=''
+      domain="youn.au.auth0.com"
+      clientId='6BcrxurWcfVZiNadfzUFs7kyxSwFx908'
       redirectUri={window.location.origin}
-      audience=''
+      audience='https://wardrobe/api'
     >
       <QueryClientProvider client={queryClient}>
         <AppProvider />
