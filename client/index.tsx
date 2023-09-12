@@ -11,8 +11,20 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 
+
+export const routes = createRoutesFromElements(
+  <Route path="*" element={<App />} errorElement={<ErrorPage />}>
+    <Route index element={<Home />} />
+  </Route>
+)
+
+function AppProvider() {
+  return <RouterProvider router={createBrowserRouter(routes)} />
+}
+
 import { Auth0Provider } from '@auth0/auth0-react'
 import { BrowserRouter as Router } from 'react-router-dom'
+
 
 import App from './components/App.tsx'
 
