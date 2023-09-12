@@ -23,8 +23,9 @@ Our task is to complete the authentication implementation of this app.
     ```
   </details>
 
-- [ ] Visit [http://localhost:3000](http://localhost:3000) in your browser
-- [ ] https://www.figma.com/file/SovQPYue2wXb0HltDcHmD4/Untitled?type=design&node-id=0-1&mode=design&t=DXy6nDAb9tksKOhB-0
+- [ ] Visit [http://localhost:5173](http://localhost:5173) in your browser
+
+Figma for the product:
 - [ ] https://www.figma.com/file/90gb9sCPXmWqbpT3aAsRPR/Untitled?type=design&node-id=0-1&mode=design&t=KS0MNucImrvuIZJy-0
 
 ---
