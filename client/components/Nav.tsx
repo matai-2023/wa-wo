@@ -6,16 +6,9 @@ interface Props {
 }
 
 function Nav(props: Props) {
-  const { isAuthenticated, logout, loginWithRedirect } = useAuth0()
-  const navigate = useNavigate()
+  
 
-  function handleLogin() {
-    loginWithRedirect({
-      authorizationParams: {
-        redirect_uri: `${window.location.origin}/my-songs`,
-      },
-    })
-  }
+  
 
   function handleLogout() {
     logout({ logoutParams: { returnTo: window.location.origin } })
