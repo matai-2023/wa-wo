@@ -5,4 +5,4 @@ const userSchema = z.object({
     nickname: z.string()
 })
 
-export type User = Zod.infer<typeof userSchema>
+export type User = z.infer<typeof userSchema>
