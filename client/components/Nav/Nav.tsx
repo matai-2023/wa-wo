@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
+
 
 interface Props {
   toggleMenu: () => void
 }
 
 function Nav(props: Props) {
-  const { isAuthenticated, logout, loginWithRedirect } = useAuth0()
+ 
   const navigate = useNavigate()
 
   // function handleLogin() {
