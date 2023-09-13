@@ -1,26 +1,28 @@
 import express from 'express'
-import { JwtRequest } from '../auth0.ts'
-
-import {
-  // getFruits,
-  addFruit,
-  deleteFruit,
-  updateFruit,
-  userCanEdit,
-} from '../db/wardrobedb.ts'
+import validateAccessToken from '../auth0.ts'
+import logger from '../db/logger.ts'
+import checkJwt from '../auth0.ts'
+import * as db from '../db/wardrobedb.ts'
+// import { auth } from 'express-oauth2-jwt-bearer'
 
 const router = express.Router()
 
 // A public endpoint that anyone can access
-// GET /api/v1/fruits
-// router.get('/', (req, res) => {
-//   getFruits()
-//     .then((fruits: Fruit[]) => res.json({ fruits }))
-//     .catch((err: Error) => {
-//       console.error(err)
-//       res.status(500).send('Something went wrong')
-//     })
-// })
+// GET /api/v1/my-wardrobe
+router.get('/', validateAccessToken, async (req, res) => {
+  try {
+    const userId = req.auth?.payload.sub
+    if (!userId) {
+      res.status(401).json({ error: 'Unauthorized' })
+      return
+    }
+    const mySongs = await db.getAllwardrobe(userId)
+    res.json(mySongs)
+  } catch (e) {
+    logger.error(e)
+    res.status(500).json({ message: 'Unable to retrieve songs' })
+  }
+})
 
 // TODO: use checkJwt as middleware
 // POST /api/v1/fruits
