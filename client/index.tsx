@@ -25,6 +25,12 @@ export const routes = createRoutesFromElements(
 function AppProvider() {
   return <RouterProvider router={createBrowserRouter(routes)} />
 }
+
+// import { Auth0Provider } from '@auth0/auth0-react'
+import { BrowserRouter as Router } from 'react-router-dom'
+
+import App from './components/App.tsx'
+
 const queryClient = new QueryClient()
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
