@@ -11,12 +11,13 @@ import AppLayout from './components/AppLayout/AppLayout.tsx'
 import Home from './Pages/Home/Home.tsx'
 import ErrorPage from './Pages/ErrorPage/ErrorPage.tsx'
 import RegisterForm from './components/Signin/RegisterForm.tsx'
+import FriendList from './Pages/FriendList/FriendList.tsx'
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
     <Route index element={<Home />} />
     {/* <Route path="/my-wardrobe" element={<MyWardrobe />} /> */}
     {/* <Route path="/add-clothes" element={<AddClothes />} /> */}
-    {/* <Route path="/friend-list" element={<FriendList />} /> */}
+    <Route path="/friend-list" element={<FriendList />} />
     {/* <Route path="/find-friend" element={<FindFriends />} /> */}
     <Route path="/profile" element={<RegisterForm />} />
     {/* <Route path="/friend/:id" element={<FriendWardrobe />} /> */}
@@ -26,11 +27,6 @@ export const routes = createRoutesFromElements(
 function AppProvider() {
   return <RouterProvider router={createBrowserRouter(routes)} />
 }
-
-// import { Auth0Provider } from '@auth0/auth0-react'
-import { BrowserRouter as Router } from 'react-router-dom'
-
-import App from './components/App.tsx'
 
 const queryClient = new QueryClient()
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from '../../apis/Authenticated'
-
+import Button from '../UI/Button/Button'
 function LoginButton() {
   const { user, logout, loginWithRedirect } = useAuth0()
 
@@ -10,7 +10,6 @@ function LoginButton() {
         redirect_uri: `${window.location.origin}/my-wardrobe`,
       },
     })
-    console.log('login button')
   }
 
   const handleSignOut = () => {
@@ -20,11 +19,11 @@ function LoginButton() {
   return (
     <>
       <IfAuthenticated>
-        <button onClick={handleSignOut}>Log Out</button>
+        <Button onClick={handleSignOut}>Log Out</Button>
         {user && <p>Signed in as: {user?.nickname}</p>}
       </IfAuthenticated>
       <IfNotAuthenticated>
-        <button onClick={handleLogin}>Log In</button>
+        <Button onClick={handleLogin}>Log In</Button>
       </IfNotAuthenticated>
     </>
   )
