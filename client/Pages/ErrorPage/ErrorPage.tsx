@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Icon from '../../components/UI/Icon/Icon'
+import Button from '../../components/UI/Button/Button'
 
 function ErrorPage() {
   return (
@@ -18,9 +19,9 @@ function ErrorPage() {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
 </svg>
 </Icon>
-            <button className="w-auto text-primary bg-white py-2 px-4 rounded-lg hover:shadow-[0px_0px_9px_2px_#F4980E] mb-40">
-              <Link to="/" className='text-orange text-xl' >Home</Link>
-            </button>
+<Link to='/'>
+<Button>Home</Button>
+</Link>
           </div>
         </div>
       </div>
