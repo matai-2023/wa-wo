@@ -7,7 +7,7 @@ import {
   deleteFruit,
   updateFruit,
   userCanEdit,
-} from '../db/wardrobe.ts'
+} from '../db/wardrobedb.ts'
 
 const router = express.Router()
 
