@@ -35,6 +35,7 @@ export async function getMyWardrobe(token: string) {
   const response = await request
     .get('/api/v1/my-wardrobe')
     .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
   return response.body as Wardrobe[]
 }
 

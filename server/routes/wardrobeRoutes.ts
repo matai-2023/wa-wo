@@ -1,9 +1,7 @@
 import express from 'express'
 import validateAccessToken from '../auth0.ts'
 import logger from '../db/logger.ts'
-import checkJwt from '../auth0.ts'
 import * as db from '../db/wardrobedb.ts'
-// import { auth } from 'express-oauth2-jwt-bearer'
 
 const router = express.Router()
 
@@ -16,11 +14,11 @@ router.get('/', validateAccessToken, async (req, res) => {
       res.status(401).json({ error: 'Unauthorized' })
       return
     }
-    const mySongs = await db.getAllwardrobe(userId)
-    res.json(mySongs)
+    const myItems = await db.getAllwardrobe(userId)
+    res.json(myItems)
   } catch (e) {
     logger.error(e)
-    res.status(500).json({ message: 'Unable to retrieve songs' })
+    res.status(500).json({ message: 'Unable to retrieve items' })
   }
 })
 

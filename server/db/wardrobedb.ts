@@ -3,9 +3,7 @@ import connection from './connection.ts'
 import db from './connection.ts'
 
 export async function getAllwardrobe(auth0Id: string) {
-  return (await db('wardrobe')
-    .where('auth0_id', auth0Id)
-    .select()) as Wardrobe[]
+  return (await db('wardrobe').where('user_id', auth0Id).select()) as Wardrobe[]
 }
 
 // export function addFruit(db = connection) {
