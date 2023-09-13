@@ -1,6 +1,5 @@
 import request from 'superagent'
 import { User } from '../../types/User'
-import { Wardrobe } from '../../types/MyWardrobe'
 export async function addProfile({
   nickname,
   token,
@@ -17,21 +16,16 @@ export async function addProfile({
 
 export async function getUser(token: string) {
   const res = await request
-    .get('/api/v1/user')
+    .get('/api/v1/users')
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
   return res.body as User
 }
 
-export async function getMyWardrobe(token: string) {
-  const response = await request
-    .get('/api/v1/my-wardrobe')
+export async function getFriendList(token: string) {
+  const res = await request
+    .get('/api/v1/users/friends')
     .set('Authorization', `Bearer ${token}`)
-  return response.body as Wardrobe[]
-}
-
-export async function delItem(id: number, token: string) {
-  await request
-    .del(`/api/v1/user/${id}`)
-    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body as User[]
 }

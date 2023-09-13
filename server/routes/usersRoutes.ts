@@ -1,4 +1,6 @@
 import express from 'express'
+
+import * as db from '../db/userdb'
 import validateAccessToken from '../auth0'
 
 const router = express.Router()
