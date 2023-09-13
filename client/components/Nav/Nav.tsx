@@ -30,16 +30,16 @@ function Nav(props: Props) {
     <nav className="pt-16 pl-4 flex absolute top-0 right-0">
       <ul className="text-3xl">
         <li>
-          <button onClick={() => goTo('/my-songs')}>My wardrobe</button>
+          <button onClick={() => goTo('/my-wardrobe')}>My wardrobe</button>
         </li>
         <li>
-          <button onClick={() => goTo('/my-friends')}>My friends</button>
+          <button onClick={() => goTo('/friend-list')}>My friends</button>
         </li>
         <li>
           <button onClick={() => goTo('/profile')}>Add an Item</button>
         </li>
         <li>
-          <button onClick={() => goTo('/scan')}>Add a friend</button>
+          <button onClick={() => goTo('/find-friend')}>Add a friend</button>
         </li>
         {/* <li>
           {!isAuthenticated && <button onClick={handleLogin}>Log in</button>}
