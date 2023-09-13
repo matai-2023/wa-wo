@@ -13,6 +13,7 @@ import MyWardrobe from './Pages/MyWardrobe/MyWardrobe.tsx'
 import ErrorPage from './Pages/ErrorPage/ErrorPage.tsx'
 import RegisterForm from './components/Signin/RegisterForm.tsx'
 import FriendList from './Pages/FriendList/FriendList.tsx'
+
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
     <Route index element={<Home />} />

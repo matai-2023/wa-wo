@@ -6,26 +6,26 @@ import { JwtRequest } from '../auth0'
 const router = express.Router()
 
 // GET /api/v1/users
-router.get('/', validateAccessToken, async (req: JwtRequest, res) => {
-  const auth0Id = req.auth?.payload.sub
-  const form = req.body
+// router.get('/', validateAccessToken, async (req: JwtRequest, res) => {
+//   const auth0Id = req.auth?.payload.sub
+//   const form = req.body
 
-  if (!auth0Id) {
-    res.status(400).json({ message: 'Missing auth0 id'})
-    return
-  }
-  if (!form) {
-    res.status(400).json({message: 'Please provide a form'})
-    return
-  }
-try {
-  const user = 
-} catch (error) {
-  
-}
-})
+//   if (!auth0Id) {
+//     res.status(400).json({ message: 'Missing auth0 id'})
+//     return
+//   }
+//   if (!form) {
+//     res.status(400).json({message: 'Please provide a form'})
+//     return
+//   }
+// try {
 
-router.get('/friends', validateAccessToken, async (req:JwtRequest, res) => {
+// } catch (error) {
+
+// }
+// })
+
+router.get('/friends', validateAccessToken, async (req: JwtRequest, res) => {
   const id = req.auth?.payload.sub
 
   if (!id) {
