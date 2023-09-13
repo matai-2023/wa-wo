@@ -1,31 +1,24 @@
 import connection from './connection.ts'
-import { FruitSnakeCase } from '../../models/fruit.ts'
+import db from './connection.ts'
 
-export function getFruits(db = connection) {
-  return db('fruits')
-    .select(
-      'id',
-      'name',
-      'average_grams_each as averageGramsEach',
-      'added_by_user as addedByUser'
-    )
-    .orderBy('id')
+export async function getAllwardrobe(userId: string) {
+  return await db('wardrobe').where('user_id', userId).select()
 }
 
 export function addFruit(fruit: FruitSnakeCase, db = connection) {
-  return db('fruits').insert(fruit)
+  return db('wardrobe').insert(fruit)
 }
 
 export function updateFruit(newFruit: FruitSnakeCase, db = connection) {
-  return db('fruits').where('id', newFruit.id).update(newFruit)
+  return db('wardrobe').where('id', newFruit.id).update(newFruit)
 }
 
 export function deleteFruit(id: number, db = connection) {
-  return db('fruits').where('id', id).delete()
+  return db('wardrobe').where('id', id).delete()
 }
 
 export function userCanEdit(fruitId: number, auth0Id: string, db = connection) {
-  return db('fruits')
+  return db('wardrobe')
     .where('id', fruitId)
     .first()
     .then((fruit: FruitSnakeCase) => {

@@ -1,5 +1,4 @@
 import express from 'express'
-import { Fruit, FruitSnakeCase } from '../../models/fruit.ts'
 import { JwtRequest } from '../auth0.ts'
 
 import {
@@ -8,7 +7,7 @@ import {
   deleteFruit,
   updateFruit,
   userCanEdit,
-} from '../db/fruits.ts'
+} from '../db/wardrobe.ts'
 
 const router = express.Router()
 
