@@ -3,7 +3,7 @@ import * as Path from 'node:path'
 import express from 'express'
 
 import wawoRoutes from './routes/wardrobeRoutes.ts'
-import userRoutes from './routes/users.ts'
+import userRoutes from './routes/usersRoutes.ts'
 
 const server = express()
 
