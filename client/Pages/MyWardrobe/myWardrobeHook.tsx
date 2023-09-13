@@ -7,7 +7,7 @@ function useMyWardrobeHook() {
   const { user, getAccessTokenSilently, isAuthenticated } = useAuth0()
 
   const { data, isLoading } = useQuery({
-    queryKey: ['songs'],
+    queryKey: ['wardrobe'],
     queryFn: async () => {
       const accessToken = await getAccessTokenSilently()
 
