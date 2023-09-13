@@ -1,10 +1,10 @@
 {
   "workbench.colorCustomizations": {
-    "tab.activeBorder": "#3503fc",
-    "titleBar.activeBackground": "#3503fc",
-    "titleBar.activeForeground": "#ffffff",
-    "statusBar.background": "#3503fc",
-    "statusBar.foreground": "#ffffff"
+    "tab.activeBorder": "#e8e151",
+    "titleBar.activeBackground": "#e8e151",
+    "titleBar.activeForeground": "#000000",
+    "statusBar.background": "#e8e151",
+    "statusBar.foreground": "#000000"
   },
-  "window.title": "~[client api]~${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}${appName}"
+  "window.title": "~[client api]~${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}${appName}"
 }
