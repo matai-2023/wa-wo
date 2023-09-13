@@ -1,7 +1,6 @@
 import { useState } from 'react'
-
 import Logo from '../Logo/Logo'
-import Nav from '../Nav'
+import Nav from '../Nav/Nav'
 // import LoadSpinner from '../LoadSpinner/LoadSpinner'
 // import { useIsFetching } from '@tanstack/react-query'
 
@@ -23,7 +22,8 @@ function Header() {
           <button onClick={toggleMenu}>
             <i className="fa-solid fa-bars text-4xl"></i>
           </button>
-          <span className="absolute top-1 right-1 bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+          {/* notification number */}
+          <span className="absolute top-1 right-1 bg-primary text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
             3
           </span>
         </div>
