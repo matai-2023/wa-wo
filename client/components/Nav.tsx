@@ -1,35 +1,58 @@
-// import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
-// import { NavGroup, NavButton } from './Styled.tsx'
+import { useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router-dom'
 
-// function Nav() {
-//   // TODO: call the useAuth0 hook and destructure user, logout, and loginWithRedirect
-//   // TODO: replace placeholder user object with the one from auth0
-//   const user = {
-//     nickname: 'john.doe',
-//   }
+interface Props {
+  toggleMenu: () => void
+}
 
-//   const handleSignOut = () => {
-//     console.log('sign out')
-//   }
+function Nav(props: Props) {
+  const { isAuthenticated, logout, loginWithRedirect } = useAuth0()
+  const navigate = useNavigate()
 
-//   const handleSignIn = () => {
-//     console.log('sign in')
-//   }
+  function handleLogin() {
+    loginWithRedirect({
+      authorizationParams: {
+        redirect_uri: `${window.location.origin}/my-songs`,
+      },
+    })
+  }
 
-//   return (
-//     <>
-//       <NavGroup>
-//         <IfAuthenticated>
-//           <NavButton onClick={handleSignOut}>Sign out</NavButton>
-//           {user && <p>Signed in as: {user?.nickname}</p>}
-//         </IfAuthenticated>
-//         <IfNotAuthenticated>
-//           <NavButton onClick={handleSignIn}>Sign in</NavButton>
-//         </IfNotAuthenticated>
-//       </NavGroup>
-//       <h1>Fruit FTW!</h1>
-//     </>
-//   )
-// }
+  function handleLogout() {
+    logout({ logoutParams: { returnTo: window.location.origin } })
+  }
 
-// export default Nav
+  function goTo(link: string) {
+    props.toggleMenu()
+    navigate(link)
+  }
+
+  return (
+    <nav className="pt-16 pl-4 flex">
+      <ul className="text-3xl">
+        <li>
+          <button onClick={() => goTo('/my-songs')}>My songs</button>
+        </li>
+        <li>
+          <button onClick={() => goTo('/my-friends')}>My friends</button>
+        </li>
+        <li>
+          <button onClick={() => goTo('/profile')}>Edit Profile</button>
+        </li>
+        <li>
+          <button onClick={() => goTo('/scan')}>Scan QR code</button>
+        </li>
+        <li>
+          <button onClick={() => goTo('/show-qr')}>Share QR code</button>
+        </li>
+        <li>
+          {!isAuthenticated && <button onClick={handleLogin}>Log in</button>}
+        </li>
+        <li>
+          {isAuthenticated && <button onClick={handleLogout}>Log out</button>}
+        </li>
+      </ul>
+    </nav>
+  )
+}
+
+export default Nav
