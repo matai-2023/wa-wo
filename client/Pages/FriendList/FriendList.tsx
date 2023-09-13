@@ -8,15 +8,16 @@ function FriendList() {
     queryKey: ['FriendList'],
     queryFn: async () => {
       const accessToken = await getAccessTokenSilently()
-      if (user && user.sub) {
-        const response = await getFriendList(accessToken)
-        return response
-      }
+      const response = await getFriendList(accessToken)
+      return response
     },
   })
+  console.log(data)
+  console.log(user)
+
   return (
     <>
-      <div className="space-y-4">
+      <div className="space-y-4 flex justify-center items-center mt-12">
         <h1 className="text-xl font-semibold">My friends</h1>
         <ul className="space-y-4">
           {data &&
