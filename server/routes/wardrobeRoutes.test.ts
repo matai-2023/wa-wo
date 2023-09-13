@@ -17,7 +17,7 @@ describe('GET /api/v1/my-wardrobe', () => {
     expect(response.body).toEqual([])
   })
 
-  it('should return 200 with a item', async () => {
+  it('2. Should return 200 with a item', async () => {
     const fakeItem: Wardrobe[] = [
       {
         id: 2,
@@ -38,7 +38,7 @@ describe('GET /api/v1/my-wardrobe', () => {
     expect(response.body).toEqual(fakeItem)
   })
 
-  it('2. Should return 500 when no access token is passed', async () => {
+  it('3. Should return 500 when no access token is passed', async () => {
     vi.mocked(db.getAllwardrobe).mockRejectedValue(new Error('test'))
     const response = await request(server)
       .get('/api/v1/my-wardrobe')
@@ -49,11 +49,8 @@ describe('GET /api/v1/my-wardrobe', () => {
     })
   })
 
-  it('3. should return 401 with an error if theres no token passed', async () => {
-    console.log(getMockToken())
-    const response = await request(server)
-      .get('/api/v1/my-wardrobe')
-      .set('authorization', `Bearer ${getMockToken()}`)
+  it('4. should return 401 with an error if theres no token passed', async () => {
+    const response = await request(server).get('/api/v1/my-wardrobe')
     expect(response.status).toBe(401)
   })
 })
