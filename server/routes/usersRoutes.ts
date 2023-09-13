@@ -1,7 +1,7 @@
 import express from 'express'
 import * as db from '../db/userdb'
+
 import validateAccessToken from '../auth0'
-import { JwtRequest } from '../auth0'
 
 const router = express.Router()
 
@@ -25,9 +25,9 @@ const router = express.Router()
 // }
 // })
 
-router.get('/friends', validateAccessToken, async (req: JwtRequest, res) => {
+router.get('/friends', validateAccessToken, async (req, res) => {
   const id = req.auth?.payload.sub
-
+  console.log(id)
   if (!id) {
     res.status(400).json({ message: 'Please provide an id' })
     return

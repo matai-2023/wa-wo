@@ -8,4 +8,5 @@ const authConfig = {
   audience: process.env.VITE_AUTH0_AUDIENCE,
 }
 
-export const validateAccessToken = auth(authConfig)
+const validateAccessToken = auth(authConfig)
+export default validateAccessToken
