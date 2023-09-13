@@ -33,7 +33,7 @@ function RegisterForm(props: Props) {
         </div>
 
         <div className="mx-auto text-center">
-          <Button>Save</Button>
+          <button>Save</button>
         </div>
       </form>
     </div>
