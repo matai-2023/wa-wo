@@ -15,7 +15,7 @@ vi.mock('@auth0/auth0-react')
 })
 
 describe('Display FriendList', () => {
-  it('Display the users list of friends', async () => {
+  it('1. Display the users list of friends', async () => {
     const scope = nock('http://localhost')
       .get(`/api/v1/users/friends`)
       .reply(200, [
@@ -24,11 +24,20 @@ describe('Display FriendList', () => {
           nickname: 'BOB',
         },
       ])
-    const { user } = renderWithQuery(<FriendList />)
+    renderWithQuery(<FriendList />)
 
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
 
     const name = screen.getByRole('heading', { name: 'BOB' })
     expect(name).toBeInTheDocument()
+  })
+  it('2. Display a message if the users does not have any friends', async () => {
+    const scope = nock('http://localhost')
+      .get(`/api/v1/users/friends`)
+      .reply(200, [])
+    renderWithQuery(<FriendList />)
+    await waitFor(() => expect(scope.isDone()).toBeTruthy())
+    const message = screen.getByRole('heading', { level: 3 })
+    expect(message).toHaveTextContent(/Sorry/i)
   })
 })
