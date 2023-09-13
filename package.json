@@ -2,7 +2,7 @@
   "name": "jwt-auth",
   "description": "An exercise to practice how to apply authentication",
   "version": "0.1.0",
-  "type":"module",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "start": "node ./dist/server.js",
@@ -38,6 +38,7 @@
     "express-oauth2-jwt-bearer": "^1.5.0",
     "jwks-rsa": "^2.1.5",
     "knex": "^2.5.1",
+    "nock": "^13.3.3",
     "sqlite3": "^5.1.6",
     "tailwind-merge": "^1.14.0",
     "winston": "^3.10.0",
@@ -59,6 +60,7 @@
     "@vitest/coverage-c8": "^0.31.4",
     "autoprefixer": "^9.8.6",
     "babel-plugin-styled-components": "^1.12.0",
+    "dotenv": "^16.3.1",
     "esbuild": "^0.18.16",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
@@ -84,7 +86,6 @@
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
-    "dotenv": "^16.3.1",
     "vitest": "^0.34.1"
   },
   "prettier": {
