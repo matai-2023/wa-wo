@@ -11,7 +11,7 @@ function ErrorPage() {
             <img
               className="pb-10 max-w-sm rounded-full"
               alt="error logo"
-              src="/public/wardrobewonders.png"
+              src="/wardrobewonders.png"
             />
             <p className="text-orange font-bold text-m pb-10 pt=10 text-2xl">
               Something went wrong
