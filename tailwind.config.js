@@ -6,6 +6,9 @@ export default {
       colors: {
         orange: '#F4980E',
       },
+      height: {
+        128: '32rem',
+      },
     },
   },
   plugins: [],

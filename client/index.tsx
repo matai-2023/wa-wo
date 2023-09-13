@@ -10,15 +10,16 @@ import { Auth0Provider } from '@auth0/auth0-react'
 import AppLayout from './components/AppLayout/AppLayout.tsx'
 import Home from './Pages/Home/Home.tsx'
 import ErrorPage from './Pages/ErrorPage/ErrorPage.tsx'
+import RegisterForm from './components/Signin/RegisterForm.tsx'
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
     <Route index element={<Home />} />
-    {/* <Route path="/my-wardrobe" element={<MyWardrobe />} />
-    <Route path="/add-clothes" element={<AddClothes />} />
-    <Route path="/friend-list" element={<FriendList />} />
-    <Route path="/find-friend" element={<FindFriends />} />
-    <Route path="/profile" element={<Profile />} />
-    <Route path="/friend/:id" element={<FriendWardrobe />} /> */}
+    {/* <Route path="/my-wardrobe" element={<MyWardrobe />} /> */}
+    {/* <Route path="/add-clothes" element={<AddClothes />} /> */}
+    {/* <Route path="/friend-list" element={<FriendList />} /> */}
+    {/* <Route path="/find-friend" element={<FindFriends />} /> */}
+    <Route path="/profile" element={<RegisterForm />} />
+    {/* <Route path="/friend/:id" element={<FriendWardrobe />} /> */}
   </Route>
 )
 
