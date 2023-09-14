@@ -18,14 +18,20 @@ function Header() {
         <IfAuthenticated>
           {!navOpened && (
             <div>
-              <button className="fixed top-10 right-10" onClick={toggleMenu}>
+              <button
+                className="fixed top-10 right-10 hover:text-blue-400"
+                onClick={toggleMenu}
+              >
                 <i className="fa-solid fa-bars text-4xl absolute top-0 right-0 h-10 w-10"></i>
               </button>
             </div>
           )}
         </IfAuthenticated>
         {navOpened && (
-          <button className="fixed top-10 right-10" onClick={toggleMenu}>
+          <button
+            className="fixed top-10 right-10 hover:text-blue-400"
+            onClick={toggleMenu}
+          >
             <i className="fa-solid fa-times text-3xl transition ease-in-out focus:-rotate-45 duration-300 absolute top-0 right-0 h-10 w-10"></i>
           </button>
         )}
