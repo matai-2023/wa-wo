@@ -9,30 +9,28 @@ interface Props {
 
 function WardrobeList(props: Props) {
   const { wardrobe, handleDeleteItem } = props
-  // console.log(wardrobe)
 
   return (
     <>
-      <div className="w-90">
-        <div>
-          <p>{wardrobe.category}</p>
-          <p>{wardrobe.part}</p>
-        </div>
-        <div className="self-center flex-none"></div>
+      <div className="w-[300px] flex flex-col content-center m-16">
         <div className="flex flex-col w-36 flex-auto">
-          <img src="IMG_5431.jpg" alt="" />
-          <h3 className="text-orange">{wardrobe.name}</h3>
-          <p className="text-xs text-lightPurple">{wardrobe.description}</p>
-        </div>
-        <div className="flex flex-row gap-2 self-center flex-none">
-          <button
-            data-testid="testing"
-            onClick={() => handleDeleteItem(wardrobe.id)}
-          >
-            <Icon className="bg-warning">
-              <i className="fa-solid fa-trash" />
-            </Icon>
-          </button>
+          <div className="object-cover w-[300px]">
+            <img src="IMG_5431.jpg" alt="" />
+          </div>
+          <div className="flex justify-between w-[300px]">
+            <h3 className="ml-2 text-orange text-2xl mt-5">{wardrobe.name}</h3>
+            <button
+              data-testid="testing"
+              onClick={() => handleDeleteItem(wardrobe.id)}
+            >
+              <Icon className="mt-5 mr-2 bg-blue-500 text-white p-2 rounded hover:bg-blue-800">
+                <i className="fa-solid fa-trash" />
+              </Icon>
+            </button>
+          </div>
+          <p className="ml-2 text-md text-lightPurple w-[300px]">
+            {wardrobe.description}
+          </p>
         </div>
       </div>
     </>
