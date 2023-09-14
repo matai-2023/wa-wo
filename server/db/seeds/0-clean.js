@@ -1,5 +1,5 @@
-export function seed(knex) {
-  knex('wardrobe').del()
-  knex('friendList').del()
-  knex('users').del()
+export async function seed(knex) {
+  await knex('wardrobe').del()
+  await knex('friendList').del()
+  await knex('users').del()
 }

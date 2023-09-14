@@ -1,16 +1,24 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import LoginButton from '../../components/Login/Login'
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
+import { getUser } from '../../apis/api'
+import { useQuery } from '@tanstack/react-query'
 
 function Home() {
-  const { user, isAuthenticated } = useAuth0()
+  const { getAccessTokenSilently } = useAuth0()
   //check user with useQuery see if they exist in our database
   const navigate = useNavigate()
-  useEffect(() => {
-  //if user is in database navigate to /your-route
-  //if not navigate to /profile
-  }, [])
+
+  useQuery({
+    queryKey: ['user'],
+    queryFn: async () => {
+      const accessToken = await getAccessTokenSilently()
+      const response = await getUser(accessToken)
+      if (response?.nickname) navigate('/my-wardrobe')
+      if (!response?.nickname) navigate('/profile')
+    },
+  })
+
   return (
     <>
       <LoginButton />

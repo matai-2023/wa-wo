@@ -1,7 +1,7 @@
 import db from './connection'
 
 export async function getUser(auth0Id: string) {
-  return await db('users').where('auth0_id', auth0Id).first('nickname')
+  return await db('users').where('auth0_id', auth0Id).select('nickname').first()
 }
 
 // export async function upsertProfile() {

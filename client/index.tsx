@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <Auth0Provider
       domain="youn.au.auth0.com"
       clientId="6BcrxurWcfVZiNadfzUFs7kyxSwFx908"
-      redirectUri={`${window.location.origin}/profile`}
+      redirectUri={window.location.origin}
       audience="https://wardrobe/api"
     >
       <QueryClientProvider client={queryClient}>

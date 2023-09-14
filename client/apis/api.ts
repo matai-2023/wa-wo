@@ -20,7 +20,7 @@ export async function getUser(token: string) {
     .get('/api/v1/users')
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
-  return res.body as User
+  return res.body
 }
 
 export async function getFriendList(token: string) {

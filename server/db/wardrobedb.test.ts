@@ -25,11 +25,11 @@ describe('get myWardrobe', () => {
     expect(items[0]).toHaveProperty('image')
   })
 
-  // it('should delete selected item', async () => {
-  //   const countBefore = await countItems()
-  //   await deleteItem(1)
-  //   const countAfter = await countItems()
-  //   const items = countBefore - countAfter
-  //   expect(items).toBe(1)
-  // })
+  it('should delete selected item', async () => {
+    const countBefore = await countItems()
+    await deleteItem(1)
+    const countAfter = await countItems()
+    const items = countBefore - countAfter
+    expect(items).toBe(1)
+  })
 })
