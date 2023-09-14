@@ -27,7 +27,6 @@ const router = express.Router()
 
 router.get('/friends', validateAccessToken, async (req, res) => {
   const id = req.auth?.payload.sub
-  console.log(id)
   if (!id) {
     res.status(400).json({ message: 'Please provide an id' })
     return
