@@ -1,6 +1,5 @@
 import Icon from '../UI/Icon/Icon'
 import { Wardrobe } from '../../../types/MyWardrobe'
-import { Link } from 'react-router-dom'
 
 interface Props {
   wardrobe: Wardrobe
@@ -18,7 +17,9 @@ function WardrobeList(props: Props) {
             <img src="IMG_5431.jpg" alt="" />
           </div>
           <div className="flex justify-between w-[300px]">
-            <h3 className="ml-2 text-orange text-2xl mt-5">{wardrobe.name}</h3>
+            <h3 className="ml-2 text-orange text-2xl mt-5 font-bold">
+              {wardrobe.name}
+            </h3>
             <button
               data-testid="testing"
               onClick={() => handleDeleteItem(wardrobe.id)}
@@ -36,7 +37,5 @@ function WardrobeList(props: Props) {
     </>
   )
 }
-
-//
 
 export default WardrobeList

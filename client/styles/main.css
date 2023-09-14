@@ -6,7 +6,10 @@
 
 @layer base {
   html {
-    font-family: 'Luckiest Guy', cursive;
     font-family: 'Rubik', sans-serif;
   }
+}
+
+h5 {
+  font-family: 'Luckiest Guy', cursive;
 }
