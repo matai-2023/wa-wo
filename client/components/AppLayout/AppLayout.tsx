@@ -33,7 +33,7 @@ function AppLayout() {
 
   return (
     <>
-      <div className="flex items-center justify-center ">
+      <div className="ml-8 mt-4">
         <Header />
       </div>
       <div>
