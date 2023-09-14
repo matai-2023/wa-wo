@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 
 function Title() {
   return (
-    <Link to="/">
-      <img src="/wawo2.png" alt="logo" className="" />
+    <Link className="text-orange text-[50px]" to="/">
+      <p>WARDROBE WONDERS</p>
     </Link>
   )
 }
