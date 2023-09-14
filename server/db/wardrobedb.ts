@@ -10,9 +10,9 @@ export function deleteItem(id: number, db = connection) {
   return db('wardrobe').where('id', id).delete()
 }
 
-export function countItems(db = connection) {
-  const count = db('wardrobe').count('id as count').first()
-  return count.count
+export async function countItems(db = connection) {
+  const value = await db('wardrobe').count('id as count').first()
+  return value?.count as number
 }
 // export function addFruit(db = connection) {
 //   return db('wardrobe').insert(fruit)
