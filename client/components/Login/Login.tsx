@@ -6,8 +6,9 @@ function LoginButton() {
 
   function handleLogin() {
     loginWithRedirect({
+      appState: { targetUrl: '/my-wardrobe' },
       authorizationParams: {
-        redirect_uri: `https://localhost:5173/my-wardrobe`,
+        redirect_uri: `${window.location.origin}/my-wardrobe`,
       },
     })
   }
