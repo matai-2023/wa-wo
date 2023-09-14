@@ -21,11 +21,12 @@ function LoginButton() {
     <>
       <IfAuthenticated>
         <Button onClick={handleSignOut}>Log Out</Button>
-        {user && <p>Signed in as: {user?.nickname}</p>}
       </IfAuthenticated>
-      <IfNotAuthenticated>
-        <Button onClick={handleLogin}>Log In</Button>
-      </IfNotAuthenticated>
+      <div>
+        <IfNotAuthenticated>
+          <Button onClick={handleLogin}>Log In</Button>
+        </IfNotAuthenticated>
+      </div>
     </>
   )
 }
