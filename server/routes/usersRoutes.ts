@@ -35,4 +35,19 @@ router.get('/friends', validateAccessToken, async (req, res) => {
   }
 })
 
+router.get('/all', validateAccessToken, async (req, res) => {
+  const id = req.auth?.payload.sub
+  if (!id) {
+    res.status(401).json({ message: 'Please provide an id' })
+    return
+  }
+
+  try {
+    const users = await db.getAllUsers()
+    res.status(200).json(users)
+  } catch (error) {
+    res.status(500).json({ message: 'Unable to retrieve friends' })
+  }
+})
+
 export default router

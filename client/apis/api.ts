@@ -23,6 +23,14 @@ export async function getUser(token: string) {
   return res.body
 }
 
+export async function getAllUsers(token: string) {
+  const res = await request
+    .get('/api/v1/users/all')
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body as User[]
+}
+
 export async function getFriendList(token: string) {
   const res = await request
     .get('/api/v1/users/friends')
