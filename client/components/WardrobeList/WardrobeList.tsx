@@ -1,5 +1,6 @@
 import Icon from '../UI/Icon/Icon'
 import { Wardrobe } from '../../../types/MyWardrobe'
+import { Link } from 'react-router-dom'
 
 interface Props {
   wardrobe: Wardrobe
