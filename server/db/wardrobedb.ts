@@ -3,19 +3,23 @@ import connection from './connection.ts'
 import db from './connection.ts'
 
 export async function getAllwardrobe(auth0Id: string) {
-  return (await db('wardrobe').where('user_id', auth0Id).select()) as Wardrobe[]
+  return await db('wardrobe').where('user_id', auth0Id).select()
 }
 
+export function deleteItem(id: number, db = connection) {
+  return db('wardrobe').where('id', id).delete()
+}
+
+export function countItems(db = connection) {
+  const count = db('wardrobe').count('id as count').first()
+  return count.count
+}
 // export function addFruit(db = connection) {
 //   return db('wardrobe').insert(fruit)
 // }
 
 // export function updateFruit( db = connection) {
 //   return db('wardrobe').where('id', newFruit.id).update(newFruit)
-// }
-
-// export function deleteFruit(id: number, db = connection) {
-//   return db('wardrobe').where('id', id).delete()
 // }
 
 // export function userCanEdit(fruitId: number, auth0Id: string, db = connection) {

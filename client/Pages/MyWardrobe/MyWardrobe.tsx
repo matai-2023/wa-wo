@@ -10,6 +10,7 @@ function MyWardrobe() {
   async function handleDeleteItem(id: number) {
     const token = await getAccessTokenSilently()
     mutationDel.mutate({ id: id, token: token })
+    console.log(token)
   }
 
   return (
@@ -19,6 +20,7 @@ function MyWardrobe() {
       {isAuthenticated && (
         <ul>
           {data &&
+            data?.length > 0 &&
             data.map((item) => (
               <li className="list-none flex gap-4" key={item.id}>
                 <WardrobeList
@@ -27,6 +29,11 @@ function MyWardrobe() {
                 />
               </li>
             ))}
+          {data && data?.length == 0 && (
+            <li>
+              <h3>Wardrobe is empty!</h3>
+            </li>
+          )}
         </ul>
       )}
     </>

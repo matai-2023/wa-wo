@@ -82,30 +82,16 @@ router.get('/', validateAccessToken, async (req, res) => {
 // })
 
 // TODO: use checkJwt as middleware
-// DELETE /api/v1/fruits
-// router.delete('/:id', (req: JwtRequest, res) => {
-//   const id = Number(req.params.id)
-//   const auth0Id = req.auth?.sub
-
-//   if (!auth0Id) {
-//     console.error('No auth0Id')
-//     return res.status(401).send('Unauthorized')
-//   }
-
-//   userCanEdit(id, auth0Id)
-//     .then(() => deleteFruit(id))
-//     .then(() => getFruits())
-//     .then((fruits: Fruit[]) => res.json({ fruits }))
-//     .catch((err: Error) => {
-//       console.error(err)
-//       if (err.message === 'Unauthorized') {
-//         res
-//           .status(403)
-//           .send('Unauthorized: Only the user who added the fruit may update it')
-//       } else {
-//         res.status(500).send('Something went wrong')
-//       }
-//     })
-// })
+// DELETE /api/v1/my-wardrobe
+router.delete('/:id', validateAccessToken, async (req, res) => {
+  try {
+    const id = Number(req.params.id)
+    await db.deleteItem(id)
+    res.sendStatus(200)
+  } catch (e) {
+    logger.error(e)
+    res.status(500).json({ message: 'Unable to delete item' })
+  }
+})
 
 export default router

@@ -41,6 +41,6 @@ export async function getMyWardrobe(token: string) {
 
 export async function delItem(id: number, token: string) {
   await request
-    .del(`/api/v1/user/${id}`)
+    .del(`/api/v1/my-wardrobe/${id}`)
     .set('Authorization', `Bearer ${token}`)
 }
