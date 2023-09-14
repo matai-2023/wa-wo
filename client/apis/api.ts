@@ -35,11 +35,12 @@ export async function getMyWardrobe(token: string) {
   const response = await request
     .get('/api/v1/my-wardrobe')
     .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
   return response.body as Wardrobe[]
 }
 
 export async function delItem(id: number, token: string) {
   await request
-    .del(`/api/v1/user/${id}`)
+    .del(`/api/v1/my-wardrobe/${id}`)
     .set('Authorization', `Bearer ${token}`)
 }

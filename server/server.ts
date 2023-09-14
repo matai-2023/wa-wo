@@ -9,7 +9,7 @@ const server = express()
 
 server.use(express.json())
 
-server.use('/api/v1/wardrobewonders', wawoRoutes)
+server.use('/api/v1/my-wardrobe', wawoRoutes)
 server.use('/api/v1/users', userRoutes)
 
 if (process.env.NODE_ENV === 'production') {

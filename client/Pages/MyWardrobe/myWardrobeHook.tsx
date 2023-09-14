@@ -10,11 +10,8 @@ function useMyWardrobeHook() {
     queryKey: ['wardrobe'],
     queryFn: async () => {
       const accessToken = await getAccessTokenSilently()
-
-      if (user && user.sub) {
-        const response = await getMyWardrobe(accessToken)
-        return response
-      }
+      const response = await getMyWardrobe(accessToken)
+      return response
     },
   })
 
