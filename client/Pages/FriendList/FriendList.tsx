@@ -1,30 +1,37 @@
-import { useQuery } from '@tanstack/react-query'
-import { getFriendList } from '../../apis/api'
-import { useAuth0 } from '@auth0/auth0-react'
+import useFriendList from '../../hooks/useFriendList'
 
 function FriendList() {
-  const { user, getAccessTokenSilently } = useAuth0()
-  const { data } = useQuery({
-    queryKey: ['FriendList'],
-    queryFn: async () => {
-      const accessToken = await getAccessTokenSilently()
-      const response = await getFriendList(accessToken)
-      return response
-    },
-  })
-  console.log(data)
-  console.log(user)
+  const customHook = useFriendList()
+  const data = customHook.data
 
   return (
     <>
       <div className="space-y-4 flex justify-center items-center mt-12">
-        <h1 className="text-xl font-semibold">My friends</h1>
-        <ul className="space-y-4">
-          {data &&
-            data?.map((friend) => (
-              <li key={friend.auth0Id}>{friend.nickname}</li>
-            ))}
-        </ul>
+        <div className=" flex flex-col">
+          <h1 className=" flex items-center justify-center space-y-4 text-3xl font-semibold mb-10">
+            My friends
+          </h1>
+
+          <div className="flex flex-col flex-auto text-orange text-2xl">
+            <ul className="ml-8 mb-8">
+              {data &&
+                data.length > 0 &&
+                data?.map((friend) => (
+                  <li
+                    key={friend.nickname}
+                    className="list-none space-y-4 py-3 flex"
+                  >
+                    <h3>{friend.nickname}</h3>
+                  </li>
+                ))}
+              {data?.length == 0 && (
+                <li>
+                  <h3>Sorry you aint got no friend</h3>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
       </div>
     </>
   )

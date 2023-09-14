@@ -7,7 +7,7 @@ function LoginButton() {
   function handleLogin() {
     loginWithRedirect({
       authorizationParams: {
-        redirect_uri: `${window.location.origin}/my-wardrobe`,
+        redirect_uri: `https://localhost:5173/my-wardrobe`,
       },
     })
   }
