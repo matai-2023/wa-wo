@@ -2,18 +2,7 @@ import useFriendList from '../../hooks/useFriendList'
 
 function FriendList() {
   const customHook = useFriendList()
-  // const data = customHook.data
-  const data = [
-    {
-      nickname: 'bob312312312312312312321312312',
-    },
-    {
-      nickname: 'bob123123123123123123213123123',
-    },
-    {
-      nickname: 'bob312321321312312312312312312321321',
-    },
-  ]
+  const data = customHook.data
 
   return (
     <>
