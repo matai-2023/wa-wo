@@ -28,7 +28,7 @@ const router = express.Router()
 router.get('/friends', validateAccessToken, async (req, res) => {
   const id = req.auth?.payload.sub
   if (!id) {
-    res.status(400).json({ message: 'Please provide an id' })
+    res.status(401).json({ message: 'Please provide an id' })
     return
   }
 
@@ -36,7 +36,6 @@ router.get('/friends', validateAccessToken, async (req, res) => {
     const friends = await db.getFriends(id)
     res.status(200).json(friends)
   } catch (error) {
-    console.error('Unable to retrieve /users/friends from API', error)
     res.status(500).json({ message: 'Unable to retrieve friends' })
   }
 })

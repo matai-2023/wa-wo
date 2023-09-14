@@ -23,7 +23,7 @@ describe('GET /api/v1/users/friends', () => {
     expect(response.body).toEqual(fakeFriends)
   })
 
-  it.skip('should return 500 when no access token is passed', async () => {
+  it('should return 500 when no access token is passed', async () => {
     vi.mocked(db.getFriends).mockRejectedValue(new Error('test'))
     const response = await request(server)
       .get('/api/v1/users/friends')
