@@ -13,16 +13,26 @@ import MyWardrobe from './Pages/MyWardrobe/MyWardrobe.tsx'
 import ErrorPage from './Pages/ErrorPage/ErrorPage.tsx'
 import RegisterForm from './components/Signin/RegisterForm.tsx'
 import FriendList from './Pages/FriendList/FriendList.tsx'
+import ProtectedComponent from './components/UI/Protector.tsx'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
     <Route index element={<Home />} />
-    <Route path="/my-wardrobe" element={<MyWardrobe />} />
-    {/* <Route path="/add-clothes" element={<AddClothes />} /> */}
-    <Route path="/friend-list" element={<FriendList />} />
-    {/* <Route path="/find-friend" element={<FindFriends />} /> */}
-    <Route path="/profile" element={<RegisterForm />} />
-    {/* <Route path="/friend/:id" element={<FriendWardrobe />} /> */}
+    <Route
+      path="/my-wardrobe"
+      element={<ProtectedComponent component={MyWardrobe} />}
+    />
+    {/* <Route path="/add-clothes" element={<ProtectedComponent component={AddClothes} />}/> */}
+    <Route
+      path="/friend-list"
+      element={<ProtectedComponent component={FriendList} />}
+    />
+    {/* <Route path="/find-friend" element={<ProtectedComponent componet={FindFriends} />}/> */}
+    <Route
+      path="/profile"
+      element={<ProtectedComponent component={RegisterForm} />}
+    />
+    {/* <Route path="/friend/:id" element={<ProtectedComponent component={FriendWardrobe} />}/> */}
   </Route>
 )
 
@@ -36,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <Auth0Provider
       domain="youn.au.auth0.com"
       clientId="6BcrxurWcfVZiNadfzUFs7kyxSwFx908"
-      redirectUri={window.location.origin}
+      redirectUri={`${window.location.origin}/profile`}
       audience="https://wardrobe/api"
     >
       <QueryClientProvider client={queryClient}>
