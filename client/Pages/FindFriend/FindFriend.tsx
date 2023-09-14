@@ -13,7 +13,6 @@ function FindFriends() {
   // const [showing, setShowing] = useState(false)
   // const [suggestions, setSuggestions] = useState([])
   const { getAccessTokenSilently } = useAuth0()
-  console.log(searchQ)
 
   async function handleClick() {
     const token = await getAccessTokenSilently()
@@ -36,18 +35,33 @@ function FindFriends() {
   //   }
   // }
 
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      handleClick()
+    }
+  }
+
   return (
     <>
-      <TextBox
-        value={searchQ}
-        onChange={(e) => setSearchQ(e.target.value)}
-        placeholder="Enter a nickname"
-      />
-      <button onClick={handleClick}>Find</button>
-
-      {friends &&
-        friends.length !== 0 &&
-        friends?.map((item) => <li key={item.nickname}>{item.nickname}</li>)}
+      <div className="flex flex-col justify-center mt-20 border-8 border-orange items-center m-80 h-[32rem] rounded-xl">
+        <div className="flex flex-col items-center">
+          <TextBox
+            value={searchQ}
+            onKeyDown={handleKeyDown}
+            onChange={(e) => setSearchQ(e.target.value)}
+            placeholder="Enter a nickname"
+            autoFocus={true}
+          />
+          <Button onClick={handleClick}>Find</Button>
+          <div className="flex flex-col justify-center items-center mt-10 border-2 border-orange p-4">
+            {friends &&
+              friends.length !== 0 &&
+              friends?.map((item) => (
+                <li key={item.nickname}>{item.nickname}</li>
+              ))}
+          </div>
+        </div>
+      </div>
     </>
   )
 }

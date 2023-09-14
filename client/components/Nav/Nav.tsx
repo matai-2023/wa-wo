@@ -31,7 +31,10 @@ function Nav(props: Props) {
           <button onClick={() => goTo('/add-clothes')}>Add an Item</button>
         </li>
         <li>
-          <button onClick={() => goTo('/find-friend')}>Add a friend</button>
+          <button onClick={() => goTo('/find-friend')}>Find friend</button>
+        </li>
+        <li>
+          <button onClick={() => goTo('/')}>Add a friend</button>
         </li>
         <li>
           {isAuthenticated && <button onClick={handleLogout}>Log out</button>}
