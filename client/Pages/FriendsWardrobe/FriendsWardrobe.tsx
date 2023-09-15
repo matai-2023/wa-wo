@@ -15,7 +15,11 @@ function FriendsWardrobe() {
       {' '}
       <div className="flex flex-col items-center w-[100vw]">
         {isLoading && <div>Loading ...</div>}
-        {nickname&&<h1 className="m-20 text-4xl border-b-[5px]">{nickname.nickname} Wardrobe</h1>}
+        {nickname && (
+          <h1 className="m-20 text-4xl border-b-[5px]">
+            {nickname.nickname} Wardrobe
+          </h1>
+        )}
         <div className="flex flex-row justify-center place-content-evenly w-96 border-4 text-2xl mb-[40px] ">
           <button
             className="m-6 focus:text-blue-400 hover:text-blue-400"
@@ -63,20 +67,18 @@ function FriendsWardrobe() {
                 robes.length > 0 &&
                 robes.map((item: any) => (
                   <li className="list-none flex justify-center" key={item.id}>
-                    <FriendsWardrobeList
-                      wardrobe={item}
-                    />
+                    <FriendsWardrobeList wardrobe={item} />
                   </li>
-                
                 ))}
-                </div>
-                </div>
-              {data && robes?.length == 0 && (
-                <div className='flex flex-row h-[300px] justify-center items-center'>
-                  <p className='text-2xl font-bold'>Wardrobe is empty!</p>
-                </div>
-              )}
-          
+            </div>
+          </div>
+          {data && robes?.length == 0 && (
+            <div className="flex flex-row h-[300px] justify-center items-center">
+              <p data-testid="testid" className="text-2xl font-bold">
+                Wardrobe is empty!
+              </p>
+            </div>
+          )}
         </ul>
       )}
     </>
