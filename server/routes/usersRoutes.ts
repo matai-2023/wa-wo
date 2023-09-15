@@ -35,6 +35,21 @@ router.get('/friends', validateAccessToken, async (req, res) => {
   }
 })
 
+router.get('/all', validateAccessToken, async (req, res) => {
+  const id = req.auth?.payload.sub
+  if (!id) {
+    res.status(401).json({ message: 'Please provide an id' })
+    return
+  }
+
+  try {
+    const users = await db.getAllUsers()
+    res.status(200).json(users)
+  } catch (error) {
+    res.status(500).json({ message: 'Unable to retrieve friends' })
+  }
+})
+
 router.get('/find/:id', validateAccessToken, async (req, res) => {
   const id = req.auth?.payload.sub
   if (!id) {
@@ -45,7 +60,7 @@ router.get('/find/:id', validateAccessToken, async (req, res) => {
     const friendId = req.params.id
     const friendwr = await data.getAllwardrobe(friendId)
     const friendsNick = await db.getUser(friendId)
-    res.status(200).json({nickname:friendsNick, robes:friendwr})
+    res.status(200).json({ nickname: friendsNick, robes: friendwr })
   } catch (error) {
     res.status(500).json({ message: 'Unable to retrieve friends' })
   }

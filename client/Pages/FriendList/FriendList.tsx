@@ -1,4 +1,5 @@
 import useFriendList from '../../hooks/useFriendList'
+import { Link } from 'react-router-dom'
 
 function FriendList() {
   const customHook = useFriendList()
@@ -21,7 +22,9 @@ function FriendList() {
                     key={friend.nickname}
                     className="list-none space-y-4 py-3 flex"
                   >
-                    <h3>{friend.nickname}</h3>
+                    <Link to={`/friend/${friend.id}`}>
+                      <h3>{friend.nickname}</h3>
+                    </Link>
                   </li>
                 ))}
               {data?.length == 0 && (

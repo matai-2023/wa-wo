@@ -1,6 +1,7 @@
 import request from 'superagent'
 import { User } from '../../types/User'
-import { Wardrobe } from '../../types/MyWardrobe'
+import { AddWardrobe, Wardrobe } from '../../types/MyWardrobe'
+
 export async function addProfile({
   nickname,
   token,
@@ -23,6 +24,14 @@ export async function getUser(token: string) {
   return res.body
 }
 
+export async function getAllUsers(token: string) {
+  const res = await request
+    .get('/api/v1/users/all')
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body as User[]
+}
+
 export async function getFriendList(token: string) {
   const res = await request
     .get('/api/v1/users/friends')
@@ -37,6 +46,13 @@ export async function getMyWardrobe(token: string) {
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
   return response.body as Wardrobe[]
+}
+
+export async function addItem(newItem: AddWardrobe, token: string) {
+  await request
+    .post('/api/v1/my-wardrobe')
+    .set('Authorization', `Bearer ${token}`)
+    .send(newItem)
 }
 
 export async function delItem(id: number, token: string) {

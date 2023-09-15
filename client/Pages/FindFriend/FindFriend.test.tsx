@@ -17,6 +17,7 @@ vi.mock('@auth0/auth0-react')
 describe('Find Friends', () => {
   it('display friend containing search query', async () => {
     const scope = nock('http://localhost')
+
       .get(`/api/v1/users`)
       .reply(200, [
         {
@@ -26,11 +27,14 @@ describe('Find Friends', () => {
 
     const { user } = renderComponent(<FindFriends />)
 
+
     await user.click(screen.getByRole('button', { name: 'Find' }))
 
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
 
+
     const message = screen.getByText(/ /i)
+
     expect(message).toBeInTheDocument()
   })
 })
