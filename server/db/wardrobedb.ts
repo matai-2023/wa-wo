@@ -1,4 +1,3 @@
-import { Wardrobe } from '../../types/MyWardrobe.ts'
 import connection from './connection.ts'
 import db from './connection.ts'
 
