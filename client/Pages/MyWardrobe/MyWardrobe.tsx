@@ -11,7 +11,6 @@ function MyWardrobe() {
   async function handleDeleteItem(id: number) {
     const token = await getAccessTokenSilently()
     mutationDel.mutate({ id: id, token: token })
-    console.log(token)
   }
 
   return (
