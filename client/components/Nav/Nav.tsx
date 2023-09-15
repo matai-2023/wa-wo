@@ -40,7 +40,7 @@ function Nav(props: Props) {
         <li>
           <button
             className="font-bold hover:text-blue-400 mb-2"
-            onClick={() => goTo('/add-clothes')}
+            onClick={() => goTo('/add-item')}
           >
             Add an Item
           </button>
