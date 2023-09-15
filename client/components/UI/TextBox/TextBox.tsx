@@ -8,7 +8,7 @@ function TextBox({ className, ...rest }: InputAttribues) {
     <input
       type="text"
       className={twMerge(
-        'text-black mb-20 p-4 text-2xl outline-orange',
+        'text-black mb-10 p-4 text-2xl outline-orange',
         className
       )}
       autoComplete="off"
