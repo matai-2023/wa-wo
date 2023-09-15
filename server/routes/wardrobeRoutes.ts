@@ -2,6 +2,7 @@ import express from 'express'
 import validateAccessToken from '../auth0.ts'
 import logger from '../db/logger.ts'
 import * as db from '../db/wardrobedb.ts'
+import { addItemSchema } from '../../types/MyWardrobe.ts'
 
 const router = express.Router()
 
@@ -18,35 +19,29 @@ router.get('/', validateAccessToken, async (req, res) => {
     res.json(myItems)
   } catch (e) {
     logger.error(e)
-    res.status(500).json({ message: 'Unable to retrieve items' })
+    res.status(500).json({ message: 'Unable to retrieve items 👕👖👟' })
   }
 })
 
 // TODO: use checkJwt as middleware
-// POST /api/v1/fruits
-// router.post('/', (req: JwtRequest, res) => {
-//   const { fruit } = req.body
-//   const auth0Id = req.auth?.sub
-
-//   if (!auth0Id) {
-//     console.error('No auth0Id')
-//     return res.status(401).send('Unauthorized')
-//   }
-
-//   const newFruit: FruitSnakeCase = {
-//     added_by_user: auth0Id,
-//     name: fruit.name,
-//     average_grams_each: fruit.averageGramsEach,
-//   }
-
-//   addFruit(newFruit)
-//     .then(() => getFruits())
-//     .then((fruits: Fruit[]) => res.json({ fruits }))
-//     .catch((err: Error) => {
-//       console.error(err)
-//       res.status(500).send('Something went wrong')
-//     })
-// })
+// POST /api/v1/my-wardrobe
+router.post('/', validateAccessToken, async (req, res) => {
+  try {
+    const auth0Id = req.auth?.payload.sub
+    const input = req.body
+    if (!auth0Id) {
+      res.status(401).json({ error: 'Unauthorized' })
+      return
+    }
+    console.log(req.body)
+    const newItem = addItemSchema.parse(input)
+    await db.addItem(newItem)
+    res.sendStatus(201)
+  } catch (e) {
+    logger.error(e)
+    res.status(500).json({ message: 'Unable to add items' })
+  }
+})
 
 // TODO: use checkJwt as middleware
 // PUT /api/v1/fruits

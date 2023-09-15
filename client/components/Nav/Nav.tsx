@@ -19,25 +19,49 @@ function Nav(props: Props) {
   }
 
   return (
-    <nav className="pt-16 pl-4 flex ">
+    <nav className="pt-8 pl-4 pr-4 flex ">
       <ul className="text-3xl">
         <li>
-          <button onClick={() => goTo('/my-wardrobe')}>My wardrobe</button>
+          <button
+            className="font-bold hover:text-blue-400 mb-2"
+            onClick={() => goTo('/my-wardrobe')}
+          >
+            My wardrobe
+          </button>
         </li>
         <li>
-          <button onClick={() => goTo('/friend-list')}>My friends</button>
+          <button
+            className="font-bold hover:text-blue-400 mb-2"
+            onClick={() => goTo('/friend-list')}
+          >
+            My friends
+          </button>
         </li>
         <li>
-          <button onClick={() => goTo('/add-clothes')}>Add an Item</button>
+          <button
+            className="font-bold hover:text-blue-400 mb-2"
+            onClick={() => goTo('/add-item')}
+          >
+            Add an Item
+          </button>
         </li>
         <li>
-          <button onClick={() => goTo('/find-friend')}>Find friend</button>
+          <button
+            className="font-bold hover:text-blue-400 mb-2"
+            onClick={() => goTo('/find-friend')}
+          >
+            Add a friend
+          </button>
         </li>
         <li>
-          <button onClick={() => goTo('/')}>Add a friend</button>
-        </li>
-        <li>
-          {isAuthenticated && <button onClick={handleLogout}>Log out</button>}
+          {isAuthenticated && (
+            <button
+              className="font-bold hover:text-blue-400 mb-2"
+              onClick={handleLogout}
+            >
+              Log out
+            </button>
+          )}
         </li>
       </ul>
     </nav>
