@@ -17,7 +17,6 @@ router.get('/', validateAccessToken, async (req, res) => {
     const myItems = await db.getAllwardrobe(userId)
     res.json(myItems)
   } catch (e) {
-    logger.error(e)
     res.status(500).json({ message: 'Unable to retrieve items' })
   }
 })

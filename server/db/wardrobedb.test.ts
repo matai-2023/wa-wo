@@ -1,9 +1,6 @@
 import { describe, it, expect, beforeAll, beforeEach } from 'vitest'
 import db from './connection'
 import { countItems, deleteItem, getAllwardrobe } from './wardrobedb'
-import knex from 'knex'
-import knexfile from './knexfile'
-// const db = knex(knexfile.test)
 
 beforeAll(async () => {
   await db.migrate.latest()
@@ -16,7 +13,7 @@ beforeEach(async () => {
 describe('get myWardrobe', () => {
   it('should return items', async () => {
     const items = await getAllwardrobe('auth0|65010b645218b17b091d01fe')
-    expect(items).toHaveLength(1)
+    expect(items).toHaveLength(6)
     expect(items[0]).toHaveProperty('id')
     expect(items[0]).toHaveProperty('name')
     expect(items[0]).toHaveProperty('description')
