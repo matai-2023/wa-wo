@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TextBox from '../../components/UI/TextBox/TextBox'
 import { useAuth0 } from '@auth0/auth0-react'
 import Button from '../../components/UI/Button/Button'
@@ -13,7 +13,7 @@ function FindFriends() {
 
   const { getAccessTokenSilently } = useAuth0()
   const { data } = useQuery({
-    queryKey: ['users', friends, searchQ],
+    queryKey: ['users', friends],
     queryFn: async () => {
       const token = await getAccessTokenSilently()
       const data = await getAllUsers(token)
@@ -29,20 +29,20 @@ function FindFriends() {
     setSearchQ('')
   }
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQ(e.target.value)
-    const values = data?.filter((item) =>
-      item.nickname.includes(searchQ)
-    ) as User[]
-    if (values.length == 0) {
-      setFriends([{ auth0_id: '', nickname: 'No friends found' }])
-    } else {
-      setFriends(values)
+  useEffect(() => {
+    if (data) {
+      const values = data?.filter((item) =>
+        item.nickname.includes(searchQ)
+      ) as User[]
+      if (values?.length == 0) {
+        setFriends([{ auth0_id: '', nickname: 'No friends found' }])
+      } else {
+        setFriends(values)
+      }
+      if (searchQ == '') setFriends([])
     }
-    if (e.target.value.length == 0) {
-      setFriends([])
-    }
-  }
+  }, [searchQ])
+
   async function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') handleClick()
   }
@@ -56,7 +56,7 @@ function FindFriends() {
               className="mt-[50px]"
               value={searchQ}
               onKeyDown={handleKeyDown}
-              onChange={handleChange}
+              onChange={(e) => setSearchQ(e.target.value)}
               placeholder="Enter a nickname"
             />
             <Button onClick={handleClick}>Find</Button>
