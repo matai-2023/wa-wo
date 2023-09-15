@@ -17,6 +17,7 @@ vi.mock('@auth0/auth0-react')
 describe('Find Friends', () => {
   it('1. Display friend based on query input', async () => {
     const scope = nock('http://localhost')
+
       .get(`/api/v1/users/all`)
       .reply(200, [
         {
@@ -30,8 +31,10 @@ describe('Find Friends', () => {
     // user enters 'a' into input
     await user.type(screen.getByPlaceholderText('Enter a nickname'), 'a')
 
+
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
     const nickname = screen.getByRole('heading', { level: 3 })
+
 
     expect(nickname).toBeInTheDocument()
   })
@@ -76,5 +79,6 @@ describe('Find Friends', () => {
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
     const list = screen.queryByTestId('friendList')
     expect(list).toBeNull()
+
   })
 })
