@@ -62,12 +62,15 @@ function FindFriends() {
             <Button onClick={handleClick}>Find</Button>
             {friends.length !== 0 && (
               <div>
-                <div className="flex flex-col justify-center items-center mt-6 border-2 border-orange p-4">
+                <div
+                  data-testid="friendList"
+                  className="flex flex-col justify-center items-center mt-6 border-2 border-orange p-4"
+                >
                   {friends &&
                     friends?.map((item) => (
-                      <li key={item.auth0_id}>
+                      <li key={item.auth0_id} className="list-none ">
                         <Link to={`/friend/${item.auth0_id}`}>
-                          {item.nickname}
+                          <h3>{item.nickname}</h3>
                         </Link>
                       </li>
                     ))}
