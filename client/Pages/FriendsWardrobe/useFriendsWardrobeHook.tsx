@@ -1,12 +1,12 @@
-import {  useQuery, useQueryErrorResetBoundary } from '@tanstack/react-query'
+import { useQuery, useQueryErrorResetBoundary } from '@tanstack/react-query'
 import { getFriendsWardrobe, getMyWardrobe } from '../../apis/api'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useParams } from 'react-router-dom'
 import { Wardrobe } from '../../../types/MyWardrobe'
-function uesFriendsWardrobeHook(filter: string) {
+function useFriendsWardrobeHook(filter: string) {
   const { id } = useParams()
+  console.log('id is', id)
   const { user, getAccessTokenSilently, isAuthenticated } = useAuth0()
-
   const { data, isLoading } = useQuery({
     queryKey: ['wardrobe', filter],
     queryFn: async () => {
@@ -17,10 +17,9 @@ function uesFriendsWardrobeHook(filter: string) {
         filter == ''
           ? response.robes
           : response.robes.filter((item: any) => item.category == filter)
-      return {nickname: name, robes:filteredRobes}
+      return { nickname: name, robes: filteredRobes }
     },
   })
-
 
   return {
     user,
@@ -31,4 +30,4 @@ function uesFriendsWardrobeHook(filter: string) {
   }
 }
 
-export default uesFriendsWardrobeHook
+export default useFriendsWardrobeHook

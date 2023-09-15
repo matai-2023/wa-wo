@@ -29,7 +29,10 @@ function WardrobeList(props: Props) {
               </Icon>
             </button>
           </div>
-          <p className="ml-2 text-md text-lightPurple w-[300px]">
+          <p
+            data-testid="test"
+            className="ml-2 text-md text-lightPurple w-[300px]"
+          >
             {wardrobe.description}
           </p>
         </div>
