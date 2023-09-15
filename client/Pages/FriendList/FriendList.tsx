@@ -5,8 +5,6 @@ function FriendList() {
   const customHook = useFriendList()
   const data = customHook.data
 
-  console.log('hi', data)
-
   return (
     <>
       <div className="space-y-4 flex justify-center items-center mt-12">
