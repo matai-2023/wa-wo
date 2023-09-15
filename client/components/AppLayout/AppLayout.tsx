@@ -33,7 +33,7 @@ function AppLayout() {
 
   return (
     <>
-      <div className="ml-8 mt-4">
+      <div className="ml-8 mt-4 w-100vw">
         <Header />
       </div>
       <div>

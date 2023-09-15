@@ -14,6 +14,7 @@ import ErrorPage from './Pages/ErrorPage/ErrorPage.tsx'
 import RegisterForm from './components/Signin/RegisterForm.tsx'
 import FriendList from './Pages/FriendList/FriendList.tsx'
 import ProtectedComponent from './components/UI/Protector.tsx'
+import FriendsWardrobe from './Pages/FriendsWardrobe/FriendsWardrobe.tsx'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
@@ -32,7 +33,7 @@ export const routes = createRoutesFromElements(
       path="/profile"
       element={<ProtectedComponent component={RegisterForm} />}
     />
-    {/* <Route path="/friend/:id" element={<ProtectedComponent component={FriendWardrobe} />}/> */}
+    <Route path="/friend/:id" element={<ProtectedComponent component={FriendsWardrobe} />}/>
   </Route>
 )
 
