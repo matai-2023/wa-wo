@@ -50,7 +50,7 @@ function Nav(props: Props) {
             className="font-bold hover:text-blue-400 mb-2"
             onClick={() => goTo('/find-friend')}
           >
-            Add a friend
+            Find User
           </button>
         </li>
         <li>
