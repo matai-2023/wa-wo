@@ -38,25 +38,71 @@ describe('My Wardrobe', () => {
       expect(scope.isDone()).toBeTruthy()
     })
     const wardrobeName = await screen.getByRole('heading', { level: 3 })
-    const wardrobeDescription = await screen.getByText('Ryan')
     expect(wardrobeName).toBeInTheDocument()
+  })
+
+  it('2. Should render logged in users wardrobe', async () => {
+    const scope = nock('http://localhost')
+      .get('/api/v1/my-wardrobe')
+      .reply(200, [
+        {
+          id: 2,
+          user_id: '123',
+          name: 'test-nickname',
+          description: 'Ryan',
+          category: 'Ng',
+          part: 'top',
+          image: 'ur',
+        },
+      ])
+
+    renderWithQuery(<MyWardrobe />)
+
+    await waitFor(async () => {
+      expect(scope.isDone()).toBeTruthy()
+    })
+    const wardrobeDescription = await screen.getByText('Ryan')
     expect(wardrobeDescription).toBeInTheDocument()
   })
-  // it('2. Display message when the wardrobe is empty', async () => {
-  //   const scope = nock('http://localhost')
-  //     .get('/api/v1/my-wardrobe')
-  //     .reply(200, [])
 
-  //   renderWithQuery(<MyWardrobe />)
+  it('3. Display message when the wardrobe is empty', async () => {
+    const scope = nock('http://localhost')
+      .get('/api/v1/my-wardrobe')
+      .reply(200, [])
 
-  //   await waitFor(async () => {
-  //     expect(scope.isDone()).toBeTruthy()
-  //   })
-  //   const message = screen.getByText('Wardrobe is empty!')
-  //   expect(message).toHaveTextContent(/wardrobe/i)
-  // })
+    renderWithQuery(<MyWardrobe />)
 
-  // it('3. Selected item should be removed', async () => {
+    await waitFor(async () => {
+      expect(scope.isDone()).toBeTruthy()
+    })
+    const message = screen.getByText('Wardrobe is empty!')
+    expect(message).toHaveTextContent(/wardrobe/i)
+  })
+
+  it('4. Should render logged in users wardrobe', async () => {
+    const scope = nock('http://localhost')
+      .get('/api/v1/my-wardrobe')
+      .reply(200, [
+        {
+          id: 2,
+          user_id: '123',
+          name: 'test-nickname',
+          description: 'Ryan',
+          category: 'Ng',
+          part: 'top',
+          image: 'ur',
+        },
+      ])
+
+    renderWithQuery(<MyWardrobe />)
+
+    await waitFor(async () => {
+      expect(scope.isDone()).toBeTruthy()
+    })
+    const wardrobeDescription = screen.getByTestId('test')
+    expect(wardrobeDescription).toBeTruthy()
+  })
+  // it.only('3. Selected item should be removed', async () => {
   //   const scope = nock('http://localhost')
   //     .get('/api/v1/my-wardrobe')
   //     .reply(200, [
@@ -96,10 +142,10 @@ describe('My Wardrobe', () => {
 
   //   const { user } = renderWithQuery(<MyWardrobe />)
   //   const buttons = await screen.findAllByRole('button')
-  //   await user.click(buttons[7])
+  //   await user.click(buttons[])
   //   await waitFor(() => {
   //     expect(scope.isDone()).toBeTruthy()
   //   })
-    expect(screen.queryByText('test')).toBeNull()
-  })
-
+  //   expect(screen.queryByText('test')).toBeNull()
+  // })
+})

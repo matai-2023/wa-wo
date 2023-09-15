@@ -73,14 +73,13 @@ function MyWardrobe() {
                     />
                   </li>
                 ))}
-                   </div>
+            </div>
           </div>
-              {data && data?.length == 0 && (
-               <div className='flex flex-row h-[300px] justify-center items-center'>
-               <p className='text-2xl font-bold'>Wardrobe is empty!</p>
-             </div>
-              )}
-         
+          {data && data?.length == 0 && (
+            <div className="flex flex-row h-[300px] justify-center items-center">
+              <p className="text-2xl font-bold">Wardrobe is empty!</p>
+            </div>
+          )}
         </ul>
       )}
     </>
