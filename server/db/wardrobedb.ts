@@ -1,4 +1,4 @@
-import { Wardrobe } from '../../types/MyWardrobe.ts'
+import { AddWardrobe } from '../../types/MyWardrobe.ts'
 import connection from './connection.ts'
 import db from './connection.ts'
 
@@ -14,9 +14,10 @@ export async function countItems(db = connection) {
   const value = await db('wardrobe').count('id as count').first()
   return value?.count as number
 }
-// export function addFruit(db = connection) {
-//   return db('wardrobe').insert(fruit)
-// }
+
+export function addItem(newItem: AddWardrobe) {
+  return db('wardrobe').insert(newItem)
+}
 
 // export function updateFruit( db = connection) {
 //   return db('wardrobe').where('id', newFruit.id).update(newFruit)
