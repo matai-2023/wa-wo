@@ -11,6 +11,7 @@ import {
   createMemoryRouter,
   createRoutesFromElements,
 } from 'react-router-dom'
+
 vi.mock('@auth0/auth0-react')
 ;(auth0 as auth0.User).useAuth0 = vi.fn().mockReturnValue({
   isAuthenticated: true,
@@ -19,9 +20,9 @@ vi.mock('@auth0/auth0-react')
 })
 
 describe('My Friends wardrobe', () => {
-  it.only('1. Should render friends wardrobe', async () => {
+  it('1. Should render friends wardrobe', async () => {
     const scope = nock('http://localhost')
-      .get(`/api/v1/users/find/auth0|65010b645218b17b091d01fe`)
+      .get(`/api/v1/users/find/auth0%7C6500f4b1f6aa1817d80e5465`)
       .reply(200, {
         nickname: {
           nickname: 'Aloha',
@@ -38,18 +39,19 @@ describe('My Friends wardrobe', () => {
           },
         ],
       })
-
     const queryClient = new QueryClient()
-    const fakeFriendComp = render(
+
+    render(
       <QueryClientProvider client={queryClient}>
         <RouterProvider
           router={createMemoryRouter(
             createRoutesFromElements(
-              <Route
-                path="/friend/auth0|65010b645218b17b091d01fe"
-                element={<FriendsWardrobe />}
-              />
-            )
+              <Route path="/friend/:id" element={<FriendsWardrobe />} />
+            ),
+            {
+              initialEntries: ['/', '/friend/auth0%7C6500f4b1f6aa1817d80e5465'],
+              initialIndex: 1,
+            }
           )}
         />
       </QueryClientProvider>
@@ -57,22 +59,122 @@ describe('My Friends wardrobe', () => {
     await waitFor(() => {
       expect(scope.isDone()).toBeTruthy()
     })
-    const wardrobeName = fakeFriendComp.getByRole('heading', { level: 3 })
-    const wardrobeDescription = fakeFriendComp.getByText('test-nickname')
-    expect(wardrobeName).toBeInTheDocument()
-    expect(wardrobeDescription).toBeInTheDocument()
+    const wardrobeName = screen.getByRole('heading', { level: 1 })
+    expect(wardrobeName).toContain(/Aloha/i)
   })
-  //   it('2. Display message when the wardrobe is empty', async () => {
-  //     const scope = nock('http://localhost')
-  //       .get('/api/v1/my-wardrobe')
-  //       .reply(200, [])
 
-  //     renderWithQuery(<FriendsWardrobe />)
+  it('2. Should render friends wardrobe', async () => {
+    const scope = nock('http://localhost')
+      .get(`/api/v1/users/find/auth0%7C6500f4b1f6aa1817d80e5465`)
+      .reply(200, {
+        nickname: {
+          nickname: 'Aloha',
+        },
+        robes: [
+          {
+            id: 2,
+            user_id: 'test-id',
+            name: 'test-name',
+            description: 'test-description',
+            category: 'test-top',
+            part: 'top',
+            image: '/IMG_5428.jpg',
+          },
+        ],
+      })
+    const queryClient = new QueryClient()
 
-  //     await waitFor(async () => {
-  //       expect(scope.isDone()).toBeTruthy()
-  //     })
-  //     const message = screen.getByRole('heading', { level: 3 })
-  //     expect(message).toHaveTextContent(/Wardrobe/i)
+    render(
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider
+          router={createMemoryRouter(
+            createRoutesFromElements(
+              <Route path="/friend/:id" element={<FriendsWardrobe />} />
+            ),
+            {
+              initialEntries: ['/', '/friend/auth0%7C6500f4b1f6aa1817d80e5465'],
+              initialIndex: 1,
+            }
+          )}
+        />
+      </QueryClientProvider>
+    )
+    await waitFor(() => {
+      expect(scope.isDone()).toBeTruthy()
+    })
+    const wardrobeDescription = screen.getByTestId('test')
+    expect(wardrobeDescription).toBeTruthy()
+  })
+
+  it('3. Should render friends wardrobe', async () => {
+    const scope = nock('http://localhost')
+      .get(`/api/v1/users/find/auth0%7C6500f4b1f6aa1817d80e5465`)
+      .reply(200, {
+        nickname: {
+          nickname: 'Aloha',
+        },
+        robes: [
+          {
+            id: 2,
+            user_id: 'test-id',
+            name: 'test-name',
+            description: 'test-description',
+            category: 'test-top',
+            part: 'top',
+            image: '/IMG_5428.jpg',
+          },
+        ],
+      })
+    const queryClient = new QueryClient()
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider
+          router={createMemoryRouter(
+            createRoutesFromElements(
+              <Route path="/friend/:id" element={<FriendsWardrobe />} />
+            ),
+            {
+              initialEntries: ['/', '/friend/auth0%7C6500f4b1f6aa1817d80e5465'],
+              initialIndex: 1,
+            }
+          )}
+        />
+      </QueryClientProvider>
+    )
+    await waitFor(() => {
+      expect(scope.isDone()).toBeTruthy()
+    })
+    const wardrobeName = screen.getByRole('heading', { level: 3 })
+    expect(wardrobeName).toContain(/test-name/i)
+  })
+
+  // it('4. Display message when the wardrobe is empty', async () => {
+  //   const scope = nock('http://localhost')
+  //     .get(`/api/v1/users/find/auth0%7C6500f4b1f6aa1817d80e5465`)
+  //     .reply(200, [])
+
+  //   const queryClient = new QueryClient()
+
+  //   render(
+  //     <QueryClientProvider client={queryClient}>
+  //       <RouterProvider
+  //         router={createMemoryRouter(
+  //           createRoutesFromElements(
+  //             <Route path="/friend/:id" element={<FriendsWardrobe />} />
+  //           ),
+  //           {
+  //             initialEntries: ['/', '/friend/auth0%7C6500f4b1f6aa1817d80e5465'],
+  //             initialIndex: 1,
+  //           }
+  //         )}
+  //       />
+  //     </QueryClientProvider>
+  //   )
+  //   await waitFor(() => {
+  //     expect(scope.isDone()).toBeTruthy()
   //   })
+  //   const message = screen.getByText('Wardrobe is empty!')
+  //   expect(message).toHaveTextContent(/wardrobe/i)
+  // })
 })
