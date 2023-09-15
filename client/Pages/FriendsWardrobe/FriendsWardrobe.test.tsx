@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi } from 'vitest'
-import { waitFor, render } from '@testing-library/react'
+import { waitFor, render, screen } from '@testing-library/react'
 import * as auth0 from '@auth0/auth0-react'
 import nock from 'nock'
 import FriendsWardrobe from './FriendsWardrobe'

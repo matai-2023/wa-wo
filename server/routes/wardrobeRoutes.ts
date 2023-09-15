@@ -32,7 +32,6 @@ router.post('/', validateAccessToken, async (req, res) => {
       res.status(401).json({ error: 'Unauthorized' })
       return
     }
-    console.log(req.body)
     const newItem = addItemSchema.parse(input)
     await db.addItem(newItem)
     res.sendStatus(201)
@@ -83,7 +82,6 @@ router.delete('/:id', validateAccessToken, async (req, res) => {
     await db.deleteItem(id)
     res.sendStatus(200)
   } catch (e) {
-    logger.error(e)
     res.status(500).json({ message: 'Unable to delete item' })
   }
 })
