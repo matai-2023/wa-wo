@@ -52,3 +52,12 @@ export async function delItem(id: number, token: string) {
     .del(`/api/v1/my-wardrobe/${id}`)
     .set('Authorization', `Bearer ${token}`)
 }
+
+export async function getFriendsWardrobe(id: string, token:string){
+  const res = await request
+  .get(`/api/v1/users/find/${id}`)
+  .set('Authorization', `Bearer ${token}`)
+  .set('Content-Type', 'application/json')
+return res.body
+}
+

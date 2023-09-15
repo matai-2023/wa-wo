@@ -20,7 +20,7 @@ beforeEach(async () => {
 describe('get myWardrobe', () => {
   it('should return items', async () => {
     const items = await getAllwardrobe('auth0|65010b645218b17b091d01fe')
-    expect(items).toHaveLength(1)
+    expect(items).toHaveLength(5)
     expect(items[0]).toHaveProperty('id')
     expect(items[0]).toHaveProperty('name')
     expect(items[0]).toHaveProperty('description')
