@@ -83,6 +83,7 @@ function FriendsWardrobe() {
           <div className="grid col-auto place-content-center">
             <div className="grid grid-cols-4 justify-center">
               {data &&
+                robes &&
                 robes.length > 0 &&
                 robes.map((item: any) => (
                   <li className="list-none flex justify-center" key={item.id}>
@@ -92,7 +93,7 @@ function FriendsWardrobe() {
             </div>
           </div>
           {!data ||
-            (robes?.length == 0 && (
+            (robes && robes?.length == 0 && (
               <div className="flex flex-row h-[300px] justify-center items-center">
                 <p data-testid="testid" className="text-2xl font-bold">
                   Wardrobe is empty!

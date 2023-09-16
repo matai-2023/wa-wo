@@ -47,6 +47,7 @@ export async function getFriendList(token: string) {
     .get('/api/v1/users/friends')
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
+  console.log(res.body)
   return res.body as User[]
 }
 

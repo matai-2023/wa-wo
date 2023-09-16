@@ -48,7 +48,7 @@ describe('2. Get friends', () => {
     }
     const friends = await getFriends('auth0|65010b645218b17b091d01fe')
     const realFriend = friends.find(
-      (item) => item.id == 'auth0|6500f4b1f6aa1817d80e5465'
+      (item) => item.auth0_id == 'auth0|6500f4b1f6aa1817d80e5465'
     )
     expect(realFriend).toStrictEqual(friend)
   })
