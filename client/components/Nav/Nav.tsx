@@ -63,6 +63,14 @@ function Nav(props: Props) {
             </button>
           )}
         </li>
+        <li>
+          <button
+            className="font-bold hover:text-blue-400 mb-2"
+            onClick={() => goTo('/credit')}
+          >
+            Credits
+          </button>
+        </li>
       </ul>
     </nav>
   )

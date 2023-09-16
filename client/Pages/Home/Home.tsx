@@ -3,6 +3,7 @@ import LoginButton from '../../components/Login/Login'
 import { useNavigate } from 'react-router'
 import { getUser } from '../../apis/api'
 import { useQuery } from '@tanstack/react-query'
+import { motion } from 'framer-motion'
 
 function Home() {
   const { getAccessTokenSilently } = useAuth0()
