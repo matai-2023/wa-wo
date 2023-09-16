@@ -3,6 +3,7 @@ import request from 'supertest'
 import server from '../server'
 import * as db from '../db/userdb'
 import { getMockToken } from './mockToken'
+import { User } from '../../types/User'
 
 vi.mock('../db/userdb')
 
@@ -32,3 +33,13 @@ describe('GET /api/v1/users/friends', () => {
     expect(response.body).toEqual({ message: 'Unable to retrieve friends' })
   })
 })
+
+// describe('POST /api/v1/users', () => {
+//   it.only('should return 201 when creating a new profile', async () => {
+//     vi.mocked(db.upsertUser).mockResolvedValue()
+//     const response = await request(server)
+//       .post('/api/v1/users/')
+//       .set('authorization', `Bearer ${getMockToken()}`)
+//       .send({ nickname: 'test-name' })
+//   })
+// })
