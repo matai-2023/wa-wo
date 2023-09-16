@@ -19,7 +19,10 @@ function FriendsWardrobeList(props: Props) {
               {wardrobe.name}
             </h3>
           </div>
-          <p className="ml-2 text-md text-lightPurple w-[300px]">
+          <p
+            className="ml-2 text-md text-lightPurple w-[300px]"
+            data-testid="test"
+          >
             {wardrobe.description}
           </p>
         </div>

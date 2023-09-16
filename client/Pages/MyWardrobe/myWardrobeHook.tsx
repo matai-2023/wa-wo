@@ -15,7 +15,6 @@ function useMyWardrobeHook(filter: string) {
         filter == ''
           ? response
           : response.filter((item) => item.category == filter)
-
       return filtered
     },
   })

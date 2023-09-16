@@ -32,7 +32,10 @@ function WardrobeList(props: Props) {
               {wardrobe.name}
             </h3>
           </div>
-          <p className="ml-2 text-md text-lightPurple w-[300px]">
+          <p
+            data-testid="test"
+            className="ml-2 text-md text-lightPurple w-[300px]"
+          >
             {wardrobe.description}
           </p>
         </div>

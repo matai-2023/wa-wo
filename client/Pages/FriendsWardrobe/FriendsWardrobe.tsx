@@ -5,11 +5,30 @@ import FriendsWardrobeList from '../../components/FriendsWardrobeList/FriendsWar
 import { Wardrobe } from '../../../types/MyWardrobe'
 
 function FriendsWardrobe() {
+  //--------------------------------------------------------
+  //--------------------------------------------------------
+  //setting up filter word----------------------------------
+  //--------------------------------------------------------
+  //--------------------------------------------------------
+
   const [filter, setFilter] = useState('')
   const { isAuthenticated } = useAuth0()
   const { data, isLoading } = uesFriendsWardrobeHook(filter)
+  //--------------------------------------------------------
+  //--------------------------------------------------------
+  //Making typescript happy
+  //--------------------------------------------------------
+  //--------------------------------------------------------
+
   const nickname = data?.nickname
   const robes = data?.robes as Wardrobe[]
+
+  //--------------------------------------------------------
+  //--------------------------------------------------------
+  //Rendering
+  //--------------------------------------------------------
+  //--------------------------------------------------------
+
   return (
     <>
       {' '}
@@ -68,16 +87,17 @@ function FriendsWardrobe() {
                       wardrobe={item}
                     />
                   </li>
-                
                 ))}
-                </div>
-                </div>
-              {data && robes?.length == 0 && (
-                <div className='flex flex-row h-[300px] justify-center items-center'>
-                  <p className='text-2xl font-bold'>Wardrobe is empty!</p>
-                </div>
-              )}
-          
+            </div>
+          </div>
+          {!data ||
+            (robes?.length == 0 && (
+              <div className="flex flex-row h-[300px] justify-center items-center">
+                <p data-testid="testid" className="text-2xl font-bold">
+                  Wardrobe is empty!
+                </p>
+              </div>
+            ))}
         </ul>
       )}
       </div>

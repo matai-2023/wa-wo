@@ -45,7 +45,7 @@ describe('GET /api/v1/my-wardrobe', () => {
       .set('authorization', `Bearer ${getMockToken()}`)
     expect(response.status).toBe(500)
     expect(response.body).toEqual({
-      message: 'Unable to retrieve items',
+      message: 'Unable to retrieve items 👕👖👟',
     })
   })
 

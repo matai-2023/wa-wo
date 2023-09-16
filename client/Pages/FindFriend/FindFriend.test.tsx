@@ -4,7 +4,7 @@ import { screen, waitFor } from '@testing-library/react'
 import * as auth0 from '@auth0/auth0-react'
 import nock from 'nock'
 
-import { renderComponent } from '../../test-utils'
+import { renderWithQuery } from '../../test-utils'
 import FindFriends from './FindFriend'
 
 vi.mock('@auth0/auth0-react')
@@ -15,16 +15,80 @@ vi.mock('@auth0/auth0-react')
 })
 
 describe('Find Friends', () => {
-  it('display friend containing search query', async () => {
+  //---------------------------------------------------------
+  //---------------------------------------------------------
+
+  it('1. Display friend based on query input', async () => {
     const scope = nock('http://localhost')
-      .get(`/api/v1/users/search?q=`)
-      .reply(200, [])
-    const { user } = renderComponent(<FindFriends />)
-    await user.click(screen.getByRole('button', { name: 'Find' }))
+      .get(`/api/v1/users/all`)
+      .reply(200, [
+        {
+          auth0_id: 'auth0|111',
+          nickname: 'apple',
+        },
+      ])
 
+    // screen renders
+    const { user } = renderWithQuery(<FindFriends />)
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
+    // user enters 'a' into input
+    await user.type(screen.getByPlaceholderText('Enter a nickname'), 'a')
+    const nickname = screen.getByRole('heading', { level: 3 })
+    expect(nickname).toBeInTheDocument()
+  })
 
-    const message = screen.getByText(/No rcmndrs match/i)
-    expect(message).toBeInTheDocument()
+  //---------------------------------------------------------
+  //---------------------------------------------------------
+
+  it('2. Display "no friend found" with empty input', async () => {
+    const scope = nock('http://localhost')
+      .get('/api/v1/users/all')
+      .reply(200, [
+        {
+          auth0_id: 'auth0|111',
+          nickname: 'stu',
+        },
+      ])
+    // screen renders
+    const { user } = renderWithQuery(<FindFriends />)
+    await waitFor(() => expect(scope.isDone()).toBeTruthy())
+    // user enters 'a' into input
+    await user.type(screen.getByPlaceholderText('Enter a nickname'), ' ')
+    const error = screen.getByText('No friends found')
+    expect(error).toBeInTheDocument()
+  })
+
+  //---------------------------------------------------------
+  //---------------------------------------------------------
+
+  it('3. Display "no friend found" with unmatched input', async () => {
+    const scope = nock('http://localhost')
+      .get('/api/v1/users/all')
+      .reply(200, [
+        {
+          auth0_id: 'auth0|111',
+          nickname: 'stu',
+        },
+      ])
+    const { user } = renderWithQuery(<FindFriends />)
+    await waitFor(() => expect(scope.isDone()).toBeTruthy())
+    //typing no matched input
+    await user.type(screen.getByPlaceholderText('Enter a nickname'), 'a')
+    const error = screen.queryByText('No friends found')
+    expect(error).toBeInTheDocument()
+  })
+
+  //---------------------------------------------------------
+  //---------------------------------------------------------
+
+  it('4. Friend list is empty when page renders/refreshed', async () => {
+    const scope = nock('http://localhost')
+      .get('/api/v1/users/all')
+      .reply(200, [])
+
+    renderWithQuery(<FindFriends />)
+    await waitFor(() => expect(scope.isDone()).toBeTruthy())
+    const list = screen.queryByTestId('friendList')
+    expect(list).toBeNull()
   })
 })

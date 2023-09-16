@@ -6,9 +6,10 @@ import { useQuery } from '@tanstack/react-query'
 
 function Home() {
   const { getAccessTokenSilently } = useAuth0()
-  //check user with useQuery see if they exist in our database
   const navigate = useNavigate()
 
+  //Check user with useQuery see if they exist in our database
+  //Redirect them to the right place
   useQuery({
     queryKey: ['user'],
     queryFn: async () => {

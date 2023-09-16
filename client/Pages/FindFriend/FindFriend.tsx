@@ -8,10 +8,15 @@ import { User } from '../../../types/User'
 import { Link } from 'react-router-dom'
 
 function FindFriends() {
+  const { getAccessTokenSilently } = useAuth0()
+  //---------------------------------------------------------
+  //setting up search queries, friend list to render---------
+  //---------------------------------------------------------
   const [searchQ, setSearchQ] = useState('')
   const [friends, setFriends] = useState([] as User[])
-
-  const { getAccessTokenSilently } = useAuth0()
+  //---------------------------------------------------------
+  //Calling api to get all data at first---------------------
+  //---------------------------------------------------------
   const { data } = useQuery({
     queryKey: ['users', friends],
     queryFn: async () => {
@@ -21,6 +26,10 @@ function FindFriends() {
     },
   })
 
+  //---------------------------------------------------------
+  //Handle clicking button FIND
+  //---------------------------------------------------------
+
   async function handleClick() {
     const values = data?.filter((item) =>
       item.nickname.includes(searchQ)
@@ -29,6 +38,9 @@ function FindFriends() {
     setSearchQ('')
   }
 
+  //--------------------------------------------------------------------------------
+  //Keep the search queries and the views up to date for every input change---------
+  //--------------------------------------------------------------------------------
   useEffect(() => {
     if (data) {
       const values = data?.filter((item) =>
@@ -43,9 +55,19 @@ function FindFriends() {
     }
   }, [searchQ])
 
+  //---------------------------------------------------------
+  //Handle input of key Enter to search----------------------
+  //---------------------------------------------------------
+
   async function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') handleClick()
   }
+
+  //---------------------------------------------------------
+  //---------------------------------------------------------
+  //Rendering-------------------------------------------------
+  //---------------------------------------------------------
+  //---------------------------------------------------------
 
   return (
     <>
@@ -62,12 +84,15 @@ function FindFriends() {
             <Button onClick={handleClick}>Find</Button>
             {friends.length !== 0 && (
               <div>
-                <div className="flex flex-col justify-center items-center mt-6 border-2 border-orange p-4">
+                <div
+                  data-testid="friendList"
+                  className="flex flex-col justify-center items-center mt-6 border-2 border-orange p-4"
+                >
                   {friends &&
                     friends?.map((item) => (
-                      <li key={item.auth0_id}>
+                      <li key={item.auth0_id} className="list-none ">
                         <Link to={`/friend/${item.auth0_id}`}>
-                          {item.nickname}
+                          <h3>{item.nickname}</h3>
                         </Link>
                       </li>
                     ))}

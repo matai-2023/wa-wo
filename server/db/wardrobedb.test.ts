@@ -1,13 +1,12 @@
-import { describe, it, expect, beforeAll, beforeEach, vi } from 'vitest'
-import request from 'superagent'
-import { getMockToken } from '../routes/mockToken'
+import { describe, it, expect, beforeAll, beforeEach } from 'vitest'
 import db from './connection'
-import { countItems, deleteItem, getAllwardrobe } from './wardrobedb'
-import server from '../server'
-import knex from 'knex'
-import knexfile from './knexfile'
-import * as wardrobe from '../db/wardrobedb'
-// const db = knex(knexfile.test)
+import {
+  addItem,
+  countItems,
+  deleteItem,
+  findItemByName,
+  getAllwardrobe,
+} from './wardrobedb'
 
 beforeAll(async () => {
   await db.migrate.latest()
@@ -17,8 +16,19 @@ beforeEach(async () => {
   await db.seed.run()
 })
 
-describe('get myWardrobe', () => {
-  it('should return items', async () => {
+describe('1. Get myWardrobe', () => {
+  //-----------------------------------------------
+  //-----------------------------------------------
+
+  it('1.1 Should return items', async () => {
+    const items = await getAllwardrobe('auth0|65010b645218b17b091d01fe')
+    expect(items).toHaveLength(5)
+  })
+
+  //-----------------------------------------------
+  //-----------------------------------------------
+
+  it('1.2 Should return items with the right properties', async () => {
     const items = await getAllwardrobe('auth0|65010b645218b17b091d01fe')
     expect(items).toHaveLength(5)
     expect(items[0]).toHaveProperty('id')
@@ -29,7 +39,10 @@ describe('get myWardrobe', () => {
     expect(items[0]).toHaveProperty('image')
   })
 
-  it('should delete selected item', async () => {
+  //-----------------------------------------------
+  //-----------------------------------------------
+
+  it('1.3 Should delete selected item', async () => {
     const countBefore = await countItems()
     await deleteItem(1)
     const countAfter = await countItems()
@@ -38,48 +51,45 @@ describe('get myWardrobe', () => {
   })
 })
 
-vi.mock('../db/wardrobedb')
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
 
-const testItem = {
-  user_id: 'auth0|65010b645218b17b091d01fe',
-  name: 'smelly socks',
-  description: 'stinky',
-  category: 'accesorries',
-  part: 'casual',
-  image: '../../public/IMG_5428',
-}
+describe('2. Add item to my-wardrobe', () => {
+  //-----------------------------------------------
+  //-----------------------------------------------
 
-describe('POST api/v1/my-wardrobe', () => {
-  it('responds with 201 status on successful add', () => {
-    vi.mocked(wardrobe.addItem).mockImplementation(() => Promise.resolve([1]))
-
-    return request(server)
-      .post('/api/v1/my-wardrobe')
-      .set('Authorization', `Bearer ${getMockToken()}`)
-      .send(testItem)
-      .expect(201)
+  it('2.1 Should an item to the database', async () => {
+    const countBefore = await countItems()
+    const testItem = {
+      user_id: 'auth0|65010b645218b17b091d01fe',
+      name: 'smelly socks',
+      description: 'stinky',
+      category: 'accesorries',
+      part: 'casual',
+      image: '../../public/IMG_5428',
+    }
+    await addItem(testItem)
+    const countAfter = await countItems()
+    const changes = countAfter - countBefore
+    expect(changes).toBe(1)
   })
-  // it('responds with 500 Zod error when invalid data is sent', () => {
-  //   vi.mocked(songs.insertSong).mockImplementation(() => Promise.resolve([1]))
 
-  //   return request(server)
-  //     .post('/api/v1/songs')
-  //     .set('Authorization', `Bearer ${getMockToken()}`)
-  //     .send({ title: 'Jammy Jam' })
-  //     .expect(500)
-  // })
-  it('responds with 500 error when db function fails', () => {
-    vi.mocked(wardrobe.addItem).mockImplementation(() =>
-      Promise.reject(new Error('oops'))
-    )
+  //-----------------------------------------------
+  //-----------------------------------------------
 
-    return request(server)
-      .post('/api/v1/my-wardrobe')
-      .set('Authorization', `Bearer ${getMockToken()}`)
-      .send(testItem)
-      .expect(500)
-      .then((err) => {
-        expect(err.text).toBe('{"message":"Unable to add items"}')
-      })
+  it('2.2 Should add the right item to the database', async () => {
+    const testItem = {
+      user_id: 'auth0|65010b645218b17b091d01fe',
+      name: 'smelly socks',
+      description: 'stinky',
+      category: 'accesorries',
+      part: 'casual',
+      image: '../../public/IMG_5428',
+    }
+    await addItem(testItem)
+    const checker = await findItemByName('smelly socks')
+    expect(checker).toBeDefined()
   })
 })

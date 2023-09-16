@@ -2,9 +2,15 @@ import useFriendList from '../../hooks/useFriendList'
 import { Link } from 'react-router-dom'
 
 function FriendList() {
+  //---------------------------------------------------------
+  //Getting all Friends with api call------------------------
+  //---------------------------------------------------------
   const customHook = useFriendList()
   const data = customHook.data
 
+  //---------------------------------------------------------
+  //Rendering------------------------------------------------
+  //---------------------------------------------------------
   return (
     <>
       <div className="space-y-4 flex justify-center items-center mt-12">
