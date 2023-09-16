@@ -2,6 +2,16 @@ import request from 'superagent'
 import { User } from '../../types/User'
 import { AddWardrobe, Wardrobe } from '../../types/MyWardrobe'
 
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//ALL User api calls go here
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
 export async function addProfile({
   nickname,
   token,
@@ -40,6 +50,34 @@ export async function getFriendList(token: string) {
   return res.body as User[]
 }
 
+export async function addNewProfile(nickname: string, token: string) {
+  await request
+    .post('/api/v1/users')
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+    .send(nickname)
+}
+
+export async function addFriend(friendId: string, token: string) {
+  await request
+    .post('/api/v1/users/add')
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+    .send({ friend_id: friendId })
+}
+
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//ALL Wardrobe api calls go here
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+
 export async function getMyWardrobe(token: string) {
   const response = await request
     .get('/api/v1/my-wardrobe')
@@ -61,11 +99,10 @@ export async function delItem(id: number, token: string) {
     .set('Authorization', `Bearer ${token}`)
 }
 
-export async function getFriendsWardrobe(id: string, token:string){
+export async function getFriendsWardrobe(id: string, token: string) {
   const res = await request
-  .get(`/api/v1/users/find/${id}`)
-  .set('Authorization', `Bearer ${token}`)
-  .set('Content-Type', 'application/json')
-return res.body
+    .get(`/api/v1/users/find/${id}`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body
 }
-

@@ -2,9 +2,14 @@ import useFriendList from '../../hooks/useFriendList'
 import { Link } from 'react-router-dom'
 
 function FriendList() {
+  //---------------------------------------------------------
+  //Getting all Friends with api call------------------------
+  //---------------------------------------------------------
   const customHook = useFriendList()
   const data = customHook.data
-
+  //---------------------------------------------------------
+  //Rendering------------------------------------------------
+  //---------------------------------------------------------
   return (
     <>
       <div className="space-y-4 flex justify-center items-center mt-12">
@@ -17,12 +22,12 @@ function FriendList() {
             <ul className="ml-8 mb-8">
               {data &&
                 data.length > 0 &&
-                data?.map((friend) => (
+                data?.map((friend: any) => (
                   <li
                     key={friend.nickname}
                     className="list-none space-y-4 py-3 flex"
                   >
-                    <Link to={`/friend/${friend.id}`}>
+                    <Link to={`/friend/${friend.auth0_id}`}>
                       <h3>{friend.nickname}</h3>
                     </Link>
                   </li>
