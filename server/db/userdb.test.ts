@@ -1,12 +1,23 @@
-import { describe, it, expect, beforeAll, beforeEach } from 'vitest'
+import {
+  expectTypeOf,
+  describe,
+  it,
+  expect,
+  beforeAll,
+  beforeEach,
+} from 'vitest'
 import db from './connection'
 import {
+  addFriend,
+  countFriendship,
   countUsers,
   getAllUsers,
   getFriends,
   getUser,
   upsertUser,
 } from './userdb'
+import { findItemByName } from './wardrobedb'
+import { countReset } from 'console'
 
 beforeAll(async () => {
   await db.migrate.latest()
@@ -99,5 +110,48 @@ describe('4. Upsert Users', () => {
     await upsertUser(newProfile)
     const editedUser = await getUser('auth0|65010b645218b17b091d01fe')
     expect(oldUser == editedUser).toBeFalsy()
+  })
+})
+
+describe('5. Add friends', () => {
+  //---------------------------------------------------
+  //---------------------------------------------------
+  it('5.1 Should add a relationship between 2 people', async () => {
+    const countBefore = await countFriendship()
+    const newRelationship = {
+      user_id: 'auth0|65010b645218b17b091d01fe',
+      friend_id: 'auth0|6501074ac25b71c07e590847',
+    }
+    await addFriend(newRelationship)
+    const countAfter = await countFriendship()
+    const changes = countAfter - countBefore
+    expect(changes).toBe(2)
+  })
+  //---------------------------------------------------
+  //---------------------------------------------------
+  it('5.2 Should return add the right friends', async () => {
+    const newRelationship = {
+      user_id: 'auth0|65010b645218b17b091d01fe',
+      friend_id: 'auth0|6501074ac25b71c07e590847',
+    }
+    await addFriend(newRelationship)
+    const checker = await getFriends('auth0|65010b645218b17b091d01fe')
+
+    expect(checker).toBeDefined()
+  })
+  //---------------------------------------------------
+  //---------------------------------------------------
+  it('5.3 Should not add friendship when they already are friends', async () => {
+    try {
+      const newRelationship = {
+        user_id: 'auth0|65010b645218b17b091d01fe',
+        friend_id: 'auth0|6500f4b1f6aa1817d80e5465',
+      }
+      await addFriend(newRelationship)
+    } catch (error) {
+      if (error instanceof Error) {
+        expect(error?.message).toBe('Duplicate!')
+      }
+    }
   })
 })
