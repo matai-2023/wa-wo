@@ -1,10 +1,13 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import uesFriendsWardrobeHook from './useFriendsWardrobeHook'
+import useFriendsWardrobeHook from './useFriendsWardrobeHook'
 import { useState } from 'react'
 import FriendsWardrobeList from '../../components/FriendsWardrobeList/FriendsWardrobeList'
 import { Wardrobe } from '../../../types/MyWardrobe'
+import { useNavigate } from 'react-router-dom'
+import { addFriend } from '../../apis/api'
 
 function FriendsWardrobe() {
+  const navigate = useNavigate()
   //--------------------------------------------------------
   //--------------------------------------------------------
   //setting up filter word----------------------------------
@@ -13,13 +16,13 @@ function FriendsWardrobe() {
 
   const [filter, setFilter] = useState('')
   const { isAuthenticated } = useAuth0()
-  const { data, isLoading } = uesFriendsWardrobeHook(filter)
+  const { data, isLoading, getAccessTokenSilently, id} = useFriendsWardrobeHook(filter)
   //--------------------------------------------------------
   //--------------------------------------------------------
   //Making typescript happy
   //--------------------------------------------------------
   //--------------------------------------------------------
-
+  const friendId= id
   const nickname = data?.nickname
   const robes = data?.robes as Wardrobe[]
 
@@ -28,13 +31,17 @@ function FriendsWardrobe() {
   //Rendering
   //--------------------------------------------------------
   //--------------------------------------------------------
-
+ async function handleClick(){
+  const token = await getAccessTokenSilently()
+  await addFriend(friendId, token)
+  alert('added')
+ }
   return (
     <>
       {' '}
         {isLoading && <div>Loading ...</div>}
         <div className=' flex'>
-        <div className="h-[700px] sticky top-8 flex flex-col place-content-evenly w-[280px] top-[300px] border-r-2 text-2xl mb-[20px] ">
+        <div className="h-[700px] sticky top-[40px] flex flex-col place-content-evenly w-[280px] top-[300px] border-r-2 text-2xl mb-[20px] ">
           <button
             className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('')}
@@ -73,7 +80,14 @@ function FriendsWardrobe() {
           </button>
         </div>
         <div>
-        {nickname&&<h1 className="m-20 text-4xl border-b-[5px]">{nickname.nickname} Wardrobe</h1>}
+        <div className='flex justify-between mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12'>
+        {nickname&&<h1>{nickname.nickname} Wardrobe</h1>}
+        <button onClick={() => handleClick()}
+              className=" hover:max-w-full transition-all duration-500 h-0.5 text-2xl hover:text-blue-400 mb-2"
+              >ADD
+                <i className='fa-solid fa-plus text-2xl'></i>
+              </button>
+        </div>
 
       {isAuthenticated && (
         <ul>

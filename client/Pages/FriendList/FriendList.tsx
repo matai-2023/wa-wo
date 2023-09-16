@@ -23,7 +23,7 @@ function FriendList() {
             <ul className="ml-8 mb-8">
               {data &&
                 data.length > 0 &&
-                data?.map((friend) => (
+                data?.map((friend: any) => (
                   <li
                     key={friend.nickname}
                     className="list-none space-y-4 py-3 flex"

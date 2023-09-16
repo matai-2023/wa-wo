@@ -18,8 +18,8 @@ function MyWardrobe() {
     <>
       {' '}
         {isLoading && <div>Loading ...</div>}
-        <div className=' flex'>
-         <div className="h-[700px] sticky top-4 flex flex-col place-content-evenly w-[280px] top-[300px] border-r-2 text-xl mb-[20px] ">
+        <div className='flex'>
+         <div className="sticky h-[700px] top-[40px]  flex flex-col place-content-evenly w-auto top-[300px] border-r-2 text-xl mb-[20px] ">
           <button
             className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('')}
@@ -56,7 +56,7 @@ function MyWardrobe() {
           >
             ACC
           </button>
-        </div>
+       </div>
         <div>
          <div className='flex justify-between mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12'>
           <h1>Matai Wardrobe</h1>
@@ -69,10 +69,11 @@ function MyWardrobe() {
          {isAuthenticated && (
         
          <ul>
+          
           <div className="ml-[50px] mr-[80px] cols-4  place-content-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
-              {data &&
-                data?.length > 0 &&
+            {data &&
+                data?.length > 0 && 
                 data.map((item) => (
                   <li className="list-none cursor-pointer hover:border-2 hover:rounded-md hover:border-orange border-b-2 border-black ml-6 mr-6 mt-10 mb-6 " key={item.id}>
                     <WardrobeList
@@ -81,17 +82,22 @@ function MyWardrobe() {
                     />
                   </li>
                 ))}
+                   {data && data.length == 0 &&
+                <div className='justify-center'>
+                   
+                   <p className='text-2xl font-bold'>Wardrobe is empty!</p>
+                   </div>}
                    </div>
             </div>
             
           
             </ul>
             )}
-            {data && data?.length == 0 && (
+            {/* {data && data?.length == 0 && (
               <div className='w-10/12 flex justify-center'>
                    <p className='text-2xl font-bold'>Wardrobe is empty!</p>
                    </div>
-                  )}
+                  )} */}
           </div>
         </div>
          
