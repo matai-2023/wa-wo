@@ -5,6 +5,7 @@ import { IfAuthenticated } from '../../apis/Authenticated'
 import { Link } from 'react-router-dom'
 import { GiClothes } from 'react-icons/gi'
 import { useAuth0 } from '@auth0/auth0-react'
+import {AiOutlineSearch} from 'react-icons/ai'
 function Header() {
   const [navOpened, setNavOpened] = useState(false)
   const { logout } = useAuth0()
@@ -26,13 +27,18 @@ function Header() {
         <div className="hidden lg:block absolute right-[100px] top-[30px]">
           <IfAuthenticated>
             <div className="flex right-0">
+              <div className="mt-[14px] mr-4">
+                <Link className="text-3xl" to={'/find-friend'}>
+              <AiOutlineSearch/>
+              </Link>
+              </div>
               <div className="mt-4 mr-4">
                 <Link to="/profile">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-8 h-8"
+                    className="w-6 h-6"
                   >
                     <path
                       fillRule="evenodd"
@@ -43,7 +49,7 @@ function Header() {
                 </Link>
               </div>
               <div className="mt-4 mr-4">
-                <Link className="text-4xl" to="/my-wardrobe">
+                <Link className="text-3xl" to="/my-wardrobe">
                   <GiClothes />
                 </Link>
               </div>
