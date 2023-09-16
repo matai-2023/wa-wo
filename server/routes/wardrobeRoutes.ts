@@ -6,7 +6,6 @@ import { addItemSchema } from '../../types/MyWardrobe.ts'
 
 const router = express.Router()
 
-// A public endpoint that anyone can access
 // GET /api/v1/my-wardrobe
 router.get('/', validateAccessToken, async (req, res) => {
   try {
@@ -22,7 +21,6 @@ router.get('/', validateAccessToken, async (req, res) => {
   }
 })
 
-// TODO: use checkJwt as middleware
 // POST /api/v1/my-wardrobe
 router.post('/', validateAccessToken, async (req, res) => {
   try {
@@ -41,40 +39,6 @@ router.post('/', validateAccessToken, async (req, res) => {
   }
 })
 
-// TODO: use checkJwt as middleware
-// PUT /api/v1/fruits
-// router.put('/', (req: JwtRequest, res) => {
-//   const { fruit } = req.body
-//   const auth0Id = req.auth?.sub
-//   const fruitToUpdate = {
-//     id: fruit.id,
-//     added_by_user: auth0Id,
-//     name: fruit.name,
-//     average_grams_each: fruit.averageGramsEach,
-//   }
-
-//   if (!auth0Id) {
-//     console.error('No auth0Id')
-//     return res.status(401).send('Unauthorized')
-//   }
-
-//   userCanEdit(fruit.id, auth0Id)
-//     .then(() => updateFruit(fruitToUpdate as FruitSnakeCase))
-//     .then(() => getFruits())
-//     .then((fruits: Fruit[]) => res.json({ fruits }))
-//     .catch((err: Error) => {
-//       console.error(err)
-//       if (err.message === 'Unauthorized') {
-//         res
-//           .status(403)
-//           .send('Unauthorized: Only the user who added the fruit may update it')
-//       } else {
-//         res.status(500).send('Something went wrong')
-//       }
-//     })
-// })
-
-// TODO: use checkJwt as middleware
 // DELETE /api/v1/my-wardrobe
 router.delete('/:id', validateAccessToken, async (req, res) => {
   try {
