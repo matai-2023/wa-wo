@@ -6,3 +6,6 @@ bundle.*
 /dist
 output.css
 package-lock.json
+
+.vscode/setting.json
+.vscode/*.json

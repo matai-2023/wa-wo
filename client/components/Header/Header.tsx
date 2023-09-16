@@ -9,8 +9,6 @@ function Header() {
     setNavOpened((prevNavOpened) => !prevNavOpened)
   }
 
-  const isLandingPage = location.pathname === '/'
-
   return (
     <>
       <Title />

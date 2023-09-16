@@ -14,12 +14,12 @@ export function addItem(newItem: AddWardrobe, db = connection) {
   return db('wardrobe').insert(newItem)
 }
 
-//
-//
+//-----------------------------------------------
+//-----------------------------------------------
 //These functions are for testing purposes only
 //Any actual functions should go above
-//
-//
+//-----------------------------------------------
+//-----------------------------------------------
 export async function countItems(db = connection) {
   const value = await db('wardrobe').count('id as count').first()
   return value?.count as number

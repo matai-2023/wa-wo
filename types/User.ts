@@ -1,6 +1,6 @@
 import * as z from 'zod'
 
-const userSchema = z.object({
+export const userSchema = z.object({
   auth0_id: z.string(),
   nickname: z.string(),
 })

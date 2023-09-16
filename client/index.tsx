@@ -1,4 +1,3 @@
-
 import { createRoot } from 'react-dom/client'
 import {
   RouterProvider,
@@ -12,7 +11,7 @@ import AppLayout from './components/AppLayout/AppLayout.tsx'
 import Home from './Pages/Home/Home.tsx'
 import MyWardrobe from './Pages/MyWardrobe/MyWardrobe.tsx'
 import ErrorPage from './Pages/ErrorPage/ErrorPage.tsx'
-import RegisterForm from './components/Signin/RegisterForm.tsx'
+import ProfileForm from './components/Profile/Profile.tsx'
 import FriendList from './Pages/FriendList/FriendList.tsx'
 import ProtectedComponent from './components/UI/Protector.tsx'
 import FindFriends from './Pages/FindFriend/FindFriend.tsx'
@@ -20,7 +19,6 @@ import FindFriends from './Pages/FindFriend/FindFriend.tsx'
 import AddItem from './components/WardrobeList/AddItem.tsx'
 
 import FriendsWardrobe from './Pages/FriendsWardrobe/FriendsWardrobe.tsx'
-
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
@@ -43,9 +41,12 @@ export const routes = createRoutesFromElements(
     />
     <Route
       path="/profile"
-      element={<ProtectedComponent component={RegisterForm} />}
+      element={<ProtectedComponent component={ProfileForm} />}
     />
-    <Route path="/friend/:id" element={<ProtectedComponent component={FriendsWardrobe} />}/>
+    <Route
+      path="/friend/:id"
+      element={<ProtectedComponent component={FriendsWardrobe} />}
+    />
   </Route>
 )
 
