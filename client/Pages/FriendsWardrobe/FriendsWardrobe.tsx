@@ -96,13 +96,13 @@ function FriendsWardrobe() {
         </div>
         <div>
           <div className="flex justify-between mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12">
-            {nickname && <h1>{nickname.nickname} Wardrobe</h1>}
+            {nickname && <h1 className='italic'>{nickname.nickname} Wardrobe</h1>}
             {!isFriend && (
               <button
                 onClick={handleClick}
                 className=" hover:max-w-full transition-all duration-500 h-0.5 text-2xl hover:text-blue-400 mb-2"
               >
-                ADD
+                FRIEND
                 <i className="fa-solid fa-plus text-2xl"></i>
               </button>
             )}
@@ -117,22 +117,19 @@ function FriendsWardrobe() {
                     robes.length > 0 &&
                     robes.map((item: any) => (
                       <li
-                        className="list-none cursor-pointer hover:border-2 hover:border-orange border-b-2 border-black m-6 "
+                        className="list-none cursor-pointer hover:border-2 hover:rounded-lg hover:border-orange border-b-2 border-black m-6 "
                         key={item.id}
                       >
                         <FriendsWardrobeList wardrobe={item} />
                       </li>
                     ))}
+                    {data && robes&& robes.length == 0 &&
+                            <div className='w-[800px] h-[300px] flex justify-center items-center '>
+                            <p data-testid="testid" className='text-2xl font-bold'>Wardrobe is empty!</p>
+                            </div>
+                    }
                 </div>
               </div>
-              {!data ||
-                (robes && robes?.length == 0 && (
-                  <div className="flex flex-row h-[300px] justify-center items-center">
-                    <p data-testid="testid" className="text-2xl font-bold">
-                      Wardrobe is empty!
-                    </p>
-                  </div>
-                ))}
             </ul>
           )}
         </div>
