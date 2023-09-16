@@ -1,7 +1,8 @@
-import { useQuery, useQueryErrorResetBoundary } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { getFriendsWardrobe } from '../../apis/api'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useParams } from 'react-router-dom'
+
 function useFriendsWardrobeHook(filter: string) {
   const { id } = useParams()
   const { user, getAccessTokenSilently, isAuthenticated } = useAuth0()
@@ -19,12 +20,14 @@ function useFriendsWardrobeHook(filter: string) {
     },
   })
 
+
   return {
     user,
     getAccessTokenSilently,
     isAuthenticated,
     data,
     isLoading,
+    id
   }
 }
 

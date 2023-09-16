@@ -2,17 +2,57 @@ import { useState } from 'react'
 import Title from '../Title/Title'
 import Nav from '../Nav/Nav'
 import { IfAuthenticated } from '../../apis/Authenticated'
+import { Link } from 'react-router-dom'
+import { GiClothes } from "react-icons/gi";
+import { useAuth0 } from '@auth0/auth0-react'
 function Header() {
   const [navOpened, setNavOpened] = useState(false)
-
+ const {logout } = useAuth0()
   function toggleMenu() {
     setNavOpened((prevNavOpened) => !prevNavOpened)
   }
 
+  function handleLogout() {
+    logout({ returnTo: window.location.origin })
+  }
+
+  const isLandingPage = location.pathname === '/'
+
   return (
     <>
-      <Title />
-      <div className="pl-4 pt-3 pr-4 flex justify-between items-center">
+     <div className='flex justify-between mb-6'>
+      <div>
+       <Title />
+      </div>
+
+
+      <div className='hidden lg:block absolute right-[100px] top-[30px]'> 
+         <IfAuthenticated>
+          <div className='flex right-0'>
+            <div className='mt-4 mr-4'>
+        <Link to='/profile'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+            <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" />
+            </svg>
+          </Link>
+        </div>
+        <div className='mt-4 mr-4'>
+        <Link className='text-4xl' to='/my-wardrobe'><GiClothes /></Link>
+        </div>
+        <div className='mt-4 mr-6'>
+        <button
+              className=" text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
+              onClick={handleLogout}
+            >
+              Sign out
+            </button>
+            </div>
+          </div>
+        </IfAuthenticated>
+       </div>
+
+   
+
+      <div className="absolute z-50 pl-4 pt-3 pr-4 flex justify-between items-center">
         <IfAuthenticated>
           {!navOpened && (
             <div>
@@ -35,12 +75,13 @@ function Header() {
         )}
 
         <nav
-          className={`text-orange fixed right-20 top-15 h-0  backdrop-filter backdrop-blur-md bg-opacity-5 shadow-transparent transition-all ease-in-out duration-200 ${
+          className={`text-orange fixed right-20 top-[100px] h-0  backdrop-filter backdrop-blur-md bg-opacity-5 shadow-transparent transition-all ease-in-out duration-200 ${
             navOpened ? 'opacity-100' : 'hidden'
           }`}
         >
           <Nav toggleMenu={toggleMenu} />
         </nav>
+      </div>
       </div>
     </>
   )

@@ -50,6 +50,8 @@ export async function getFriendList(token: string) {
   return res.body as User[]
 }
 
+
+
 export async function addNewProfile(nickname: string, token: string) {
   await request
     .post('/api/v1/users')

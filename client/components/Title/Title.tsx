@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom'
-
+import { GiClothes } from "react-icons/gi";
+import { IfAuthenticated } from '../../apis/Authenticated';
 function Title() {
   return (
-    <Link className="text-orange text-[50px]  top-2 left-10" to="/">
-      <h5>WARDROBE WONDERS</h5>
+    <>
+      <div>
+    <Link className="lg:text-[70px] pr-14 text-orange text-[40px] top-2]" to="/">
+      <h5 className='mb-[40px]'>WARDROBE WONDERS</h5>
     </Link>
+        </div>
+        </>
+      
   )
 }
 

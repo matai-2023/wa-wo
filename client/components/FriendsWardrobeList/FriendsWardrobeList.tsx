@@ -9,13 +9,13 @@ function FriendsWardrobeList(props: Props) {
 
   return (
     <>
-      <div className="w-[300px] flex flex-col content-center m-16">
-        <div className="flex flex-col w-36 flex-auto">
-          <div className="object-cover w-[300px]">
-            <img src={wardrobe.image} alt="image" />
+      <div>
+        <div>
+          <div className="object-fit w-full relative">
+            <img className="rounded-md" src={wardrobe.image} alt="image" />
           </div>
-          <div className="flex justify-between w-[300px]">
-            <h3 className="ml-2 text-orange text-2xl mt-5 font-bold">
+          <div className="flex justify-between max-w-[300px]">
+            <h3 className="break-all ml-2 text-orange text-2xl mt-5 font-bold">
               {wardrobe.name}
             </h3>
           </div>
