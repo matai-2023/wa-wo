@@ -19,7 +19,7 @@ import FindFriends from './Pages/FindFriend/FindFriend.tsx'
 import AddItem from './components/WardrobeList/AddItem.tsx'
 
 import FriendsWardrobe from './Pages/FriendsWardrobe/FriendsWardrobe.tsx'
-
+import Credits from './Pages/Credits/Credits.tsx'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
@@ -44,7 +44,11 @@ export const routes = createRoutesFromElements(
       path="/profile"
       element={<ProtectedComponent component={RegisterForm} />}
     />
-    <Route path="/friend/:id" element={<ProtectedComponent component={FriendsWardrobe} />}/>
+    <Route
+      path="/friend/:id"
+      element={<ProtectedComponent component={FriendsWardrobe} />}
+    />
+    <Route path="/credit" element={<Credits />} />
   </Route>
 )
 
