@@ -13,16 +13,16 @@ function WardrobeList(props: Props) {
     <>
       <div>
           <div className="object-fit w-full relative">
-            <img className="rounded-md"src="IMG_5431.jpg" alt="" />
-            <div className='absolute top-0 right-0'>
-            <button 
-              data-testid="testing"
-              onClick={() => handleDeleteItem(wardrobe.id)}
-            >
-              <Icon className="bg-blue-500 text-white p-2 rounded hover:bg-blue-800">
-                <i className="fa-solid fa-trash" />
-              </Icon>
-            </button>
+            <img className="rounded-md" src={wardrobe.image} alt="" />
+            <div className="absolute top-0 right-0">
+              <button
+                data-testid="testing"
+                onClick={() => handleDeleteItem(wardrobe.id)}
+              >
+                <Icon className="bg-blue-500 text-white p-2 rounded hover:bg-blue-800">
+                  <i className="fa-solid fa-trash" />
+                </Icon>
+              </button>
             </div>
           </div>
 

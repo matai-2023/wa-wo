@@ -26,7 +26,7 @@ export default function Credits() {
     },
     { name: 'Daph' },
     { name: 'Jared' },
-    { name: 'RICH' },
+    { name: 'RICH & HAPPEE' },
     { name: 'PHOENIX' },
     { name: 'Helena' },
     { name: `Moms` },

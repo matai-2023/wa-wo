@@ -54,22 +54,22 @@ function Nav(props: Props) {
           </button>
         </li>
         <li>
-          {isAuthenticated && (
-            <button
-              className="text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
-              onClick={handleLogout}
-            >
-              Log out
-            </button>
-          )}
-        </li>
-        <li>
           <button
-            className="font-bold hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/credit')}
           >
             Credits
           </button>
+        </li>
+        <li>
+          {isAuthenticated && (
+            <button
+              className="text-orange font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2 mt-4"
+              onClick={handleLogout}
+            >
+              Sign out
+            </button>
+          )}
         </li>
       </ul>
     </nav>

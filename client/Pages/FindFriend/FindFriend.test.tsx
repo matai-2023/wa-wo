@@ -4,7 +4,6 @@ import { getByPlaceholderText, screen, waitFor } from '@testing-library/react'
 import * as auth0 from '@auth0/auth0-react'
 import nock from 'nock'
 
-
 import { renderWithQuery } from '../../test-utils'
 
 import FindFriends from './FindFriend'
@@ -17,7 +16,6 @@ vi.mock('@auth0/auth0-react')
 })
 
 describe('Find Friends', () => {
-
   //---------------------------------------------------------
   //---------------------------------------------------------
 
@@ -37,7 +35,7 @@ describe('Find Friends', () => {
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
     // user enters 'a' into input
     await user.type(screen.getByPlaceholderText('Enter a nickname'), 'a')
-    const nickname = screen.getByRole('heading', { level: 3 })
+    const nickname = screen.getByRole('heading', { name: 'apple' })
     expect(nickname).toBeInTheDocument()
   })
 
@@ -65,7 +63,6 @@ describe('Find Friends', () => {
   //---------------------------------------------------------
   //---------------------------------------------------------
 
-
   it('3. Display "no friend found" with unmatched input', async () => {
     const scope = nock('http://localhost')
       .get('/api/v1/users/all')
@@ -77,8 +74,10 @@ describe('Find Friends', () => {
       ])
     const { user } = renderWithQuery(<FindFriends />)
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
-
-    const nickname = screen.getByRole('heading', { level: 3 })
+    await user.type(screen.getByPlaceholderText('Enter a nickname'), 'a')
+    const nickname = screen.queryByRole('heading', {
+      name: 'No friends found',
+    })
 
     expect(nickname).toBeInTheDocument()
   })

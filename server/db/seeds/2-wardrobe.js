@@ -16,7 +16,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5430.jpg',
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'bottom',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'footwear',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5430.jpg',
     },
     {
       id: 6,
@@ -52,7 +52,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'outer',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
     {
       id: 7,
@@ -61,7 +61,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5430.jpg',
     },
     {
       id: 8,
@@ -79,7 +79,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
     {
       id: 10,
@@ -97,7 +97,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5430.jpg',
     },
     {
       id: 12,
@@ -106,7 +106,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
     {
       id: 13,
@@ -115,7 +115,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5430.jpg',
     },
     {
       id: 14,
@@ -124,7 +124,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
     {
       id: 15,
@@ -133,7 +133,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
   ])
 }
