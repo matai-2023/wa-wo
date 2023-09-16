@@ -52,7 +52,6 @@ function AddItem() {
     queryFn: async () => {
       const token = await getAccessTokenSilently()
       const response = await getUser(token)
-      console.log(response)
       return response
     },
   })

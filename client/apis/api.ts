@@ -57,6 +57,15 @@ export async function addNewProfile(nickname: string, token: string) {
     .set('Content-Type', 'application/json')
     .send(nickname)
 }
+
+export async function addFriend(friendId: string, token: string) {
+  await request
+    .post('/api/v1/users/add')
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+    .send(friendId)
+}
+
 //-----------------------------------------------
 //-----------------------------------------------
 //-----------------------------------------------
