@@ -7,7 +7,6 @@ function FriendList() {
   //---------------------------------------------------------
   const customHook = useFriendList()
   const data = customHook.data
-
   //---------------------------------------------------------
   //Rendering------------------------------------------------
   //---------------------------------------------------------
@@ -28,7 +27,7 @@ function FriendList() {
                     key={friend.nickname}
                     className="list-none space-y-4 py-3 flex"
                   >
-                    <Link to={`/friend/${friend.id}`}>
+                    <Link to={`/friend/${friend.auth0_id}`}>
                       <h3>{friend.nickname}</h3>
                     </Link>
                   </li>

@@ -8,7 +8,7 @@ export async function getUser(auth0Id: string) {
 export async function getFriends(userId: string) {
   return await db('friendList')
     .join('users', 'friendList.friend_id', 'users.auth0_id')
-    .select('users.auth0_id as id', 'nickname')
+    .select('users.auth0_id', 'nickname')
     .where('user_id', userId)
 }
 

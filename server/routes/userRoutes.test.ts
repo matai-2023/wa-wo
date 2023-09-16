@@ -10,7 +10,7 @@ describe('GET /api/v1/users/friends', () => {
   it('should return 200 with an array', async () => {
     const fakeFriends = [
       {
-        id: '123',
+        auth0_id: '123',
         nickname: 'banana',
       },
     ]
