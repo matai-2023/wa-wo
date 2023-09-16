@@ -47,4 +47,23 @@ describe('Display FriendList', () => {
     const message = screen.getByRole('heading', { level: 3 })
     expect(message).toHaveTextContent(/Sorry/i)
   })
+
+  it('3. Should display heading, My friends', async () => {
+    const scope = nock('http://localhost')
+      .get('/api/v1/users/friends')
+      .reply(200, [
+        {
+          auth0_id: 'testId',
+          nickname: 'test'
+        },
+      ])
+
+    renderWithQuery(<FriendList/>)
+
+    await waitFor(async () => {
+      expect(scope.isDone()).toBeTruthy()
+    })
+    const message = screen.getByRole('heading', { level: 3 })
+    expect(message).toHaveTextContent(/test/i)
+  })
 })
