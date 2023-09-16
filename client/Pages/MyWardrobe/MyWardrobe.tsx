@@ -57,12 +57,12 @@ function MyWardrobe() {
             ACC
           </button>
        </div>
-        <div>
+        <div className='w-screen'>
          <div className='flex justify-between mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12'>
-          <h1>Matai Wardrobe</h1>
+          <h1 className='italic'>Matai Wardrobe</h1>
               <Link to={'/add-item'}
               className=" hover:max-w-full transition-all duration-500 h-0.5 text-2xl hover:text-blue-400 mb-2"
-              >ADD
+              >ITEM
                 <i className='fa-solid fa-plus text-2xl'></i>
               </Link>
         </div>
@@ -70,12 +70,12 @@ function MyWardrobe() {
         
          <ul>
           
-          <div className="ml-[50px] mr-[80px] cols-4  place-content-center">
+          <div className="ml-[50px] mr-[80px] place-content-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
             {data &&
                 data?.length > 0 && 
                 data.map((item) => (
-                  <li className="list-none cursor-pointer hover:border-2 hover:rounded-md hover:border-orange border-b-2 border-black ml-6 mr-6 mt-10 mb-6 " key={item.id}>
+                  <li className="list-none cursor-pointer hover:border-2 hover:rounded-lg hover:border-orange border-b-2 border-black ml-6 mr-6 mt-10 mb-6 " key={item.id}>
                     <WardrobeList
                       wardrobe={item}
                       handleDeleteItem={handleDeleteItem}
@@ -83,9 +83,9 @@ function MyWardrobe() {
                   </li>
                 ))}
                    {data && data.length == 0 &&
-                <div className='justify-center'>
-                   
+                <div className='w-auto col-end-4'>
                    <p className='text-2xl font-bold'>Wardrobe is empty!</p>
+
                    </div>}
                    </div>
             </div>
@@ -93,11 +93,6 @@ function MyWardrobe() {
           
             </ul>
             )}
-            {/* {data && data?.length == 0 && (
-              <div className='w-10/12 flex justify-center'>
-                   <p className='text-2xl font-bold'>Wardrobe is empty!</p>
-                   </div>
-                  )} */}
           </div>
         </div>
          

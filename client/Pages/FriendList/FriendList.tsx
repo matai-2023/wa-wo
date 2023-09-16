@@ -1,6 +1,6 @@
 import useFriendList from '../../hooks/useFriendList'
 import { Link } from 'react-router-dom'
-
+import {AiFillHeart} from 'react-icons/ai'
 function FriendList() {
   //---------------------------------------------------------
   //Getting all Friends with api call------------------------
@@ -12,21 +12,25 @@ function FriendList() {
   //---------------------------------------------------------
   return (
     <>
-      <div className="space-y-4 flex justify-center items-center mt-12">
-        <div className=" flex flex-col">
-          <h1 className=" flex items-center justify-center space-y-4 text-3xl font-semibold mb-10">
+      <div className="flex border-2 bg-orange m-16 pt-10 pb-20 h-auto rounded-lg flex-col items-center justify-center mt-12">
+        <div>
+          <h1 className="flex text-white justify-center text-3xl font-semibold mb-10">
             My friends
           </h1>
 
-          <div className="flex flex-col flex-auto text-orange text-2xl">
-            <ul className="ml-8 mb-8">
+          <div className="flex flex-col border-2 flex-auto text-orange rounded-lg text-2xl bg-white">
+            <ul className="m-4">
               {data &&
                 data.length > 0 &&
                 data?.map((friend: any) => (
+                 
                   <li
                     key={friend.nickname}
-                    className="list-none space-y-4 py-3 flex"
-                  >
+                    className="text-orange list-none flex hover:text-3xl items-center hover:text-blue-400 hover:text-2xl"
+                  > 
+                  <div className='text-red-700 mr-4 '>
+                  <AiFillHeart/>
+                </div>
                     <Link to={`/friend/${friend.auth0_id}`}>
                       <h3>{friend.nickname}</h3>
                     </Link>

@@ -3,7 +3,9 @@ import LoginButton from '../../components/Login/Login'
 import { useNavigate } from 'react-router'
 import { getUser } from '../../apis/api'
 import { useQuery } from '@tanstack/react-query'
+
 import { motion } from 'framer-motion'
+
 
 function Home() {
   const { getAccessTokenSilently } = useAuth0()
@@ -25,9 +27,11 @@ function Home() {
   return (
     <>
       <div className="flex flex-row justify-evenly mt-[100px]">
+
         <div className=" box-border rounded-md w-[400px] h-[500px] flex items-center  bg-orange space">
           <img src="home2.png" alt="home logo" />
         </div>
+       
         <div className="flex items-center space-y-50">
           <LoginButton />
         </div>

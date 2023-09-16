@@ -12,7 +12,6 @@ function WardrobeList(props: Props) {
   return (
     <>
       <div>
-        <div>
           <div className="object-fit w-full relative">
             <img className="rounded-md"src="IMG_5431.jpg" alt="" />
             <div className='absolute top-0 right-0'>
@@ -39,7 +38,6 @@ function WardrobeList(props: Props) {
             {wardrobe.description}
           </p>
         </div>
-      </div>
     </>
   )
 }
