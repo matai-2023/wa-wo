@@ -54,7 +54,7 @@ describe('2. Get friends', () => {
   //---------------------------------------------------
   it('2.2 Should return the right friend', async () => {
     const friend = {
-      id: 'auth0|6500f4b1f6aa1817d80e5465',
+      auth0_id: 'auth0|6500f4b1f6aa1817d80e5465',
       nickname: 'example@example.com',
     }
     const friends = await getFriends('auth0|65010b645218b17b091d01fe')

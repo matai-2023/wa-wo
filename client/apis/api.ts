@@ -50,8 +50,6 @@ export async function getFriendList(token: string) {
   return res.body as User[]
 }
 
-
-
 export async function addNewProfile(nickname: string, token: string) {
   await request
     .post('/api/v1/users')
@@ -65,7 +63,7 @@ export async function addFriend(friendId: string, token: string) {
     .post('/api/v1/users/add')
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
-    .send(friendId)
+    .send({ friend_id: friendId })
 }
 
 //-----------------------------------------------

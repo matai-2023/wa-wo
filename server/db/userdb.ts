@@ -9,7 +9,7 @@ export async function getFriends(userId: string) {
   return await db('friendList')
     .join('users', 'friendList.friend_id', 'users.auth0_id')
     .select('users.auth0_id', 'nickname')
-    .where('user_id', userId)
+    .where('friendList.user_id', userId)
 }
 
 export async function getAllUsers() {
@@ -34,8 +34,8 @@ export async function addFriend(relationship: Relationship) {
       friend_id: relationship.friend_id,
     })
     await db('friendList').insert({
-      friend_id: relationship.friend_id,
-      user_id: relationship.user_id,
+      user_id: relationship.friend_id,
+      friend_id: relationship.user_id,
     })
   } else {
     throw new Error('Duplicate!')
