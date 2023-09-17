@@ -151,7 +151,6 @@ export async function addAComments({
   outfitId: number
   token: string
 }) {
-  console.log({ comment, outfitId, token })
   await request
     .post(`/api/v1/outfits/comment`)
     .set('Authorization', `Bearer ${token}`)

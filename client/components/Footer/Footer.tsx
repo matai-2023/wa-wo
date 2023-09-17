@@ -37,14 +37,15 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <div className="container mx-0 space-y-0 mb-0">
+  <div className='flex justify-center mt-[100px]'>
+    <div className="container">
       <div className="pt-0 sm:pt-10 pb-0 border-t-2 border-primary-light dark:border-secondary-dark mb-0">
         {/* Footer social links */}
         <div className="font-general-regular flex flex-col justify-center items-center mb-0 sm:mb-12">
-          <p className="text-l sm:text-2xl text-orange dark:text-primary-light mb-2">
+          <p className="text-l sm:text-2xl text-orange dark:text-primary-light mb-6">
             Wardrobe Wonders
           </p>
-          <ul className="flex gap-4 sm:gap-8">
+          <ul className="flex gap-4 sm:gap-8 mb-8">
             {socialLinks.map((link) => (
               <a
                 href={link.url}
@@ -61,6 +62,7 @@ const Footer = () => {
         </div>
         <FooterCopyRight />
       </div>
+    </div>
     </div>
   )
 }

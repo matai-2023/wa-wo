@@ -77,7 +77,7 @@ function FindFriends() {
 
   return (
     <>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mt-[100px]">
         <h2 className="font-bold text-[30px]">Search your friend</h2>
         <div className="flex justify-center mt-[50px]">
           <div className=" w-[600px] h-auto border-8 border-orange rounded-xl">
