@@ -126,9 +126,17 @@ export async function getFriendsWardrobe(id: string, token: string) {
 //-----------------------------------------------
 //-----------------------------------------------
 
-export async function getOutfits(token: string) {
+export async function getAllOutfits(token: string) {
   const res = await request
-    .get(`/api/v1/outfits`)
+    .get(`/api/v1/outfits/all`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body
+}
+
+export async function getOutfitById(userId: string, token: string) {
+  const res = await request
+    .get(`/api/v1/outfits/all/${userId}`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
   return res.body
@@ -136,7 +144,7 @@ export async function getOutfits(token: string) {
 
 export async function getCommentsOfOutfit(outfitId: number, token: string) {
   const res = await request
-    .get(`/api/v1/outfits/${outfitId}`)
+    .get(`/api/v1/outfits/comments/${outfitId}`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
   return res.body

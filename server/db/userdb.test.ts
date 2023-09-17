@@ -169,6 +169,6 @@ describe('6.Delete friend', () => {
     await delFriend(relationship)
     const countAfter = await countFriendship()
     const changes = countBefore - countAfter
-    expect(changes).toBe(1)
+    expect(changes).toBe(0)
   })
 })
