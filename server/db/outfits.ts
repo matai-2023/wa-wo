@@ -1,5 +1,7 @@
 import connection from './connection.ts'
-
+export async function getAllOutfits(db = connection) {
+  return await db('outfits').select()
+}
 export async function getOutfits(userId: string, db = connection) {
   return await db('outfits').where('user_id', userId).select()
 }
@@ -18,6 +20,11 @@ export async function getComments(outfitId: number, db = connection) {
 
 interface OutfitToAdd {
   img: string
+  top_id: number
+  bottom_id: number
+  outer_id: number
+  accessories_id: number
+  footwear_id: number
 }
 
 export async function addOutfit(
@@ -28,7 +35,11 @@ export async function addOutfit(
   await db('outfits').insert({
     user_id: userId,
     img: outfit.img,
-
+    top_id: outfit.top_id,
+    bottom_id: outfit.bottom_id,
+    outer_id: outfit.outer_id,
+    accessories_id: outfit.accessories_id,
+    footwear_id: outfit.footwear_id,
     date_posted: new Date(Date.now()),
   })
 }
