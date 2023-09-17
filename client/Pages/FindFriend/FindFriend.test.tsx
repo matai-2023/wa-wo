@@ -115,7 +115,7 @@ describe('Find Friends', () => {
     const { user } = renderWithQuery(<FindFriends />)
     await user.type(screen.getByPlaceholderText('Enter a nickname'), 'a')
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
-    const error = screen.getByText('No friends found')
+    const error = screen.getByRole('heading', { name: 'No friends found' })
     expect(error).toBeInTheDocument()
   })
   //---------------------------------------------------------
