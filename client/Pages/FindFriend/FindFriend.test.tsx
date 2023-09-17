@@ -35,7 +35,7 @@ describe('Find Friends', () => {
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
     // user enters 'a' into input
     await user.type(screen.getByPlaceholderText('Enter a nickname'), 'a')
-    const nickname = screen.getByRole('heading', { level: 3 })
+    const nickname = screen.getByRole('heading', { name: 'apple' })
     expect(nickname).toBeInTheDocument()
   })
 
@@ -75,7 +75,9 @@ describe('Find Friends', () => {
     const { user } = renderWithQuery(<FindFriends />)
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
     await user.type(screen.getByPlaceholderText('Enter a nickname'), 'a')
+
     const nickname = screen.getByRole('heading', { name: 'No friends found' })
+
 
     expect(nickname).toBeInTheDocument()
   })

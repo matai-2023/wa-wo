@@ -1,18 +1,17 @@
 import { Link } from 'react-router-dom'
-import { GiClothes } from 'react-icons/gi'
-import { IfAuthenticated } from '../../apis/Authenticated'
+
 function Title() {
   return (
     <>
-      <div>
-        <Link
-          className="lg:text-[70px] pr-14 text-orange text-[40px] top-2]"
-          to="/"
-        >
-          <h5 className="ml-2 mb-[40px]">WARDROBE WONDERS</h5>
-        </Link>
-      </div>
-    </>
+      <div className=' '>
+    <Link className=" flex flex-col md:flex lg:flex-row lg:text-[70px] md:text-[50] pr-14 text-orange text-[30px] top-2]" to="/">
+      <span className='font-lucky md:mr-4'>WARDROBE </span>
+      <span className='font-lucky'>WONDERS</span>
+    </Link>
+        </div>
+        </>
+      
+
   )
 }
 

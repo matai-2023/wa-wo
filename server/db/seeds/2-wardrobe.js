@@ -3,20 +3,22 @@ export async function seed(knex) {
     {
       id: 1,
       user_id: 'auth0|65010b645218b17b091d01fe',
-      name: 'outer',
-      description: 'A shirt that is white',
+      name: 'Ivory Fleece Jacket',
+      description: 'Size Medium, can wear 4 seasons with layering',
       category: 'outer',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image:
+        'https://exxpozed-image.de/exxpozed-res.cloudinary.com/image/upload/q_auto:eco,w_1500,h_1500,c_pad,b_white,d_ph.gif,e_sharpen/v20230814123732/catalog/the-north-face-w-cragmont-fleece-jacket-21b-tnf-nf0a5a9l-gardenia-white-1.jpg',
     },
     {
       id: 2,
       user_id: 'auth0|6500f4b1f6aa1817d80e5465',
-      name: 'top',
-      description: 'A shirt that is white',
-      category: 'top',
+      name: 'Puffer Jacket',
+      description: 'My favourite Puffer, good for winters',
+      category: 'outer',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image:
+        'https://www.galaxiaradio.com/wp-content/uploads/2023/04/paloma-wool-jackets-womens-no-1009-hokusai-brown.jpg',
     },
     {
       id: 3,
@@ -25,34 +27,36 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'bottom',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
     {
       id: 4,
-      user_id: 'auth0|65010b645218b17b091d01fe',
-      name: 'accessories',
-      description: 'A shirt that is white',
-      category: 'accessories',
+      user_id: 'auth0|6500f4b1f6aa1817d80e5465',
+      name: 'Puffer Jacket',
+      description: 'My favourite Puffer, good for winters',
+      category: 'outer',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image:
+        'https://www.galaxiaradio.com/wp-content/uploads/2023/04/paloma-wool-jackets-womens-no-1009-hokusai-brown.jpg',
     },
     {
       id: 5,
-      user_id: 'auth0|65010b645218b17b091d01fe',
-      name: 'footwear',
-      description: 'A shirt that is white',
-      category: 'footwear',
+      user_id: 'auth0|6500f4b1f6aa1817d80e5465',
+      name: 'Puffer Jacket',
+      description: 'My favourite Puffer, good for winters',
+      category: 'outer',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image:
+        'https://www.galaxiaradio.com/wp-content/uploads/2023/04/paloma-wool-jackets-womens-no-1009-hokusai-brown.jpg',
     },
     {
       id: 6,
       user_id: 'auth0|65010b645218b17b091d01fe',
-      name: 'outer',
-      description: 'A shirt that is white',
+      name: 'Navy Fleece Jacket',
+      description: 'Size Large, Very Cozy, Suit for winter',
       category: 'outer',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: 'https://vpo.ca/images/product/large/349902_1_navyautumnleaf.jpg',
     },
     {
       id: 7,
@@ -61,7 +65,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5430.jpg',
     },
     {
       id: 8,
@@ -79,7 +83,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
     {
       id: 10,
@@ -97,7 +101,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5430.jpg',
     },
     {
       id: 12,
@@ -106,7 +110,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
     {
       id: 13,
@@ -115,7 +119,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5430.jpg',
     },
     {
       id: 14,
@@ -124,7 +128,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
     {
       id: 15,
@@ -133,7 +137,7 @@ export async function seed(knex) {
       description: 'A shirt that is white',
       category: 'top',
       part: 'top',
-      image: '/IMG_5428.jpg',
+      image: '/IMG_5431.jpg',
     },
   ])
 }
