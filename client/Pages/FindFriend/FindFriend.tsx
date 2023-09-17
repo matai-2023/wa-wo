@@ -34,8 +34,7 @@ function FindFriends() {
   //Handle clicking button FIND
   //---------------------------------------------------------
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQ(e.target.value)
+  async function handleClick() {
     const values = data?.filter(
       (item) =>
         item.nickname.includes(searchQ) && item.nickname !== currentUserAuth0Id
@@ -63,6 +62,14 @@ function FindFriends() {
   }, [searchQ])
 
   //---------------------------------------------------------
+  //Handle input of key Enter to search----------------------
+  //---------------------------------------------------------
+
+  async function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') handleClick()
+  }
+
+  //---------------------------------------------------------
   //---------------------------------------------------------
   //Rendering-------------------------------------------------
   //---------------------------------------------------------
@@ -78,7 +85,8 @@ function FindFriends() {
               <TextBox
                 className="mt-[50px]  border-2 rounded-md"
                 value={searchQ}
-                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+                onChange={(e) => setSearchQ(e.target.value)}
                 placeholder="      Enter a nickname"
               />
               {/* <Button onClick={handleClick}>Find</Button> */}
