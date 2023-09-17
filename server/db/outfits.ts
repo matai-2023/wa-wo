@@ -1,21 +1,17 @@
 import connection from './connection.ts'
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//Outfit functions-----------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
 export async function getAllOutfits(db = connection) {
   return await db('outfits').select()
 }
+
 export async function getOutfits(userId: string, db = connection) {
   return await db('outfits').where('user_id', userId).select()
-}
-
-export async function getComments(outfitId: number, db = connection) {
-  return await db('comments')
-    .join('users', 'users.auth0_id', 'comments.user_id')
-    .where('comments.outfit_id', outfitId)
-    .select(
-      'id as commentId',
-      'date_commented as date',
-      'nickname as nickname',
-      'comment as comment'
-    )
 }
 
 interface OutfitToAdd {
@@ -44,6 +40,24 @@ export async function addOutfit(
   })
 }
 
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//Comments functions---------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+export async function getComments(outfitId: number, db = connection) {
+  return await db('comments')
+    .join('users', 'users.auth0_id', 'comments.user_id')
+    .where('comments.outfit_id', outfitId)
+    .select(
+      'id as commentId',
+      'date_commented as date',
+      'nickname as nickname',
+      'comment as comment'
+    )
+}
 interface CommentToAdd {
   outfitId: number
   comment: string
