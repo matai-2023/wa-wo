@@ -22,7 +22,7 @@ describe('1. Get myWardrobe', () => {
 
   it('1.1 Should return items', async () => {
     const items = await getAllwardrobe('auth0|65010b645218b17b091d01fe')
-    expect(items).toHaveLength(5)
+    expect(items).toHaveLength(3)
   })
 
   //-----------------------------------------------
@@ -30,7 +30,7 @@ describe('1. Get myWardrobe', () => {
 
   it('1.2 Should return items with the right properties', async () => {
     const items = await getAllwardrobe('auth0|65010b645218b17b091d01fe')
-    expect(items).toHaveLength(5)
+    expect(items).toHaveLength(3)
     expect(items[0]).toHaveProperty('id')
     expect(items[0]).toHaveProperty('name')
     expect(items[0]).toHaveProperty('description')

@@ -17,9 +17,9 @@ function MyWardrobe() {
   return (
     <>
       {' '}
-        {isLoading && <div>Loading ...</div>}
-        <div className='flex'>
-         <div className="sticky h-[700px] top-[40px]  flex flex-col place-content-evenly w-auto top-[300px] border-r-2 text-xl mb-[20px] ">
+      {isLoading && <div>Loading ...</div>}
+      <div className="flex">
+        <div className="sticky h-[700px] top-[40px]  flex flex-col place-content-evenly w-auto top-[300px] border-r-2 text-md lg:text-2xl mb-[20px] ">
           <button
             className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('')}
@@ -56,46 +56,48 @@ function MyWardrobe() {
           >
             ACC
           </button>
-       </div>
-        <div className='w-screen'>
-         <div className='flex justify-between mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12'>
-          <h1 className='italic'>Matai Wardrobe</h1>
-              <Link to={'/add-item'}
-              className=" hover:max-w-full transition-all duration-500 h-0.5 text-2xl hover:text-blue-400 mb-2"
-              >ITEM
-                <i className='fa-solid fa-plus text-2xl'></i>
-              </Link>
         </div>
-         {isAuthenticated && (
-        
-         <ul>
-          
-          <div className="ml-[50px] mr-[80px] place-content-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
-            {data &&
-                data?.length > 0 && 
-                data.map((item) => (
-                  <li className="list-none cursor-pointer hover:border-2 hover:rounded-lg hover:border-orange border-b-2 border-black ml-6 mr-6 mt-10 mb-6 " key={item.id}>
-                    <WardrobeList
-                      wardrobe={item}
-                      handleDeleteItem={handleDeleteItem}
-                    />
-                  </li>
-                ))}
-                   {data && data.length == 0 &&
-                <div className='w-auto col-end-4'>
-                   <p className='text-2xl font-bold'>Wardrobe is empty!</p>
-
-                   </div>}
-                   </div>
-            </div>
-            
-          
-            </ul>
-            )}
+        <div className="w-screen">
+          <div className="flex md:justify-between justify-evenly mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12">
+            <h1 className="italic text-2xl left-[100px] lg:text-[40px]">
+              My Wardrobe
+            </h1>
+            <Link
+              to={'/add-item'}
+              className=" hover:max-w-full md:mr-[40px] transition-all md:right-10 duration-500 h-0.5 text-sm lg:text-[20px] hover:text-blue-400 mb-2"
+            >
+              ITEM
+              <i className="fa-solid fa-plus text-sm lg:text-2xl"></i>
+            </Link>
           </div>
+          {isAuthenticated && (
+            <ul>
+              <div className="ml-[50px] mr-[80px] place-content-center">
+                <div className="grid grid-cols-[300px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
+                  {data &&
+                    data?.length > 0 &&
+                    data.map((item) => (
+                      <li
+                        className="list-none w-[250px] md:shrink-0 md:mr-[40px] pb-4 cursor-pointer hover:border-2 hover:rounded-lg border-b-2 border-black hover:border-orange shadow-2xl ml-6 mr-6 mt-10 mb-6 "
+                        key={item.id}
+                      >
+                        <WardrobeList
+                          wardrobe={item}
+                          handleDeleteItem={handleDeleteItem}
+                        />
+                      </li>
+                    ))}
+                  {data && data.length == 0 && (
+                    <div className="w-auto col-end-4">
+                      <p className="text-2xl font-bold">Wardrobe is empty!</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </ul>
+          )}
         </div>
-         
+      </div>
     </>
   )
 }

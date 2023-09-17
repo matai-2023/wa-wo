@@ -6,9 +6,13 @@ import { useQuery } from '@tanstack/react-query'
 import { getAllUsers } from '../../apis/api'
 import { User } from '../../../types/User'
 import { Link } from 'react-router-dom'
-import {FaUserFriends} from 'react-icons/fa'
+
+import { FaUserFriends } from 'react-icons/fa'
 function FindFriends() {
-  const { getAccessTokenSilently } = useAuth0()
+  const { user, getAccessTokenSilently } = useAuth0()
+
+  const currentUserAuth0Id = user?.name
+
   //---------------------------------------------------------
   //setting up search queries, friend list to render---------
   //---------------------------------------------------------
@@ -31,11 +35,11 @@ function FindFriends() {
   //---------------------------------------------------------
 
   async function handleClick() {
-    const values = data?.filter((item) =>
-      item.nickname.includes(searchQ)
+    const values = data?.filter(
+      (item) =>
+        item.nickname.includes(searchQ) && item.nickname !== currentUserAuth0Id
     ) as User[]
     setFriends(values)
-    setSearchQ('')
   }
 
   //--------------------------------------------------------------------------------
@@ -43,8 +47,10 @@ function FindFriends() {
   //--------------------------------------------------------------------------------
   useEffect(() => {
     if (data) {
-      const values = data?.filter((item) =>
-        item.nickname.includes(searchQ)
+      const values = data?.filter(
+        (item) =>
+          item.nickname.includes(searchQ) &&
+          item.nickname !== currentUserAuth0Id
       ) as User[]
       if (values?.length == 0) {
         setFriends([{ auth0_id: '', nickname: 'No friends found' }])
@@ -71,42 +77,45 @@ function FindFriends() {
 
   return (
     <>
-    <div className='flex flex-col items-center'>
-    <h2 className='font-bold text-[30px]'>Search your friend</h2>
-      <div className="flex justify-center mt-[50px]">
-        <div className=" w-[600px] h-auto border-8 border-orange rounded-xl">
-          <div className="flex flex-col items-center pb-[20px]">
-            <TextBox
-              className="mt-[50px]  border-2 rounded-md"
-              value={searchQ}
-              onKeyDown={handleKeyDown}
-              onChange={(e) => setSearchQ(e.target.value)}
-              placeholder="      Enter a nickname"
-            />
-            {/* <Button onClick={handleClick}>Find</Button> */}
-            {friends.length !== 0 && (
-              <div>
-                <div
-                  data-testid="friendList"
-                  className="flex flex-col justify-center items-center mt-6 "
-                >
-                  {friends &&
-                    friends?.map((item) => (
-                      <li key={item.auth0_id} className="list-none flex flex-col items-center text-xl text-blue-300 mb-6 hover:text-orange hover:text-2xl border-2 p-2 rounded-lg">
-                        <div className='text-black'>
-                          <FaUserFriends/>
+      <div className="flex flex-col items-center">
+        <h2 className="font-bold text-[30px]">Search your friend</h2>
+        <div className="flex justify-center mt-[50px]">
+          <div className=" w-[600px] h-auto border-8 border-orange rounded-xl">
+            <div className="flex flex-col items-center pb-[20px]">
+              <TextBox
+                className="mt-[50px]  border-2 rounded-md"
+                value={searchQ}
+                onKeyDown={handleKeyDown}
+                onChange={(e) => setSearchQ(e.target.value)}
+                placeholder="      Enter a nickname"
+              />
+              {/* <Button onClick={handleClick}>Find</Button> */}
+              {friends.length !== 0 && (
+                <div>
+                  <div
+                    data-testid="friendList"
+                    className="flex flex-col justify-center items-center mt-6 "
+                  >
+                    {friends &&
+                      friends?.map((item) => (
+                        <li
+                          key={item.auth0_id}
+                          className="list-none flex flex-col items-center text-xl text-blue-300 mb-6 hover:text-orange hover:text-2xl border-2 p-2 rounded-lg"
+                        >
+                          <div className="text-black">
+                            <FaUserFriends />
                           </div>
-                        <Link to={`/friend/${item.auth0_id}`}>
-                          <h3>{item.nickname}</h3>
-                        </Link>
-                      </li>
-                    ))}
+                          <Link to={`/friend/${item.auth0_id}`}>
+                            <h3>{item.nickname}</h3>
+                          </Link>
+                        </li>
+                      ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   )
