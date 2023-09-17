@@ -11,7 +11,8 @@ function FindFriends() {
   const [searchQ, setSearchQ] = useState('')
   const [friends, setFriends] = useState([] as User[])
 
-  const { getAccessTokenSilently } = useAuth0()
+  const { user, getAccessTokenSilently } = useAuth0()
+  const currentUserAuth0Id = user?.auth0_id
   const { data } = useQuery({
     queryKey: ['users', friends],
     queryFn: async () => {
@@ -22,8 +23,9 @@ function FindFriends() {
   })
 
   async function handleClick() {
-    const values = data?.filter((item) =>
-      item.nickname.includes(searchQ)
+    const values = data?.filter(
+      (item) =>
+        item.nickname.includes(searchQ) && item.auth0_id !== currentUserAuth0Id
     ) as User[]
     setFriends(values)
     setSearchQ('')
@@ -31,8 +33,10 @@ function FindFriends() {
 
   useEffect(() => {
     if (data) {
-      const values = data?.filter((item) =>
-        item.nickname.includes(searchQ)
+      const values = data?.filter(
+        (item) =>
+          item.nickname.includes(searchQ) &&
+          item.auth0_id !== currentUserAuth0Id
       ) as User[]
       if (values?.length == 0) {
         setFriends([{ auth0_id: '', nickname: 'No friends found' }])
