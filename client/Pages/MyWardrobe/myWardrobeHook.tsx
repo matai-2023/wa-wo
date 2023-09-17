@@ -15,6 +15,7 @@ function useMyWardrobeHook(filter: string) {
         filter == ''
           ? response
           : response.filter((item) => item.category == filter)
+      console.log(accessToken)
 
       return filtered
     },
