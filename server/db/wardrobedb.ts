@@ -6,8 +6,38 @@ export async function getAllwardrobe(auth0Id: string, db = connection) {
   return await db('wardrobe').where('user_id', auth0Id).select()
 }
 
-export function deleteItem(id: number, db = connection) {
-  return db('wardrobe').where('id', id).delete()
+export async function deleteItem(id: number, db = connection) {
+  await db.transaction(async (trx) => {
+    // Find the corresponding 'outfits' records that reference the item to be deleted
+    const outfitsToUpdate = await trx('outfits')
+      .select(
+        'id',
+        'top_id',
+        'bottom_id',
+        'outer_id',
+        'accessories_id',
+        'footwear_id'
+      )
+      .where('top_id', id)
+      .orWhere('bottom_id', id)
+      .orWhere('outer_id', id)
+      .orWhere('accessories_id', id)
+      .orWhere('footwear_id', id)
+
+    // Update the corresponding 'outfits' records to set the references to null
+    for (const outfit of outfitsToUpdate) {
+      await trx('outfits').where('id', outfit.id).update({
+        top_id: null,
+        bottom_id: null,
+        outer_id: null,
+        accessories_id: null,
+        footwear_id: null,
+      })
+    }
+
+    // Delete the item from the 'wardrobe' table
+    await trx('wardrobe').where('id', id).del()
+  })
 }
 
 export function addItem(newItem: AddWardrobe, db = connection) {

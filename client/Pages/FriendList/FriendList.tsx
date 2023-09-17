@@ -25,11 +25,14 @@ function FriendList() {
 
   return (
     <>
-      <h1 className="flex  justify-center font-bold text:[25px] md:text-[30px] mb-10">
-        My friends
-      </h1>
-      <div className="flex mb-[20px] justify-center">
-        <div className="flex w-[300px] md:w-[600px] border-4 border-orange pt-10 pb-10 h-auto rounded-lg flex-col items-center justify-center">
+
+          <h1 className="flex  justify-center font-bold text:[25px] md:text-[30px] mb-10 mt-[100px]">
+            My friends
+          </h1>
+    <div className='flex mb-[20px] justify-center'>
+      <div className="flex w-[300px] md:w-[600px] border-4 border-orange pt-10 pb-10 h-auto rounded-lg flex-col items-center justify-center">
+
+
           <div className="flex flex-col justify-center text-orange">
             <ul className="m-4">
               {data &&

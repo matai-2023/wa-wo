@@ -107,7 +107,6 @@ router.delete('/delete/:id', validateAccessToken, async (req, res) => {
   }
   try {
     const relationship = { user_id: id, friend_id: friendId } as Relationship
-    console.log(relationship)
     await db.delFriend(relationship)
     res.status(200).json({ message: 'deleted friend successfully' })
   } catch (error) {
