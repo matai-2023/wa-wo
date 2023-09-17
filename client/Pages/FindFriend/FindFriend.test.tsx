@@ -44,20 +44,22 @@ describe('Find Friends', () => {
 
   it('2. Display "no friend found" with empty input', async () => {
     const scope = nock('http://localhost')
-      .get('/api/v1/users/all')
+      .get(`/api/v1/users/all`)
       .reply(200, [
         {
           auth0_id: 'auth0|111',
-          nickname: 'stu',
+          nickname: 'apple',
         },
       ])
+
     // screen renders
     const { user } = renderWithQuery(<FindFriends />)
+
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
     // user enters 'a' into input
-    await user.type(screen.getByPlaceholderText('Enter a nickname'), ' ')
-    const error = screen.getByText('No friends found')
-    expect(error).toBeInTheDocument()
+    await user.type(screen.getByPlaceholderText('Enter a nickname'), 'b')
+    const nickname = screen.getByRole('heading', { name: 'No friends found' })
+    expect(nickname).toBeInTheDocument()
   })
 
   //---------------------------------------------------------
@@ -78,10 +80,11 @@ describe('Find Friends', () => {
 
     const nickname = screen.getByRole('heading', { name: 'No friends found' })
 
-
     expect(nickname).toBeInTheDocument()
   })
-  it('2. Display "no friend found" with empty input', async () => {
+  //---------------------------------------------------------
+  //---------------------------------------------------------
+  it('4. Display "no friend found" with empty input', async () => {
     const scope = nock('http://localhost')
       .get('/api/v1/users/all')
       .reply(200, [
@@ -92,13 +95,15 @@ describe('Find Friends', () => {
       ])
     // screen renders
     const { user } = renderWithQuery(<FindFriends />)
+    await waitFor(() => expect(scope.isDone()).toBeTruthy())
     // user enters 'a' into input
     await user.type(screen.getByPlaceholderText('Enter a nickname'), ' ')
-    await waitFor(() => expect(scope.isDone()).toBeTruthy())
-    const error = screen.getByText('No friends found')
-    expect(error).toBeInTheDocument()
+    const message = screen.getByRole('heading', { name: 'No friends found' })
+    expect(message).toBeInTheDocument()
   })
-  it('3. Display "no friend found" with unmatched input', async () => {
+  //---------------------------------------------------------
+  //---------------------------------------------------------
+  it('5. Display "no friend found" with unmatched input', async () => {
     const scope = nock('http://localhost')
       .get('/api/v1/users/all')
       .reply(200, [
@@ -113,7 +118,9 @@ describe('Find Friends', () => {
     const error = screen.getByText('No friends found')
     expect(error).toBeInTheDocument()
   })
-  it('4. Friend list is empty when page renders/refreshed', async () => {
+  //---------------------------------------------------------
+  //---------------------------------------------------------
+  it('6. Friend list is empty when page renders/refreshed', async () => {
     const scope = nock('http://localhost')
       .get('/api/v1/users/all')
       .reply(200, [])
