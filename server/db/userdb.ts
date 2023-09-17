@@ -43,8 +43,14 @@ export async function addFriend(relationship: Relationship) {
 }
 
 export async function delFriend(relationship: Relationship) {
-  await db('friendList').where('user_id', relationship.user_id).del()
-  await db('friendList').where('user_id', relationship.friend_id).del()
+  await db('friendList')
+    .where('user_id', relationship.user_id)
+    .where('friend_id', relationship.friend_id)
+    .del()
+  await db('friendList')
+    .where('user_id', relationship.friend_id)
+    .where('friend_id', relationship.user_id)
+    .del()
 }
 
 //-----------------------------------------------
