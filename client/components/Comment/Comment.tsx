@@ -9,12 +9,14 @@ export default function Comment(props: Props) {
   console.log(commentsList)
   return (
     <>
-      {commentsList &&
-        commentsList.map((item: any) => (
-          <li key={item.commentId}>
-            <strong>{item.nickname}</strong> {item.comment}
-          </li>
-        ))}
+      <div>
+        {commentsList &&
+          commentsList.map((item: any) => (
+            <li key={item.commentId}>
+              <strong>{item.nickname}</strong> {item.comment}
+            </li>
+          ))}
+      </div>
     </>
   )
 }

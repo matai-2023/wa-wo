@@ -18,7 +18,7 @@ function MyWardrobe() {
     <>
       {' '}
       {isLoading && <div>Loading ...</div>}
-      <div className="flex">
+      <div className="flex mt-[100px]">
         <div className="sticky h-[700px] top-[40px]  flex flex-col place-content-evenly w-auto top-[300px] border-r-2 text-md lg:text-2xl mb-[20px] ">
           <button
             className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"

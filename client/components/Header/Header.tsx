@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <>
-      <div className="flex justify-between h-[200px]">
+      <div className="flex justify-between h-[120px] border-b-2 mr-8 ml-8 border-orange">
         <div>
           <Title />
         </div>
