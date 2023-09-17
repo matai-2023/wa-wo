@@ -12,7 +12,7 @@ function FriendList() {
   //---------------------------------------------------------
   return (
     <>
-          <h1 className="flex  justify-center font-bold text:[25px] md:text-[30px] mb-10">
+          <h1 className="flex  justify-center font-bold text:[25px] md:text-[30px] mb-10 mt-[100px]">
             My friends
           </h1>
     <div className='flex mb-[20px] justify-center'>

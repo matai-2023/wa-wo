@@ -8,12 +8,14 @@ export default function Comment(props: Props) {
   const commentsList = commentHook.data
   return (
     <>
-      {commentsList &&
-        commentsList.map((item: any) => (
-          <li key={item.commentId}>
-            <strong>{item.nickname}</strong> {item.comment}
-          </li>
-        ))}
+      <div>
+        {commentsList &&
+          commentsList.map((item: any) => (
+            <li key={item.commentId}>
+              <strong>{item.nickname}</strong> {item.comment}
+            </li>
+          ))}
+      </div>
     </>
   )
 }
