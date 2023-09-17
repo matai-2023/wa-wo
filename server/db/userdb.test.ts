@@ -11,6 +11,7 @@ import {
   addFriend,
   countFriendship,
   countUsers,
+  delFriend,
   getAllUsers,
   getFriends,
   getUser,
@@ -153,5 +154,21 @@ describe('5. Add friends', () => {
         expect(error?.message).toBe('Duplicate!')
       }
     }
+  })
+})
+
+describe('6.Delete friend', () => {
+  //-----------------------------------------------------
+  //-----------------------------------------------------
+  it('Should delete relationship between 2 users', async () => {
+    const countBefore = await countFriendship()
+    const relationship = {
+      user_id: 'auth0|65010b645218b17b091d01fe',
+      friend_id: 'auth0|6501074ac25b71c07e590847',
+    }
+    await delFriend(relationship)
+    const countAfter = await countFriendship()
+    const changes = countBefore - countAfter
+    expect(changes).toBe(1)
   })
 })
