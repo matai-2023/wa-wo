@@ -3,7 +3,6 @@ export function up(knex) {
     table.increments('id').primary()
     table.string('user_id').references('users.auth0_id').notNullable()
     table.string('img')
-    table.integer('likes')
     table.date('date_posted')
   })
 }

@@ -28,7 +28,7 @@ export async function addOutfit(
   await db('outfits').insert({
     user_id: userId,
     img: outfit.img,
-    likes: 0,
+
     date_posted: new Date(Date.now()),
   })
 }
