@@ -56,7 +56,7 @@ function FriendsWardrobe() {
       {' '}
       {isLoading && <div>Loading ...</div>}
       <div className=" flex">
-        <div className="h-[700px] sticky top-[40px] flex flex-col place-content-evenly w-[280px] top-[300px] border-r-2 text-2xl mb-[20px] ">
+        <div className="h-[700px] sticky top-[40px] flex flex-col place-content-evenly w-[280px] top-[300px] border-r-2 text-md lg:text-2xl mb-[20px] ">
           <button
             className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('')}
@@ -95,15 +95,15 @@ function FriendsWardrobe() {
           </button>
         </div>
         <div>
-          <div className="flex justify-between mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12">
-            {nickname && <h1 className='italic'>{nickname.nickname} Wardrobe</h1>}
+          <div className="flex md:justify-between justify-evenly mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12">
+            {nickname && <h1 className='italic text-2xl lg:text-[40px]'>{nickname.nickname} Wardrobe</h1>}
             {!isFriend && (
               <button
                 onClick={handleClick}
-                className=" hover:max-w-full transition-all duration-500 h-0.5 text-2xl hover:text-blue-400 mb-2"
+                className=" hover:max-w-full transition-all duration-500 h-0.5 text-sm lg:text-[20px] hover:text-blue-400 mb-2"
               >
                 FRIEND
-                <i className="fa-solid fa-plus text-2xl"></i>
+                <i className="fa-solid fa-plus text-sm lg:text-2xl"></i>
               </button>
             )}
           </div>
@@ -111,13 +111,13 @@ function FriendsWardrobe() {
           {isAuthenticated && (
             <ul>
               <div className="ml-[50px] mr-[80px] cols-4  place-content-center">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
+                <div className="grid grid-cols-[300px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
                   {data &&
                     robes &&
                     robes.length > 0 &&
                     robes.map((item: any) => (
                       <li
-                        className="list-none cursor-pointer hover:border-2 hover:rounded-lg hover:border-orange border-b-2 border-black m-6 "
+                        className="list-none shadow-2xl md:shrink:0 w-[250px] pb-4 cursor-pointer hover:border-2 hover:rounded-lg hover:border-orange border-b-2 border-black m-6 "
                         key={item.id}
                       >
                         <FriendsWardrobeList wardrobe={item} />

@@ -12,8 +12,8 @@ function WardrobeList(props: Props) {
   return (
     <>
       <div>
-          <div className="object-fit w-full relative">
-            <img className="rounded-md" src={wardrobe.image} alt="" />
+          <div className=" relative w-full md:mr-[40px] overflow-hidden ">
+            <img className="w-full h-[350px] object-cover" src={wardrobe.image} alt="" />
             <div className="absolute top-0 right-0">
               <button
                 data-testid="testing"
@@ -25,18 +25,19 @@ function WardrobeList(props: Props) {
               </button>
             </div>
           </div>
-
-          <div className="flex justify-between max-w-[300px]">
-            <h3 className="break-all  ml-2 text-orange text-2xl mt-5 font-bold">
+        <div>
+          <div className="flex w-full justify-between ">
+            <h3 className="break-all  ml-2 text-orange text-md lg:text-xl mt-5 font-bold">
               {wardrobe.name}
             </h3>
           </div>
           <p
             data-testid="test"
-            className="ml-2 text-md text-lightPurple w-[300px]"
+            className="break-all ml-2 text-md "
           >
             {wardrobe.description}
           </p>
+        </div>
         </div>
     </>
   )

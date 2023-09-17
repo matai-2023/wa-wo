@@ -4,6 +4,9 @@ export default {
 
   theme: {
     extend: {
+      fontFamily: {
+        lucky: ['"Luckiest Guy"'],
+      },
       animation: {
         text: 'text 5s ease infinite',
       },
