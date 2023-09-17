@@ -66,6 +66,13 @@ export async function addFriend(friendId: string, token: string) {
     .send({ friend_id: friendId })
 }
 
+export async function delFriend(friendId: string, token: string) {
+  await request
+    .delete(`/api/v1/users/delete/${friendId}`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+}
+
 //-----------------------------------------------
 //-----------------------------------------------
 //-----------------------------------------------

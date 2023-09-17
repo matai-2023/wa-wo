@@ -99,4 +99,20 @@ router.post('/add', validateAccessToken, async (req, res) => {
   }
 })
 
+router.delete('/delete/:id', validateAccessToken, async (req, res) => {
+  const id = req.auth?.payload.sub
+  const friendId = req.params.id
+  if (!id) {
+    res.status(401).json({ message: 'Please provide an id' })
+  }
+  try {
+    const relationship = { user_id: id, friend_id: friendId } as Relationship
+    console.log(relationship)
+    await db.delFriend(relationship)
+    res.status(200).json({ message: 'deleted friend successfully' })
+  } catch (error) {
+    res.status(500).json({ message: 'Unable to deleted this friend' })
+  }
+})
+
 export default router
