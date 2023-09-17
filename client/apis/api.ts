@@ -106,3 +106,48 @@ export async function getFriendsWardrobe(id: string, token: string) {
     .set('Content-Type', 'application/json')
   return res.body
 }
+
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//ALL Outfit and comment api calls go here-------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+//-----------------------------------------------
+
+export async function getOutfits(token: string) {
+  const res = await request
+    .get(`/api/v1/outfits`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body
+}
+
+export async function getCommentsOfOutfit(outfitId: number, token: string) {
+  const res = await request
+    .get(`/api/v1/outfits/${outfitId}`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body
+}
+
+export async function addAComments({
+  comment,
+  outfitId,
+  token,
+}: {
+  comment: string
+  outfitId: number
+  token: string
+}) {
+  console.log({ comment, outfitId, token })
+  await request
+    .post(`/api/v1/outfits/comment`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+    .send({ outfitId: outfitId, comment: comment })
+}
