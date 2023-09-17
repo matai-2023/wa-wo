@@ -34,7 +34,7 @@ router.post('/', validateAccessToken, async (req, res) => {
     await db.upsertUser(realNewUser)
     res.status(201)
   } catch (error) {
-    res.status(500).json({ message: 'Unable to retrieve friends' })
+    res.status(500).json({ message: 'Unable to register this user' })
   }
 })
 

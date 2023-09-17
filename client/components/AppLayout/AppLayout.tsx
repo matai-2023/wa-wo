@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 
 function AppLayout() {
   const { pathname } = useLocation()
@@ -31,14 +32,16 @@ function AppLayout() {
     document.title = editPath(pathname)
   }, [pathname])
 
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
+
   return (
     <>
-      <div className="ml-8 mt-4 w-100vw">
-        <Header />
-      </div>
+      <div>{isHomePage ? null : <Header />}</div>
       <div>
         <Outlet />
       </div>
+      <div>{isHomePage ? null : <Footer />}</div>
     </>
   )
 }
