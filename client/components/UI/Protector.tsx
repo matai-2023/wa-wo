@@ -9,10 +9,9 @@ interface Props {
 export const ProtectedComponent = ({ component }: Props) => {
   const Component = withAuthenticationRequired(component, {
     onRedirecting: () => (
-      // <div>
-      //   <h1>Redirecting you to the login page...</h1>
-      // </div>
-      <ErrorPage />
+      <div>
+        <h1>Redirecting you to the login page...</h1>
+      </div>
     ),
   })
 

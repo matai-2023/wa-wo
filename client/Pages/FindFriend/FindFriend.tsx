@@ -6,11 +6,13 @@ import { useQuery } from '@tanstack/react-query'
 import { getAllUsers } from '../../apis/api'
 import { User } from '../../../types/User'
 import { Link } from 'react-router-dom'
+
 import { FaUserFriends } from 'react-icons/fa'
 function FindFriends() {
   const { user, getAccessTokenSilently } = useAuth0()
 
   const currentUserAuth0Id = user?.name
+
   //---------------------------------------------------------
   //setting up search queries, friend list to render---------
   //---------------------------------------------------------
@@ -115,6 +117,7 @@ function FindFriends() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   )

@@ -19,11 +19,11 @@ function Nav(props: Props) {
   }
 
   return (
-    <nav className="pt-8 pl-4 pr-4 flex ">
-      <ul className="text-3xl">
+    <nav className=" p-10 flex w-[250px] lg:w-[300px] rounded-md bg-blue-100 ">
+      <ul className="text-xl lg:text-2xl">
         <li>
           <button
-            className="font-bold hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/my-wardrobe')}
           >
             My wardrobe
@@ -31,7 +31,7 @@ function Nav(props: Props) {
         </li>
         <li>
           <button
-            className="font-bold hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/friend-list')}
           >
             My friends
@@ -39,7 +39,7 @@ function Nav(props: Props) {
         </li>
         <li>
           <button
-            className="font-bold hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/add-item')}
           >
             Add an Item
@@ -47,19 +47,27 @@ function Nav(props: Props) {
         </li>
         <li>
           <button
-            className="font-bold hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/find-friend')}
           >
             Find User
           </button>
         </li>
         <li>
+          <button
+            className="text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
+            onClick={() => goTo('/credit')}
+          >
+            Credits
+          </button>
+        </li>
+        <li>
           {isAuthenticated && (
             <button
-              className="font-bold hover:text-blue-400 mb-2"
+              className="text-orange text-[20px] font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2 mt-4"
               onClick={handleLogout}
             >
-              Log out
+              Sign out
             </button>
           )}
         </li>
