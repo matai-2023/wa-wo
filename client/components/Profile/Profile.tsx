@@ -21,14 +21,14 @@ function ProfileForm() {
 
   return (
     <>
-    <div className='flex flex-col items-center justify-center'>
-        <h2 className='font-bold text-[30px]'>Enter your nickname</h2>
-      <div className="flex flex-col justify-center w-[800px] mt-10 border-8 border-orange items-center m-80 h-[32rem] rounded-xl">
-        <div className="flex flex-col items-center">
-          <label className="text-blue-300 text-3xl mb-4 ">Nickname:</label>
+    <div className='flex justify-center'>
+      <div className="flex flex-col w-[300px] md:w-[600px] justify-center p-12 mt-[50px] border-8 border-orange items-center rounded-xl">
+        <div className="md:flex md:flex-row md:justify-center flex flex-col items-center mb-12 items-center">
+          <label className=" md:text-3xl mr-4 text-2xl mb-4 md:mb-0">Nickname:</label>
           <input
-            className="text-black mb-20 p-4 border-2 rounded-lg text-2xl "
-            placeholder="   insert your nickname"
+            className="text-black border-2 h-[60px] w-[200px] md:w-[300px] rounded-md p-4 text-2xl outline-orange"
+            placeholder="eg.Oops"
+            autoFocus={true}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />

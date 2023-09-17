@@ -19,8 +19,8 @@ function Nav(props: Props) {
   }
 
   return (
-    <nav className=" p-10 flex w-[300px] rounded-md bg-blue-100 ">
-      <ul className="text-3xl">
+    <nav className=" p-10 flex w-[250px] lg:w-[300px] rounded-md bg-blue-100 ">
+      <ul className="text-xl lg:text-2xl">
         <li>
           <button
             className="text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
@@ -64,7 +64,7 @@ function Nav(props: Props) {
         <li>
           {isAuthenticated && (
             <button
-              className="text-orange font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2 mt-4"
+              className="text-orange text-[20px] font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2 mt-4"
               onClick={handleLogout}
             >
               Sign out

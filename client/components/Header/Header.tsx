@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <>
-      <div className="flex justify-between mb-6">
+      <div className="flex justify-between h-[200px]">
         <div>
           <Title />
         </div>
@@ -70,10 +70,10 @@ function Header() {
             {!navOpened && (
               <div>
                 <button
-                  className="fixed top-10 right-10 hover:text-blue-400"
+                  className="fixed top-10 text-[10px] right-10 hover:text-blue-400"
                   onClick={toggleMenu}
                 >
-                  <i className="fa-solid fa-bars text-4xl absolute top-0 right-0 h-10 w-10"></i>
+                  <i className="fa-solid  fa-bars absolute top-0 right-0 h-10 w-10"></i>
                 </button>
               </div>
             )}

@@ -72,9 +72,9 @@ function FindFriends() {
   return (
     <>
     <div className='flex flex-col items-center'>
-    <h2 className='font-bold text-[30px]'>Search your friend</h2>
+    <h2 className='font-bold text-[25px] md:text-[30px]'>Search your friend</h2>
       <div className="flex justify-center mt-[50px]">
-        <div className=" w-[600px] h-auto border-8 border-orange rounded-xl">
+        <div className=" w-[300px] md:w-[600px] h-auto border-8 border-orange rounded-xl">
           <div className="flex flex-col items-center pb-[20px]">
             <TextBox
               className="mt-[50px]  border-2 rounded-md"
