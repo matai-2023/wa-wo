@@ -11,7 +11,7 @@ const router = express.Router()
 //---------------------------------------------------------
 //---------------------------------------------------------
 
-router.get('/', validateAccessToken, async (req, res) => {
+router.get('/:id', validateAccessToken, async (req, res) => {
   const id = req.auth?.payload.sub
   if (!id) {
     res.status(401).json({ message: 'Please provide an id' })
@@ -19,7 +19,8 @@ router.get('/', validateAccessToken, async (req, res) => {
   }
 
   try {
-    const outfits = await db.getOutfits(id)
+    const user_id = req.params.id
+    const outfits = await db.getOutfitsByUserId(user_id)
     res.status(200).json(outfits)
   } catch (error) {
     res.status(500).json({ message: 'Unable to retrieve outfits' })
