@@ -34,12 +34,26 @@ describe('GET /api/v1/users/friends', () => {
   })
 })
 
-// describe('POST /api/v1/users', () => {
-//   it.only('should return 201 when creating a new profile', async () => {
-//     vi.mocked(db.upsertUser).mockResolvedValue()
-//     const response = await request(server)
-//       .post('/api/v1/users/')
-//       .set('authorization', `Bearer ${getMockToken()}`)
-//       .send({ nickname: 'test-name' })
-//   })
-// })
+describe('POST /api/v1/users', () => {
+  it('should return 201 when creating a new profile', async () => {
+    vi.mocked(db.upsertUser).mockResolvedValue()
+    const response = await request(server)
+      .post('/api/v1/users/')
+      .set('authorization', `Bearer ${getMockToken()}`)
+      .send('test-name')
+  })
+  it('should return 401 when no access token is passed', async () => {
+    vi.mocked(db.upsertUser).mockRejectedValue(new Error('test'))
+    const fakeData = {}
+    const response = await request(server).get('/api/v1/users').send(fakeData)
+    expect(response.status).toBe(401)
+  })
+  it('should return 500 when no access token is passed', async () => {
+    vi.mocked(db.upsertUser).mockRejectedValue(new Error('test'))
+    const response = await request(server)
+      .post('/api/v1/users')
+      .set('authorization', `Bearer ${getMockToken()}`)
+      .send('IamNeil')
+    expect(response.status).toBe(500)
+  })
+})
