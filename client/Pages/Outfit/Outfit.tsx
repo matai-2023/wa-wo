@@ -8,10 +8,12 @@ import { BiSolidTShirt } from 'react-icons/bi'
 
 export default function Outfit() {
   const [showing, setShowing] = useState(false)
+  const [filter, setFilter] = useState('')
   const customFriendList = useFriendList()
   const friendList = customFriendList.data
-  const customOutfitList = useOutfit()
+  const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
+
   return (
     <>
       <div className="flex  justify-center border-2 border-pink-400 h-[50px] mt-[100px] ">
@@ -27,11 +29,18 @@ export default function Outfit() {
               id="FRIENDLIST"
             >
               <h1>Friendlist</h1>
+              <button className="m-4" onClick={() => setFilter('')}>
+                ALL
+              </button>
               {friendList &&
                 friendList.map((item) => (
-                  <li className="m-4" key={item.auth0_id}>
+                  <button
+                    className="m-4"
+                    key={item.auth0_id}
+                    onClick={() => setFilter(item.auth0_id)}
+                  >
                     {item.nickname}
-                  </li>
+                  </button>
                 ))}
             </div>
           </div>
@@ -41,12 +50,11 @@ export default function Outfit() {
               <div className="flex flex-col ml-[40px]">
                 {outfitList &&
                   outfitList.map((item: any) => (
-                    <div className="flex flex-row h-[700px]">
-                      <div className="w-[500px] h-[500px]" key={item.id}>
+                    <div className="flex flex-row h-[700px]" key={item.id}>
+                      <div className="w-[500px] h-[500px]">
                         <img
                           className="w-[70px] shadow-2xl border-2 w-full h-full border-red-400 h-[70px]"
                           src={item.img}
-                          key={item.id}
                         />
                         <div className="border-2  border-yellow-400">
                           <button onClick={() => setShowing(!showing)}>
@@ -68,31 +76,23 @@ export default function Outfit() {
                         <div className="border-2 border-green-400 flex flex-col justify-around h-[350px]">
                           <div className="border-2 border-red-400">
                             <p className="text-lg font-semibold">
-                              top: brand t-shirt
+                              top: {item.top}
                             </p>
                           </div>
                           <div className="border-2 border-black">
                             <p className="text-lg font-semibold">
-                              bottom: brand pants
+                              bottom: {item.bottom}
                             </p>
                           </div>
                           <div className="border-2 border-blue-400">
                             <p className="text-lg font-semibold">
-                              outer: brand outer
+                              outer: {item.outer}
                             </p>
                           </div>
                         </div>
                         <div className="border-2 h-[350px] border-black">
                           <p className="text-lg font-semibold">
-                            description: Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Consequuntur magnam minima
-                            reiciendis, enim veniam sunt error ullam amet,
-                            soluta, non veritatis id ea quod quasi animi laborum
-                            esse voluptas molestiae!Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Consequuntur magnam
-                            minima reiciendis, enim veniam sunt error ullam
-                            amet, soluta, non veritatis id ea quod quasi animi
-                            laborum esse voluptas molestiae!
+                            {item.description}
                           </p>
                         </div>
                         <div className="flex justify-center items-center  text-2xl h-[200px] border-2 border-purple-400">

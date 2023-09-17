@@ -12,6 +12,7 @@ export async function getAllOutfits(db = connection) {
       'outfits.id',
       'outfits.user_id',
       'outfits.img',
+      'outfits.description',
       'wardrobe_top.name as top',
       'wardrobe_bottom.name as bottom',
       'wardrobe_outer.name as outer',
@@ -49,6 +50,7 @@ export async function getAllOutfits(db = connection) {
     top: outfit.top || '',
     bottom: outfit.bottom || '',
     outer: outfit.outer || '',
+    description: outfit.description || '',
     accessories: outfit.accessories || '',
     footwear: outfit.footwear || '',
     date_posted: new Date(outfit.date_posted).getTime(),
@@ -64,6 +66,7 @@ export async function getOutfitsByUserId(userId: string, db = connection) {
       'outfits.id',
       'outfits.user_id',
       'outfits.img',
+      'outfits.description',
       'wardrobe_top.name as top',
       'wardrobe_bottom.name as bottom',
       'wardrobe_outer.name as outer',
@@ -100,6 +103,7 @@ export async function getOutfitsByUserId(userId: string, db = connection) {
     img: outfit.img,
     top: outfit.top || '',
     bottom: outfit.bottom || '',
+    description: outfit.description || '',
     outer: outfit.outer || '',
     accessories: outfit.accessories || '',
     footwear: outfit.footwear || '',
@@ -116,6 +120,7 @@ interface OutfitToAdd {
   outer_id: number
   accessories_id: number
   footwear_id: number
+  description: string
 }
 
 export async function addOutfit(
@@ -131,6 +136,7 @@ export async function addOutfit(
     outer_id: outfit.outer_id,
     accessories_id: outfit.accessories_id,
     footwear_id: outfit.footwear_id,
+    description: outfit.description,
     date_posted: new Date(Date.now()),
   })
 }

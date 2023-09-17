@@ -3,29 +3,7 @@ import * as db from '../db/outfits'
 import validateAccessToken from '../auth0'
 
 const router = express.Router()
-//---------------------------------------------------------
-//---------------------------------------------------------
-//---------------------------------------------------------
-//GET /api/v1/outfits--------------------------------------
-//---------------------------------------------------------
-//---------------------------------------------------------
-//---------------------------------------------------------
 
-router.get('/:id', validateAccessToken, async (req, res) => {
-  const id = req.auth?.payload.sub
-  if (!id) {
-    res.status(401).json({ message: 'Please provide an id' })
-    return
-  }
-
-  try {
-    const user_id = req.params.id
-    const outfits = await db.getOutfitsByUserId(user_id)
-    res.status(200).json(outfits)
-  } catch (error) {
-    res.status(500).json({ message: 'Unable to retrieve outfits' })
-  }
-})
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
@@ -55,7 +33,7 @@ router.get('/all', validateAccessToken, async (req, res) => {
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
-router.get('/:id', validateAccessToken, async (req, res) => {
+router.get('/comments/:id', validateAccessToken, async (req, res) => {
   const userId = req.auth?.payload.sub
   if (!userId) {
     res.status(401).json({ message: 'Please provide an id' })
@@ -66,6 +44,29 @@ router.get('/:id', validateAccessToken, async (req, res) => {
     const outfitId = req.params.id
     const comments = await db.getComments(Number(outfitId))
     res.status(200).json(comments)
+  } catch (error) {
+    res.status(500).json({ message: 'Unable to retrieve outfits' })
+  }
+})
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//GET /api/v1/outfits--------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+
+router.get('/all/:id', validateAccessToken, async (req, res) => {
+  const id = req.auth?.payload.sub
+  if (!id) {
+    res.status(401).json({ message: 'Please provide an id' })
+    return
+  }
+
+  try {
+    const user_id = req.params.id
+    const outfits = await db.getOutfitsByUserId(user_id)
+    res.status(200).json(outfits)
   } catch (error) {
     res.status(500).json({ message: 'Unable to retrieve outfits' })
   }
