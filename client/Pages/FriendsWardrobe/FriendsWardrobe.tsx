@@ -58,37 +58,37 @@ function FriendsWardrobe() {
       <div className="w-auto flex mt-[100px]">
         <div className="h-[700px] sticky top-[40px] flex flex-col place-content-evenly w-auto top-[300px] border-r-2 text-md lg:text-xl mb-[20px] ">
           <button
-            className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
+            className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100  h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('')}
           >
             ALL
           </button>
           <button
-            className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
+            className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('outer')}
           >
             OUTER
           </button>
           <button
-            className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
+            className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('top')}
           >
             TOP
           </button>
           <button
-            className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
+            className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('bottom')}
           >
             BOTTOM
           </button>
           <button
-            className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
+            className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('footwear')}
           >
             FOOTWEAR
           </button>
           <button
-            className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
+            className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('accessories')}
           >
             ACC
@@ -104,7 +104,7 @@ function FriendsWardrobe() {
             {!isFriend && (
               <button
                 onClick={handleClick}
-                className=" hover:max-w-full transition-all duration-500 h-0.5 text-sm lg:text-[20px] hover:text-blue-400 mb-2"
+                className=" hover:max-w-full transition-all  h-0.5 text-sm hover:scale-125 ease-in lg:text-[20px] hover:text-orange mb-2"
               >
                 FRIEND
                 <i className="fa-solid fa-plus text-sm lg:text-2xl"></i>
@@ -121,7 +121,7 @@ function FriendsWardrobe() {
                     robes.length > 0 &&
                     robes.map((item: any) => (
                       <li
-                        className="list-none shadow-2xl md:shrink:0 w-[250px] pb-4 cursor-pointer hover:border-2 hover:rounded-lg hover:border-orange border-b-2 border-black m-6 "
+                        className="list-none hover:scale-105 ease-in duration-200 shadow-2xl md:shrink:0 w-[250px] pb-4 cursor-pointer hover:border-2 hover:rounded-lg hover:border-orange border-b-2 border-black m-6 "
                         key={item.id}
                       >
                         <FriendsWardrobeList wardrobe={item} />
