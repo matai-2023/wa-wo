@@ -41,8 +41,8 @@ describe('1.Add likes', () => {
   })
 })
 
-describe('1.Remove likes', () => {
-  it('1.1 should remove a like record of the user to an outfit', async () => {
+describe('2.Remove likes', () => {
+  it('2.1 should remove a like record of the user to an outfit', async () => {
     const userId = 'auth0|6501074ac25b71c07e590847'
     const outfitId = 2
     const likeCount = await countAllLikes()

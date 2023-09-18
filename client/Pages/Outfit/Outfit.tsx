@@ -14,8 +14,6 @@ export default function Outfit() {
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
 
-  const [like, setLike] = useState(false)
-
   return (
     <>
       <div className="flex  justify-center border-2 border-pink-400 h-[50px] mt-[100px] ">
