@@ -7,8 +7,6 @@ import { useState } from 'react'
 import { AiFillHeart, AiOutlineHeart, AiFillMessage } from 'react-icons/ai'
 import { BiSolidTShirt } from 'react-icons/bi'
 
-
-import { BiSolidTShirt } from 'react-icons/bi'
 import LikeButton from '../../components/LikeButton/LikeButton'
 export default function Outfit() {
   const [showing, setShowing] = useState(false)
@@ -17,7 +15,6 @@ export default function Outfit() {
   const friendList = customFriendList.data
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
-
 
   const [like, setLike] = useState(false)
 
@@ -84,10 +81,8 @@ export default function Outfit() {
                         )}
                       </div>
                       {!showing && (
-
                         <div className="border-2 m-4 rounded-md list-none pl-4 h-[250px] sm:h-[230px] md:h-[120px]  lg:h-[260px] xl:h-[120px] overflow-auto">
-                          <Comment outfitId={item.id} />
-
+                          <Comments outfitId={item.id} />
                         </div>
                       )}
                     </div>
@@ -120,7 +115,7 @@ export default function Outfit() {
                             {item.accessories}
                           </p>
                         </div>
- {/* <<<<<<< feature/like-button-frontend
+                        {/* <<<<<<< feature/like-button-frontend
        <div className="flex justify-center items-center  text-2xl h-[200px] border-2 border-purple-400">
                           <LikeButton outfitId={item.id} />
                           <div className="m-2 cursor-pointer hover:text-3xl">
@@ -142,10 +137,7 @@ export default function Outfit() {
                       </div>
                       <div className="flex w-auto justify-center items-end text-2xl lg:h-[200px] ">
                         <div className="m-2 cursor-pointer hover:text-3xl">
-                          <AiOutlineHeart />
-                        </div>
-                        <div className="m-2 cursor-pointer hover:text-3xl">
-                          <AiFillHeart />
+                          <LikeButton outfitId={item.id} />
                         </div>
                         <div className="m-2 cursor-pointer hover:text-3xl">
                           <BiSolidTShirt />
