@@ -30,7 +30,7 @@ export default function Outfit() {
             id="FRIENDLIST"
           >
             <button
-              className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
+              className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
               onClick={() => setFilter('')}
             >
               ALL
@@ -38,7 +38,7 @@ export default function Outfit() {
             {friendList &&
               friendList.map((item) => (
                 <button
-                  className="m-6 hover:max-w-full transition-all uppercase duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
+                  className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 transition-all uppercase duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
                   key={item.auth0_id}
                   onClick={() => setFilter(item.auth0_id)}
                 >
@@ -57,9 +57,9 @@ export default function Outfit() {
                     key={item.id}
                   >
                     <div className="flex flex-col mt-8 mb-8">
-                      <div className=" relative w-full md:mr-[40px] shadow-2xl overflow-hidden ">
+                      <div className=" relative w-full md:mr-[40px] shadow-2xl overflow-hidden hover:scale-105 ease-in duration-200 ">
                         <img
-                          className="w-full  p-4 rounded-md h-[450px] object-cover"
+                          className="w-full  p-4 rounded-md h-[450px] object-cover "
                           src={item.img}
                         />
                       </div>
@@ -100,13 +100,6 @@ export default function Outfit() {
                             {item.accessories}
                           </p>
                         </div>
-                        {/* <<<<<<< feature/like-button-frontend
-       <div className="flex justify-center items-center  text-2xl h-[200px] border-2 border-purple-400">
-                          <LikeButton outfitId={item.id} />
-                          <div className="m-2 cursor-pointer hover:text-3xl">
-                            <BiSolidTShirt />
-                          </div> 
-=======*/}
                         <div className=" flex flex-row items-center lg:flex-col lg:items-start xl:flex xl:flex-row xl:items-center">
                           <p className="text-md lg:text-lg font-semibold text-orange mr-4">
                             footer:{' '}
@@ -120,13 +113,12 @@ export default function Outfit() {
                         </p>
                         <p className="text-sm lg:text-lg">{item.description}</p>
                       </div>
-                      <div className="flex w-auto justify-center items-end text-2xl lg:h-[200px] ">
+                      <div className="flex w-auto items-center justify-center items-end text-2xl lg:h-[200px] ">
                         <div className="m-2 cursor-pointer hover:text-3xl">
                           <LikeButton outfitId={item.id} />
                         </div>
                         <div className="m-2 cursor-pointer hover:text-3xl">
                           <BiSolidTShirt />
-                          {/* >>>>>>> main */}
                         </div>
                       </div>
                     </div>
@@ -139,7 +131,7 @@ export default function Outfit() {
           <div className="relative sticky  border-2 h-[250px] w-[100px] md:h-[350px] md:w-[150px] mr-6 ml-2 top-[100px]">
             <a href="https://www.zara.com/nz/">
               <img
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full hover:scale-110 ease-in duration-200"
                 src="/ad.png"
                 alt=""
               />
@@ -147,7 +139,7 @@ export default function Outfit() {
             <p className="absolute top-0 font-semibold text-2xl m-2">ZARA</p>
             <a href="https://nz.kowtowclothing.com/">
               <img
-                className=" border-2 object-cover w-full h-full mt-4"
+                className=" border-2 object-cover w-full h-full mt-6 hover:scale-110 ease-in duration-200"
                 src="/kt.jpeg"
                 alt=""
               />

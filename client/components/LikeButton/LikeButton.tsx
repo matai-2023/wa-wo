@@ -28,7 +28,9 @@ export default function LikeButton(props: Props) {
         <AiOutlineHeart onClick={handleLike} />
       )}
       {currentLike && currentLike.check === true && (
-        <AiFillHeart onClick={handleUnLike} />
+        <div className="text-red-400">
+          <AiFillHeart onClick={handleUnLike} />
+        </div>
       )}
     </div>
   )
