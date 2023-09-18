@@ -25,14 +25,11 @@ function FriendList() {
 
   return (
     <>
-
-          <h1 className="flex  justify-center font-bold text:[25px] md:text-[30px] mb-10 mt-[100px]">
-            My friends
-          </h1>
-    <div className='flex mb-[20px] justify-center'>
-      <div className="flex w-[300px] md:w-[600px] border-4 border-orange pt-10 pb-10 h-auto rounded-lg flex-col items-center justify-center">
-
-
+      <h1 className="flex  justify-center font-bold text-[23px] md:text-[30px] mb-10 mt-[100px]">
+        My friends
+      </h1>
+      <div className="flex mb-[20px] justify-center">
+        <div className="flex w-[300px] lg:w-[600px] border-8 border-orange pt-10 pb-10 h-auto rounded-lg flex-col items-center justify-center">
           <div className="flex flex-col justify-center text-orange">
             <ul className="m-4">
               {data &&
@@ -40,21 +37,27 @@ function FriendList() {
                 data?.map((friend: any) => (
                   <li
                     key={friend.nickname}
-                    className="list-none flex flex-col items-center text-xl text-blue-300 mb-6 hover:text-orange hover:text-2xl border-2 p-2 rounded-lg"
+                    className="list-none w-auto flex flex-col items-center text-md lg:text-xl text-blue-300 mb-6 hover:text-orange hover:text-2xl border-2 p-2 rounded-lg"
                   >
-                    <div className="text-red-700 mr-4 ">
-                      <AiFillHeart />
+                    <div className="flex flex-row relative w-[250px] lg:w-[400px] justify-center">
+                      <div className="flex flex-col items-center">
+                        <div className="text-red-700 mr-4 ">
+                          <AiFillHeart />
+                        </div>
+
+                        <Link to={`/friend/${friend.auth0_id}`}>
+                          <h3>{friend.nickname}</h3>
+                        </Link>
+                      </div>
+                      <button
+                        className="absolute top-3 right-0"
+                        onClick={() => handleDeleteFriend(friend.auth0_id)}
+                      >
+                        <Icon className="bg-warning text-sm lg:text-xl">
+                          <i className="fa-solid fa-trash" />
+                        </Icon>
+                      </button>
                     </div>
-
-                    <Link to={`/friend/${friend.auth0_id}`}>
-                      <h3>{friend.nickname}</h3>
-                    </Link>
-
-                    <button onClick={() => handleDeleteFriend(friend.auth0_id)}>
-                      <Icon className="bg-warning">
-                        <i className="fa-solid fa-trash" />
-                      </Icon>
-                    </button>
                   </li>
                 ))}
               {data?.length == 0 && (
