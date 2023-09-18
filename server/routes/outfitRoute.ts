@@ -109,11 +109,9 @@ router.post('/comment', validateAccessToken, async (req, res) => {
   }
   try {
     const newComment = req.body
-    console.log(newComment)
     await db.addComment(userId, newComment)
     res.status(201).json({ message: 'Add successfully' })
   } catch (error) {
-    console.error(error)
     res.status(500).json({ message: 'Unable to add outfit' })
   }
 })
