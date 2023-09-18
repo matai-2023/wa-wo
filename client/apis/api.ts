@@ -187,19 +187,32 @@ export async function addAComments({
 //--------------------------------------------------------
 //--------------------------------------------------------
 //     /api/v1/likes/:outfitId
-export async function addLike(outfitId: number, token: string) {
+export async function addLike({
+  outfitId,
+  token,
+}: {
+  outfitId: number
+  token: string
+}) {
   await request
-    .post(`/api/v1/likes/${outfitId}`)
+    .post(`/api/v1/likes`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
-    .send()
+    .send({ outfitId })
 }
 //    /api/v1/likes/:outfitId
-export async function removeLike(outfitId: number, token: string) {
+export async function removeLike({
+  outfitId,
+  token,
+}: {
+  outfitId: number
+  token: string
+}) {
   await request
-    .delete(`/api/v1/likes/${outfitId}`)
+    .delete(`/api/v1/likes`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
+    .send({ outfitId })
 }
 //     /api/v1/likes/:outfitId
 export async function checkLike(outfitId: number, token: string) {

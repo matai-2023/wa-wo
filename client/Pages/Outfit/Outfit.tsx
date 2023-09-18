@@ -3,9 +3,9 @@ import useOutfit from './useCommentHook'
 import Comment from '../../components/Comment/Comment'
 import CommentForm from '../../components/Comment/CommentForm'
 import { useState } from 'react'
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
-import { BiSolidTShirt } from 'react-icons/bi'
 
+import { BiSolidTShirt } from 'react-icons/bi'
+import LikeButton from '../../components/LikeButton/LikeButton'
 export default function Outfit() {
   const [showing, setShowing] = useState(false)
   const [filter, setFilter] = useState('')
@@ -13,6 +13,8 @@ export default function Outfit() {
   const friendList = customFriendList.data
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
+
+  const [like, setLike] = useState(false)
 
   return (
     <>
@@ -96,12 +98,7 @@ export default function Outfit() {
                           </p>
                         </div>
                         <div className="flex justify-center items-center  text-2xl h-[200px] border-2 border-purple-400">
-                          <div className="m-2 cursor-pointer hover:text-3xl">
-                            <AiOutlineHeart />
-                          </div>
-                          <div className="m-2 cursor-pointer hover:text-3xl">
-                            <AiFillHeart />
-                          </div>
+                          <LikeButton outfitId={item.id} />
                           <div className="m-2 cursor-pointer hover:text-3xl">
                             <BiSolidTShirt />
                           </div>

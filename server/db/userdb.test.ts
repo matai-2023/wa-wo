@@ -17,8 +17,6 @@ import {
   getUser,
   upsertUser,
 } from './userdb'
-import { findItemByName } from './wardrobedb'
-import { countReset } from 'console'
 
 beforeAll(async () => {
   await db.migrate.latest()

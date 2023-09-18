@@ -1,5 +1,5 @@
 import connection from './connection.ts'
-
+//------------------------------------------------------------------------
 export async function addLike(
   userId: string,
   outfitId: number,
@@ -8,12 +8,13 @@ export async function addLike(
   const current = await db('likes')
     .where('user_id', userId)
     .where('outfit_id', outfitId)
-  if (current) {
+  if (current.length !== 0) {
     return
   } else {
-    await db('likes').insert({ userId, outfitId })
+    await db('likes').insert({ user_id: userId, outfit_id: outfitId })
   }
 }
+//------------------------------------------------------------------------
 export async function removeLike(
   userId: string,
   outfitId: number,
@@ -38,4 +39,11 @@ export async function checkLikes(
     .first()
   if (likes) return true
   else return false
+}
+
+//Functions for testing purposes only
+
+export async function countAllLikes(db = connection) {
+  const value = await db('likes').count('id as count').first()
+  return value?.count as number
 }
