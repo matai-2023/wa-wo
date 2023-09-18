@@ -76,10 +76,8 @@ export default function Outfit() {
                         )}
                       </div>
                       {!showing && (
-
                         <div className="border-2 m-4 rounded-md list-none pl-4 h-[250px] sm:h-[230px] md:h-[120px]  lg:h-[260px] xl:h-[120px] overflow-auto">
-                          <Comment outfitId={item.id} />
-
+                          <Comments outfitId={item.id} />
                         </div>
                       )}
                     </div>
