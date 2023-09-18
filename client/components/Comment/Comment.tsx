@@ -6,7 +6,6 @@ interface Props {
 export default function Comment(props: Props) {
   const commentHook = useComments(props.outfitId)
   const commentsList = commentHook.data
-  console.log('Comment for:', props.outfitId, 'List: ', commentsList)
   return (
     <>
       <div className="p-4">
