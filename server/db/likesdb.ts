@@ -25,3 +25,17 @@ export async function removeLike(
 export async function countLikes(outfitId: number, db = connection) {
   return db('likes').where('outfit_id', outfitId).count('id as count').first()
 }
+
+export async function checkLikes(
+  userId: string,
+  outfitId: number,
+  db = connection
+) {
+  const likes = await db('likes')
+    .where('user_id', userId)
+    .where('outfit_id', outfitId)
+    .select()
+    .first()
+  if (likes) return true
+  else return false
+}
