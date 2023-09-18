@@ -50,4 +50,18 @@ router.get('/outfit/:id', validateAccessToken, async (req, res) => {
   }
 })
 
+router.get('/check/:outfitId', validateAccessToken, async (req, res) => {
+  const userId = req.auth?.payload.sub as string
+  if (!userId) {
+    res.status(401).json({ message: 'Please provide an id' })
+  }
+  try {
+    const oid = Number(req.params.outfitId)
+    const check = await db.checkLikes(userId, oid)
+    res.status(200).json({ check })
+  } catch (error) {
+    res.status(500).json({ message: 'could not get count' })
+  }
+})
+
 export default router
