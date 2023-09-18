@@ -2,6 +2,7 @@ import request from 'superagent'
 import { User } from '../../types/User'
 import { AddWardrobe, Wardrobe } from '../../types/MyWardrobe'
 import { OutfitToAdd } from '../../server/db/outfits'
+import { as } from 'vitest/dist/reporters-cb94c88b.js'
 
 //-----------------------------------------------
 //-----------------------------------------------
@@ -173,4 +174,59 @@ export async function addAComments({
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .send({ outfitId: outfitId, comment: comment })
+}
+
+//--------------------------------------------------------
+//--------------------------------------------------------
+//--------------------------------------------------------
+//--------------------------------------------------------
+//--------------------------------------------------------
+//All like api calls go here------------------------------
+//--------------------------------------------------------
+//--------------------------------------------------------
+//--------------------------------------------------------
+//--------------------------------------------------------
+//     /api/v1/likes/:outfitId
+export async function addLike({
+  outfitId,
+  token,
+}: {
+  outfitId: number
+  token: string
+}) {
+  await request
+    .post(`/api/v1/likes`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+    .send({ outfitId })
+}
+//    /api/v1/likes/:outfitId
+export async function removeLike({
+  outfitId,
+  token,
+}: {
+  outfitId: number
+  token: string
+}) {
+  await request
+    .delete(`/api/v1/likes`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+    .send({ outfitId })
+}
+//     /api/v1/likes/:outfitId
+export async function checkLike(outfitId: number, token: string) {
+  const res = await request
+    .get(`/api/v1/likes/check/${outfitId}`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body
+}
+//  /api/v1/likes/outfit/:outfitId
+export async function displayLikeCount(outfitId: number, token: string) {
+  const res = await request
+    .get(`/api/v1/likes/${outfitId}`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body
 }
