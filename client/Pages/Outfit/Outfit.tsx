@@ -4,12 +4,10 @@ import Comments from '../../components/Comment/Comment'
 import CommentForm from '../../components/Comment/CommentForm'
 import { useState } from 'react'
 
-import { AiFillHeart, AiOutlineHeart, AiFillMessage } from 'react-icons/ai'
 import { BiSolidTShirt } from 'react-icons/bi'
 
 import LikeButton from '../../components/LikeButton/LikeButton'
 export default function Outfit() {
-  const [showing, setShowing] = useState(false)
   const [filter, setFilter] = useState('')
   const customFriendList = useFriendList()
   const friendList = customFriendList.data
@@ -66,25 +64,12 @@ export default function Outfit() {
                         />
                       </div>
                       <div className="flex mt-6 ml-4 mb-4">
-                        <button
-                          className="text-2xl hover:text-3xl hover:text-blue-400 transition-all"
-                          onClick={() => setShowing(!showing)}
-                        >
-                          {showing ? '' : <AiFillMessage />}
-                        </button>
-                        {showing && (
-                          <CommentForm
-                            outfitId={item.id}
-                            showing={showing}
-                            handleClick={setShowing}
-                          />
-                        )}
+                        <CommentForm outfitId={item.id} />
                       </div>
-                      {!showing && (
-                        <div className="border-2 m-4 rounded-md list-none pl-4 h-[250px] sm:h-[230px] md:h-[120px]  lg:h-[260px] xl:h-[120px] overflow-auto">
-                          <Comments outfitId={item.id} />
-                        </div>
-                      )}
+
+                      <div className="border-2 m-4 rounded-md list-none pl-4 h-[250px] sm:h-[230px] md:h-[120px]  lg:h-[260px] xl:h-[120px] overflow-auto">
+                        <Comments outfitId={item.id} />
+                      </div>
                     </div>
 
                     <div className="flex flex-col h-auto lg:h-[700px] w-full xl:w-2/5 ">
