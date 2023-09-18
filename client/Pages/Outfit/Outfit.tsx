@@ -14,8 +14,6 @@ export default function Outfit() {
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
 
-  const [like, setLike] = useState(false)
-
   return (
     <>
       <div className="flex md:justify-between  mt-32 mb-32 mr-16 ml-16  text-4xl border-b-[5px]">
