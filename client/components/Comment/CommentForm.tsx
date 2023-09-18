@@ -23,13 +23,21 @@ export default function CommentForm(props: Props) {
   }
   return (
     <>
-      <input
-        type="text"
-        value={input}
-        placeholder="Comment here"
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <button onClick={handleClick}>Add comment</button>
+      <div className="flex w-full justify-between items-center">
+        <input
+          type="text"
+          className="border-2 border-orange w-full rounded-md text-md  px-2 lg:p-2 m-2"
+          value={input}
+          placeholder="Comment here"
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button
+          className="inline-flex mr-4 items-center -center h-[20px] px-4 py-0 text-sm lg:text-lg lg:h-[40px] font-semibold text-center text-orange no-underline align-middle transition-all duration-300 ease-in-out bg-transparent border-2 border-orange border-solid rounded-lg cursor-pointer select-none hover:text-white hover:bg-orange hover:border-white focus:shadow-xs focus:no-underline"
+          onClick={handleClick}
+        >
+          Add
+        </button>
+      </div>
     </>
   )
 }

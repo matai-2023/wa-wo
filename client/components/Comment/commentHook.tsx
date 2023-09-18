@@ -5,7 +5,7 @@ function useComments(outfitId: number) {
   const { getAccessTokenSilently } = useAuth0()
   const queryClient = useQueryClient()
   const { data } = useQuery({
-    queryKey: ['comments'],
+    queryKey: ['comments', outfitId],
     queryFn: async () => {
       const accessToken = await getAccessTokenSilently()
       const response = await getCommentsOfOutfit(outfitId, accessToken)

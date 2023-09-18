@@ -151,10 +151,12 @@ export async function addOutfit(
 export async function getComments(outfitId: number, db = connection) {
   return await db('comments')
     .join('users', 'users.auth0_id', 'comments.user_id')
-    .where('comments.outfit_id', outfitId)
+    .join('outfits', 'outfits.id', 'comments.outfit_id')
+    .where('outfits.id', outfitId)
     .select(
-      'id as commentId',
+      'comments.id as commentId',
       'date_commented as date',
+      'outfits.id as outfitId',
       'nickname as nickname',
       'comment as comment'
     )

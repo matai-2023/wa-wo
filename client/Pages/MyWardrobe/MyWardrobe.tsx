@@ -19,7 +19,7 @@ function MyWardrobe() {
       {' '}
       {isLoading && <div>Loading ...</div>}
       <div className="flex mt-[100px]">
-        <div className="sticky h-[700px] top-[40px]  flex flex-col place-content-evenly w-auto top-[300px] border-r-2 text-md lg:text-2xl mb-[20px] ">
+        <div className="sticky w-auto h-[700px] top-[40px]  flex flex-col place-content-evenly top-[300px] border-r-2 text-md lg:text-xl mb-[20px] ">
           <button
             className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('')}
@@ -72,13 +72,13 @@ function MyWardrobe() {
           </div>
           {isAuthenticated && (
             <ul>
-              <div className="ml-[50px] mr-[80px] place-content-center">
+              <div className="ml-[50px] mr-[80px] cols-4 place-content-center">
                 <div className="grid grid-cols-[300px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
                   {data &&
                     data?.length > 0 &&
                     data.map((item) => (
                       <li
-                        className="list-none w-[250px] md:shrink-0 md:mr-[40px] pb-4 cursor-pointer hover:border-2 hover:rounded-lg border-b-2 border-black hover:border-orange shadow-2xl ml-6 mr-6 mt-10 mb-6 "
+                        className="list-none shadow-2xl md:shrink:0 w-[250px] pb-4 cursor-pointer hover:border-2 hover:rounded-lg hover:border-orange border-b-2 border-black m-6 "
                         key={item.id}
                       >
                         <WardrobeList

@@ -29,7 +29,7 @@ router.get('/all', validateAccessToken, async (req, res) => {
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
-//GET /api/v1/outfits/:id----------------------------------
+//GET /api/v1/outfits/comments/:id----------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
@@ -88,11 +88,9 @@ router.post('/', validateAccessToken, async (req, res) => {
   }
   try {
     const newOutfit = req.body
-    console.log(newOutfit)
     await db.addOutfit(userId, newOutfit)
     res.status(201).json({ message: 'Add successfully' })
   } catch (error) {
-    console.error(error)
     res.status(500).json({ message: 'Unable to add outfit' })
   }
 })
@@ -114,7 +112,6 @@ router.post('/comment', validateAccessToken, async (req, res) => {
     await db.addComment(userId, newComment)
     res.status(201).json({ message: 'Add successfully' })
   } catch (error) {
-    console.error(error)
     res.status(500).json({ message: 'Unable to add outfit' })
   }
 })
