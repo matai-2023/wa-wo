@@ -24,11 +24,11 @@ export default function Outfit() {
       <div className="flex">
         <div className="sticky">
           <div
-            className="overflow-auto sticky w-auto lg:w-[300px] h-[700px] top-[40px]  flex flex-col items-center  top-[300px] border-r-2 text-md lg:text-xl mb-[20px] "
+            className="overflow-auto sticky w-auto lg:w-[300px] h-[700px] top-[40px]  flex flex-col items-center  border-r-2 text-md lg:text-xl mb-[20px] "
             id="FRIENDLIST"
           >
             <button
-              className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
+              className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 h-0.5 focus:text-blue-400 hover:text-blue-400"
               onClick={() => setFilter('')}
             >
               ALL
@@ -36,7 +36,7 @@ export default function Outfit() {
             {friendList &&
               friendList.map((item) => (
                 <button
-                  className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 transition-all uppercase duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
+                  className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100  uppercase  h-0.5 focus:text-blue-400 hover:text-blue-400"
                   key={item.auth0_id}
                   onClick={() => setFilter(item.auth0_id)}
                 >

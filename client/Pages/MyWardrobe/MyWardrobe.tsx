@@ -18,8 +18,8 @@ function MyWardrobe() {
     <>
       {' '}
       {isLoading && <div>Loading ...</div>}
-      <div className="flex mt-[100px]">
-        <div className="sticky w-auto h-[700px] top-[40px]  flex flex-col place-content-evenly top-[300px] border-r-2 text-md lg:text-xl mb-[20px] ">
+      <div className="w-auto flex mt-[100px]">
+        <div className="h-[700px] sticky top-[40px] flex flex-col place-content-evenly w-auto  border-r-2 text-md lg:text-xl mb-[20px] ">
           <button
             className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('')}
