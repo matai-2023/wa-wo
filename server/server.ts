@@ -1,5 +1,4 @@
 import * as Path from 'node:path'
-
 import express from 'express'
 import outfitRoute from './routes/outfitRoute.ts'
 import wawoRoutes from './routes/wardrobeRoutes.ts'
@@ -22,4 +21,5 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(Path.resolve('./dist/index.html'))
   })
 }
+
 export default server

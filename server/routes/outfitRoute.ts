@@ -1,7 +1,7 @@
 import express from 'express'
 import * as db from '../db/outfits'
 import validateAccessToken from '../auth0'
-
+import upload from '../multerSetup'
 const router = express.Router()
 
 //---------------------------------------------------------
@@ -80,20 +80,37 @@ router.get('/all/:id', validateAccessToken, async (req, res) => {
 //---------------------------------------------------------
 //---------------------------------------------------------
 
-router.post('/', validateAccessToken, async (req, res) => {
-  const userId = req.auth?.payload.sub
-  if (!userId) {
-    res.status(401).json({ message: 'Please provide an id' })
-    return
+router.post(
+  '/',
+  upload.single('image'),
+  validateAccessToken,
+  async (req, res) => {
+    const userId = req.auth?.payload.sub
+    if (!userId) {
+      res.status(401).json({ message: 'Please provide an id' })
+      return
+    }
+    try {
+      const newOutfit = {
+        top_id: req.body.top.length == 0 ? null : Number(req.body.top),
+        bottom_id: req.body.bottom.length == 0 ? null : Number(req.body.bottom),
+        outer_id: req.body.outer.length == 0 ? null : Number(req.body.outer),
+        accessories_id:
+          req.body.accessories.length == 0
+            ? null
+            : Number(req.body.accessories),
+        footwear_id:
+          req.body.footwear.length == 0 ? null : Number(req.body.footwear),
+        description: req.body.description,
+        img: `/images/${req.file?.filename}`,
+      }
+      await db.addOutfit(userId, newOutfit)
+      res.status(201).json({ message: 'Added successfully' })
+    } catch (error) {
+      res.status(500).json({ message: 'Unable to add outfit' })
+    }
   }
-  try {
-    const newOutfit = req.body
-    await db.addOutfit(userId, newOutfit)
-    res.status(201).json({ message: 'Add successfully' })
-  } catch (error) {
-    res.status(500).json({ message: 'Unable to add outfit' })
-  }
-})
+)
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------

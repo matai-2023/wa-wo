@@ -23,10 +23,10 @@ function AddItem() {
 
   const queryClient = useQueryClient()
   const mutationAdd = useMutation({
-    mutationFn: ({ newItem, token }: { newItem: AddWardrobe; token: string }) =>
+    mutationFn: ({ newItem, token }: { newItem: FormData; token: string }) =>
       addItem(newItem, token),
     onSuccess: () => {
-      queryClient.invalidateQueries(['items'])
+      queryClient.invalidateQueries(['wardrobe'])
     },
   })
   //---------------------------------------------------------
@@ -35,7 +35,7 @@ function AddItem() {
   //---------------------------------------------------------
   //---------------------------------------------------------
 
-  async function handleAdd(newItem: AddWardrobe) {
+  async function handleAdd(newItem: FormData) {
     const token = await getAccessTokenSilently()
     mutationAdd.mutate({ newItem, token })
     navigate('/my-wardrobe')
@@ -62,27 +62,13 @@ function AddItem() {
   //---------------------------------------------------------
   //---------------------------------------------------------
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-
     const formData = new FormData(e.currentTarget)
-
-    const name = formData.get('name') as string
-    const description = formData.get('description') as string
-    const category = formData.get('category') as string
-    const part = formData.get('part') as string
-    const image = formData.get('image') as string
-
-    const form = {
-      user_id: data.auth0_id,
-      name: name,
-      description: description,
-      category: category,
-      part: part,
-      image: image,
-    }
-
-    handleAdd(form as AddWardrobe)
+    await handleAdd(formData)
+    // await addItem(formData, token)
+    // queryClient.invalidateQueries(['wardrobe'])
+    // navigate('/my-wardrobe')
   }
 
   //---------------------------------------------------------
@@ -140,8 +126,9 @@ function AddItem() {
           </label>
           <input
             className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
-            type="text"
+            type="file"
             name="image"
+            accept="images/*"
             id="image"
             required
           />
