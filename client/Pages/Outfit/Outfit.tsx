@@ -15,12 +15,12 @@ export default function Outfit() {
   const outfitList = customOutfitList.data
   return (
     <>
-      <div className="flex md:justify-between  mt-32 mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12">
-        <h1 className="italic text-2xl left-[100px] lg:text-[40px]">
-          What are you wearing???
+      <div className="flex md:justify-between  mt-32 mb-32 mr-16 ml-16  text-4xl border-b-[5px]">
+        <h1 className="italic text-2xl left-[100px] lg:text-[40px] mb-2">
+          oOtd
         </h1>
       </div>
-      <div className="flex  w-10/12">
+      <div className="flex">
         <div className="sticky">
           <div
             className="overflow-auto sticky w-auto lg:w-[300px] h-[700px] top-[40px]  flex flex-col items-center  top-[300px] border-r-2 text-md lg:text-xl mb-[20px] "
@@ -44,19 +44,19 @@ export default function Outfit() {
               ))}
           </div>
         </div>
-        <div className="flex flex-col h-100vh ">
-          <div className="flex flex-col w-auto ">
+        <div className="flex flex-col h-auto w-screen">
+          <div className="flex flex-col ">
             <div className="flex flex-col ml-[40px]">
               {outfitList &&
                 outfitList.map((item: any) => (
                   <div
-                    className="flex flex-col h-full border-2 border-black m-2 lg:h-auto items-center lg:flex lg:flex-row "
+                    className="flex flex-col h-full border-b-2  mr-8 m-2 lg:h-auto xl:justify-around xl:flex xl:flex-row "
                     key={item.id}
                   >
-                    <div className=" w-full h-auto lg:h-[700px] m-4 lg:w-3/5 ">
-                      <div className="">
+                    <div className="flex flex-col mt-8 mb-8">
+                      <div className=" relative w-full md:mr-[40px] shadow-2xl overflow-hidden ">
                         <img
-                          className="object-cover shadow-2xl"
+                          className="w-full  p-4 rounded-md h-[450px] object-cover"
                           src={item.img}
                         />
                       </div>
@@ -76,13 +76,16 @@ export default function Outfit() {
                         )}
                       </div>
                       {!showing && (
-                        <div className="border-2  rounded-md list-none pl-4 h-[250px] sm:h-[230px] md:h-[120px]  lg:h-[260px] xl:h-[120px] overflow-auto">
-                          <Comments outfitId={item.id} />
+
+                        <div className="border-2 m-4 rounded-md list-none pl-4 h-[250px] sm:h-[230px] md:h-[120px]  lg:h-[260px] xl:h-[120px] overflow-auto">
+                          <Comment outfitId={item.id} />
+
                         </div>
                       )}
                     </div>
-                    <div className="flex flex-col border-6 h-auto lg:h-[700px] w-full  lg:w-2/5 border-orange">
-                      <div className=" uppercase lg:mt-10  p-2 flex flex-col lg:h-2/5">
+
+                    <div className="flex flex-col h-auto lg:h-[700px] w-full xl:w-2/5 ">
+                      <div className=" uppercase lg:mt-10 mr-4 mt-4 ml-4 lg:mb-0 p-2 flex flex-col lg:h-[200px]">
                         <div className=" flex flex-row items-center lg:flex-col lg:items-start xl:flex xl:flex-row xl:items-center">
                           <p className="text-md lg:text-lg text-orange font-semibold mr-4">
                             top:{' '}
@@ -116,13 +119,13 @@ export default function Outfit() {
                           <p className="text-sm lg:text-lg">{item.footer}</p>
                         </div>
                       </div>
-                      <div className="h-auto p-2">
+                      <div className="h-auto mt-14 mr-6 mb-4 ml-6 lg:mt-[80px]">
                         <p className="uppercase font-semibold text-md lg:text-lg p-2">
                           description
                         </p>
                         <p className="text-sm lg:text-lg">{item.description}</p>
                       </div>
-                      <div className="flex justify-center items-end text-2xl lg:h-1/5 ">
+                      <div className="flex w-auto justify-center items-end text-2xl lg:h-[200px] ">
                         <div className="m-2 cursor-pointer hover:text-3xl">
                           <AiOutlineHeart />
                         </div>
@@ -139,8 +142,24 @@ export default function Outfit() {
             </div>
           </div>
         </div>
-        <div>
-          <h1>hello</h1>
+        <div className="sticky invisible sm:visible">
+          <div className="relative sticky  border-2 h-[250px] w-[100px] md:h-[350px] md:w-[150px] mr-6 ml-2 top-[100px]">
+            <a href="https://www.zara.com/nz/">
+              <img
+                className="object-cover w-full h-full"
+                src="/ad.png"
+                alt=""
+              />
+            </a>
+            <p className="absolute top-0 font-semibold text-2xl m-2">ZARA</p>
+            <a href="https://nz.kowtowclothing.com/">
+              <img
+                className=" border-2 object-cover w-full h-full mt-4"
+                src="/kt.jpeg"
+                alt=""
+              />
+            </a>
+          </div>
         </div>
       </div>
     </>
