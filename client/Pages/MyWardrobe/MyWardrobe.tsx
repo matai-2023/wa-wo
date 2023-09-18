@@ -72,7 +72,7 @@ function MyWardrobe() {
           </div>
           {isAuthenticated && (
             <ul>
-              <div className="ml-[50px] mr-[80px] place-content-center">
+              <div className="ml-[50px] mr-[80px] cols-4 place-content-center">
                 <div className="grid grid-cols-[300px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
                   {data &&
                     data?.length > 0 &&

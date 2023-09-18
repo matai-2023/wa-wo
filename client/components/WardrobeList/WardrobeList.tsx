@@ -12,7 +12,7 @@ function WardrobeList(props: Props) {
   return (
     <>
       <div>
-        <div className=" relative w-full md:mr-[40px] overflow-hidden ">
+        <div className=" relative w-full overflow-hidden ">
           <img
             className="w-full rounded-md h-[350px] object-cover"
             src={wardrobe.image}
