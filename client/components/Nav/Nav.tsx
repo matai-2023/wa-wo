@@ -23,7 +23,7 @@ function Nav(props: Props) {
       <ul className="text-xl lg:text-2xl">
         <li>
           <button
-            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/my-wardrobe')}
           >
             My wardrobe
@@ -31,7 +31,7 @@ function Nav(props: Props) {
         </li>
         <li>
           <button
-            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/friend-list')}
           >
             My friends
@@ -39,7 +39,7 @@ function Nav(props: Props) {
         </li>
         <li>
           <button
-            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/add-item')}
           >
             Add an Item
@@ -47,7 +47,7 @@ function Nav(props: Props) {
         </li>
         <li>
           <button
-            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/find-friend')}
           >
             Find User
@@ -55,7 +55,7 @@ function Nav(props: Props) {
         </li>
         <li>
           <button
-            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/outfit')}
           >
             My Outfit
@@ -63,7 +63,7 @@ function Nav(props: Props) {
         </li>
         <li>
           <button
-            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
+            className="text-black font-bold hover:scale-125 ease-in duration-100 hover:max-w-full h-0.5  hover:text-blue-400 mb-2"
             onClick={() => goTo('/credit')}
           >
             Credits
@@ -72,7 +72,7 @@ function Nav(props: Props) {
         <li>
           {isAuthenticated && (
             <button
-              className="text-orange text-[20px] hover:scale-125 ease-in duration-100 font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2 mt-4"
+              className="text-orange text-[20px] hover:scale-125 ease-in duration-100 font-bold hover:max-w-full h-0.5  hover:text-blue-400 mb-2 mt-4"
               onClick={handleLogout}
             >
               Sign out
