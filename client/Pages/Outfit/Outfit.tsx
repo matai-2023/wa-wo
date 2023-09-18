@@ -3,9 +3,13 @@ import useOutfit from './useCommentHook'
 import Comments from '../../components/Comment/Comment'
 import CommentForm from '../../components/Comment/CommentForm'
 import { useState } from 'react'
+
 import { AiFillHeart, AiOutlineHeart, AiFillMessage } from 'react-icons/ai'
 import { BiSolidTShirt } from 'react-icons/bi'
 
+
+import { BiSolidTShirt } from 'react-icons/bi'
+import LikeButton from '../../components/LikeButton/LikeButton'
 export default function Outfit() {
   const [showing, setShowing] = useState(false)
   const [filter, setFilter] = useState('')
@@ -13,6 +17,10 @@ export default function Outfit() {
   const friendList = customFriendList.data
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
+
+
+  const [like, setLike] = useState(false)
+
   return (
     <>
       <div className="flex md:justify-between  mt-32 mb-32 mr-16 ml-16  text-4xl border-b-[5px]">
@@ -112,6 +120,13 @@ export default function Outfit() {
                             {item.accessories}
                           </p>
                         </div>
+ {/* <<<<<<< feature/like-button-frontend
+       <div className="flex justify-center items-center  text-2xl h-[200px] border-2 border-purple-400">
+                          <LikeButton outfitId={item.id} />
+                          <div className="m-2 cursor-pointer hover:text-3xl">
+                            <BiSolidTShirt />
+                          </div> 
+=======*/}
                         <div className=" flex flex-row items-center lg:flex-col lg:items-start xl:flex xl:flex-row xl:items-center">
                           <p className="text-md lg:text-lg font-semibold text-orange mr-4">
                             footer:{' '}
@@ -134,6 +149,7 @@ export default function Outfit() {
                         </div>
                         <div className="m-2 cursor-pointer hover:text-3xl">
                           <BiSolidTShirt />
+                          {/* >>>>>>> main */}
                         </div>
                       </div>
                     </div>
