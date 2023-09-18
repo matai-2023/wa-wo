@@ -87,8 +87,9 @@ router.post('/', validateAccessToken, async (req, res) => {
     return
   }
   try {
-    const outfitUrl = req.body
-    await db.addOutfit(userId, outfitUrl)
+    const newOutfit = req.body
+    console.log(newOutfit)
+    await db.addOutfit(userId, newOutfit)
     res.status(201).json({ message: 'Add successfully' })
   } catch (error) {
     console.error(error)
@@ -98,7 +99,7 @@ router.post('/', validateAccessToken, async (req, res) => {
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
-//GET /api/v1/outfits/comment--------------------------------------
+//GET /api/v1/outfits/comment------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------

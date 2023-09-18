@@ -92,28 +92,66 @@ function AddItem() {
   //---------------------------------------------------------
 
   return (
-    <div className='flex flex-col items-center mt-[100px] '>
-          <h2 className="font-bold text-[30px]">Add new item</h2>
-      <form onSubmit={handleSubmit} className="w-[300px] lg:w-[600px] space-y-4 p-8 border-4 border-orange rounded-md mt-[50px]">
+    <div className="flex flex-col items-center mt-[100px] ">
+      <h2 className="font-bold text-[30px]">Add new item</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="w-[300px] lg:w-[600px] space-y-4 p-8 border-4 border-orange rounded-md mt-[50px]"
+      >
         <div className="space-y-2">
-          <label className="font-semibold" htmlFor="item">Item *</label>
-          <input className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange" type="text" name="name" id="item" required />
+          <label className="font-semibold" htmlFor="item">
+            Item *
+          </label>
+          <input
+            className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
+            type="text"
+            name="name"
+            id="item"
+            required
+          />
         </div>
         <div className="space-y-2">
-          <label className="font-semibold"  htmlFor="description">Description *</label>
-          <input className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange" type="text" name="description" id="description" required />
+          <label className="font-semibold" htmlFor="description">
+            Description *
+          </label>
+          <input
+            className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
+            type="text"
+            name="description"
+            id="description"
+            required
+          />
         </div>
         <div className="space-y-2">
-          <label className="font-semibold"  htmlFor="part">Part *</label>
-          <input className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange" type="text" name="part" id="part" required />
+          <label className="font-semibold" htmlFor="part">
+            Part *
+          </label>
+          <input
+            className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
+            type="text"
+            name="part"
+            id="part"
+            required
+          />
         </div>
         <div className="space-y-2">
-          <label className="font-semibold"  htmlFor="image">Image *</label>
-          <input className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange" type="text" name="image" id="image" required />
+          <label className="font-semibold" htmlFor="image">
+            Image *
+          </label>
+          <input
+            className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
+            type="text"
+            name="image"
+            id="image"
+            required
+          />
         </div>
         <div className="space-y-1">
-          <label className="font-semibold"  htmlFor="category">Category *</label>
-          <input className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
+          <label className="font-semibold" htmlFor="category">
+            Category *
+          </label>
+          <input
+            className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
             type="text"
             name="category"
             id="category"

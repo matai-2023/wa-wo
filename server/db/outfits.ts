@@ -113,7 +113,7 @@ export async function getOutfitsByUserId(userId: string, db = connection) {
   return formattedOutfits
 }
 
-interface OutfitToAdd {
+export interface OutfitToAdd {
   img: string
   top_id: number | null
   bottom_id: number | null
