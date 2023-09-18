@@ -95,7 +95,7 @@ export async function getMyWardrobe(token: string) {
   return response.body as Wardrobe[]
 }
 
-export async function addItem(newItem: AddWardrobe, token: string) {
+export async function addItem(newItem: FormData, token: string) {
   await request
     .post('/api/v1/my-wardrobe')
     .set('Authorization', `Bearer ${token}`)
@@ -152,11 +152,10 @@ export async function getCommentsOfOutfit(outfitId: number, token: string) {
   return res.body
 }
 
-export async function addOutfit(newOutfit: OutfitToAdd, token: string) {
+export async function addOutfit(newOutfit: FormData, token: string) {
   await request
     .post(`/api/v1/outfits`)
     .set('Authorization', `Bearer ${token}`)
-    .set('Content-Type', 'application/json')
     .send(newOutfit)
 }
 

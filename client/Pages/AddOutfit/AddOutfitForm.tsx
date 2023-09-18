@@ -41,30 +41,14 @@ export default function AddOutfitForm() {
     //-------------------------------------------------------
     //-------------------------------------------------------
     const form = new FormData(e.currentTarget)
-    const img = form.get('image')?.valueOf() as string
-    const description = form.get('description')?.valueOf() as string
-    const top = form.get('top')?.valueOf() as number | null
-    const bottom = form.get('bottom')?.valueOf() as number | null
-    const outer = form.get('outer')?.valueOf() as number | null
-    const footwear = form.get('footwear')?.valueOf() as number | null
-    const accessories = form.get('accessories')?.valueOf() as number | null
     //-------------------------------------------------------
     //-------------------------------------------------------
     //Constructing newOutfit---------------------------------
     //-------------------------------------------------------
     //-------------------------------------------------------
-    const newOutfit = {
-      img: img,
-      description: description,
-      top_id: typeof top == 'string' ? null : top,
-      bottom_id: typeof bottom == 'string' ? null : bottom,
-      accessories_id: typeof accessories == 'string' ? null : accessories,
-      footwear_id: typeof footwear == 'string' ? null : footwear,
-      outer_id: typeof outer == 'string' ? null : outer,
-    }
 
     const token = await getAccessTokenSilently()
-    mutationAddOutfit.mutate({ newOutfit, token: token })
+    mutationAddOutfit.mutate({ newOutfit: form, token: token })
     navigate('/outfit')
   }
 
@@ -112,7 +96,7 @@ export default function AddOutfitForm() {
               </option>
             ))}
           </select>
-          <input placeholder="Upload Image" name="image" required />
+          <input type="file" name="image" required />
           <input
             placeholder="describe your outfit!"
             name="description"

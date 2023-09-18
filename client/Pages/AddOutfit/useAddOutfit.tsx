@@ -10,7 +10,7 @@ export default function useAddOutfit() {
       newOutfit,
       token,
     }: {
-      newOutfit: OutfitToAdd
+      newOutfit: FormData
       token: string
     }) => addOutfit(newOutfit, token),
     onSuccess: () => {
