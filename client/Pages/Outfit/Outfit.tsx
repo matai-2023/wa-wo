@@ -1,6 +1,6 @@
 import useFriendList from '../../hooks/useFriendList'
 import useOutfit from './useCommentHook'
-import Comment from '../../components/Comment/Comment'
+import Comments from '../../components/Comment/Comment'
 import CommentForm from '../../components/Comment/CommentForm'
 import { useState } from 'react'
 import { AiFillHeart, AiOutlineHeart, AiFillMessage } from 'react-icons/ai'
@@ -13,7 +13,6 @@ export default function Outfit() {
   const friendList = customFriendList.data
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
-
   return (
     <>
       <div className="flex md:justify-between  mt-32 mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12">
@@ -78,7 +77,7 @@ export default function Outfit() {
                       </div>
                       {!showing && (
                         <div className="border-2  rounded-md list-none pl-4 h-[250px] sm:h-[230px] md:h-[120px]  lg:h-[260px] xl:h-[120px] overflow-auto">
-                          <Comment outfitId={item.id} />
+                          <Comments outfitId={item.id} />
                         </div>
                       )}
                     </div>
