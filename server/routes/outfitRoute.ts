@@ -29,7 +29,7 @@ router.get('/all', validateAccessToken, async (req, res) => {
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
-//GET /api/v1/outfits/:id----------------------------------
+//GET /api/v1/outfits/comments/:id----------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
@@ -109,6 +109,7 @@ router.post('/comment', validateAccessToken, async (req, res) => {
   }
   try {
     const newComment = req.body
+    console.log(newComment)
     await db.addComment(userId, newComment)
     res.status(201).json({ message: 'Add successfully' })
   } catch (error) {
