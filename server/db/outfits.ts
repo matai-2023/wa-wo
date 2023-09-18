@@ -113,13 +113,13 @@ export async function getOutfitsByUserId(userId: string, db = connection) {
   return formattedOutfits
 }
 
-interface OutfitToAdd {
+export interface OutfitToAdd {
   img: string
-  top_id: number
-  bottom_id: number
-  outer_id: number
-  accessories_id: number
-  footwear_id: number
+  top_id: number | null
+  bottom_id: number | null
+  outer_id: number | null
+  accessories_id: number | null
+  footwear_id: number | null
   description: string
 }
 

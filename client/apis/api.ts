@@ -1,6 +1,7 @@
 import request from 'superagent'
 import { User } from '../../types/User'
 import { AddWardrobe, Wardrobe } from '../../types/MyWardrobe'
+import { OutfitToAdd } from '../../server/db/outfits'
 
 //-----------------------------------------------
 //-----------------------------------------------
@@ -148,6 +149,14 @@ export async function getCommentsOfOutfit(outfitId: number, token: string) {
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
   return res.body
+}
+
+export async function addOutfit(newOutfit: OutfitToAdd, token: string) {
+  await request
+    .post(`/api/v1/outfits`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+    .send(newOutfit)
 }
 
 export async function addAComments({
