@@ -5,7 +5,7 @@ import { IfAuthenticated } from '../../apis/Authenticated'
 import { Link } from 'react-router-dom'
 import { GiClothes } from 'react-icons/gi'
 import { useAuth0 } from '@auth0/auth0-react'
-import {AiOutlineSearch} from 'react-icons/ai'
+import { AiOutlineSearch } from 'react-icons/ai'
 function Header() {
   const [navOpened, setNavOpened] = useState(false)
   const { logout } = useAuth0()
@@ -27,12 +27,12 @@ function Header() {
         <div className="hidden lg:block absolute right-[100px] top-[30px]">
           <IfAuthenticated>
             <div className="flex right-0">
-              <div className="mt-[14px] mr-4">
+              <div className="mt-[14px] mr-4 hover:scale-125 ease-in hover:text-orange duration-100">
                 <Link className="text-3xl" to={'/find-friend'}>
-              <AiOutlineSearch/>
-              </Link>
+                  <AiOutlineSearch />
+                </Link>
               </div>
-              <div className="mt-4 mr-4">
+              <div className="mt-4 mr-4 hover:scale-125 ease-in hover:text-orange duration-100">
                 <Link to="/profile">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -48,12 +48,12 @@ function Header() {
                   </svg>
                 </Link>
               </div>
-              <div className="mt-4 mr-4">
+              <div className="mt-4 mr-4 hover:scale-125 ease-in hover:text-orange duration-100">
                 <Link className="text-3xl" to="/my-wardrobe">
                   <GiClothes />
                 </Link>
               </div>
-              <div className="mt-4 mr-6">
+              <div className="mt-4 mr-6 hover:scale-125 ease-in  duration-100">
                 <button
                   className=" text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
                   onClick={handleLogout}
@@ -70,7 +70,7 @@ function Header() {
             {!navOpened && (
               <div>
                 <button
-                  className="fixed top-10 text-[10px] right-10 hover:text-blue-400"
+                  className="fixed top-10 text-[10px] right-10 hover:scale-125 ease-in duration-100 hover:text-blue-400"
                   onClick={toggleMenu}
                 >
                   <i className="fa-solid  fa-bars absolute top-0 right-0 h-10 w-10"></i>
@@ -80,7 +80,7 @@ function Header() {
           </IfAuthenticated>
           {navOpened && (
             <button
-              className="fixed top-10 right-10 hover:text-blue-400"
+              className="fixed top-10 right-10 hover:text-blue-400 hover:scale-125 ease-in duration-100"
               onClick={toggleMenu}
             >
               <i className="fa-solid fa-times text-3xl transition ease-in-out focus:-rotate-45 duration-300 absolute top-0 right-0 h-10 w-10"></i>
@@ -88,7 +88,7 @@ function Header() {
           )}
 
           <nav
-            className={`text-orange fixed right-20 top-[100px] h-0  backdrop-filter backdrop-blur-md bg-opacity-5 shadow-transparent transition-all ease-in-out duration-200 ${
+            className={`text-orange fixed right-20 hover:scale-125 ease-in duration-100 top-[100px] h-0  backdrop-filter backdrop-blur-md bg-opacity-5 shadow-transparent transition-all ease-in-out duration-200 ${
               navOpened ? 'opacity-100' : 'hidden'
             }`}
           >
