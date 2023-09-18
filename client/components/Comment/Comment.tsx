@@ -9,11 +9,17 @@ export default function Comment(props: Props) {
   console.log(commentsList)
   return (
     <>
-      <div>
+      <div className="p-4">
         {commentsList &&
           commentsList.map((item: any) => (
-            <li key={item.commentId}>
-              <strong>{item.nickname}</strong> {item.comment}
+            <li
+              className="flex flex-col xl:flex xl:flex-row xl:items-center"
+              key={item.commentId}
+            >
+              <p className="text-lg font-semibold italic mr-4">
+                {item.nickname}
+              </p>{' '}
+              <p>"{item.comment}"</p>
             </li>
           ))}
       </div>

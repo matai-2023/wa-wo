@@ -56,7 +56,7 @@ function FriendsWardrobe() {
       {' '}
       {isLoading && <div>Loading ...</div>}
       <div className=" flex mt-[100px]">
-        <div className="h-[700px] sticky top-[40px] flex flex-col place-content-evenly w-[280px] top-[300px] border-r-2 text-md lg:text-2xl mb-[20px] ">
+        <div className="h-[700px] sticky top-[40px] flex flex-col place-content-evenly w-auto top-[300px] border-r-2 text-md lg:text-xl mb-[20px] ">
           <button
             className="m-6 hover:max-w-full transition-all duration-500 h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('')}
@@ -96,7 +96,11 @@ function FriendsWardrobe() {
         </div>
         <div>
           <div className="flex md:justify-between justify-evenly mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12">
-            {nickname && <h1 className='italic text-2xl lg:text-[40px]'>{nickname.nickname} Wardrobe</h1>}
+            {nickname && (
+              <h1 className="italic text-2xl lg:text-[40px]">
+                {nickname.nickname} Wardrobe
+              </h1>
+            )}
             {!isFriend && (
               <button
                 onClick={handleClick}
@@ -123,11 +127,13 @@ function FriendsWardrobe() {
                         <FriendsWardrobeList wardrobe={item} />
                       </li>
                     ))}
-                    {data && robes&& robes.length == 0 &&
-                            <div className='w-[800px] h-[300px] flex justify-center items-center '>
-                            <p data-testid="testid" className='text-2xl font-bold'>Wardrobe is empty!</p>
-                            </div>
-                    }
+                  {data && robes && robes.length == 0 && (
+                    <div className="w-[800px] h-[300px] flex justify-center items-center ">
+                      <p data-testid="testid" className="text-2xl font-bold">
+                        Wardrobe is empty!
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </ul>
