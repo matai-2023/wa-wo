@@ -175,6 +175,13 @@ export async function addAComments({
     .send({ outfitId: outfitId, comment: comment })
 }
 
+export async function deleteAComment(id: number, token: string) {
+  await request
+    .delete(`/api/v1/outfits/comments/delete`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+    .send({ id })
+}
 //--------------------------------------------------------
 //--------------------------------------------------------
 //--------------------------------------------------------

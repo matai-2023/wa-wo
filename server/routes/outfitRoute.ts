@@ -29,7 +29,7 @@ router.get('/all', validateAccessToken, async (req, res) => {
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
-//GET /api/v1/outfits/comments/:id----------------------------------
+//GET /api/v1/outfits/comments/:id-------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
@@ -132,4 +132,26 @@ router.post('/comment', validateAccessToken, async (req, res) => {
     res.status(500).json({ message: 'Unable to add outfit' })
   }
 })
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//GET /api/v1/outfits/comments/delete------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+router.delete('/comments/delete', validateAccessToken, async (req, res) => {
+  const userId = req.auth?.payload.sub
+  if (!userId) {
+    res.status(401).json({ message: 'Please provide an id' })
+    return
+  }
+  try {
+    const commentId = Number(req.body.id)
+    await db.removeComment(commentId)
+    res.status(200).json({ message: 'deleted successfully' })
+  } catch (error) {
+    res.status(500).json({ message: 'could not delete' })
+  }
+})
+
 export default router

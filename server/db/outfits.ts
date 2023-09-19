@@ -1,3 +1,4 @@
+import { comment } from 'postcss'
 import connection from './connection.ts'
 //---------------------------------------------------------
 //---------------------------------------------------------
@@ -155,6 +156,7 @@ export async function getComments(outfitId: number, db = connection) {
     .where('outfits.id', outfitId)
     .select(
       'comments.id as commentId',
+      'comments.user_id as userId',
       'date_commented as date',
       'outfits.id as outfitId',
       'nickname as nickname',
@@ -177,4 +179,8 @@ export async function addComment(
     user_id: userId,
     date_commented: new Date(Date.now()),
   })
+}
+
+export async function removeComment(id: number, db = connection) {
+  await db('comments').where('id', id).delete()
 }
