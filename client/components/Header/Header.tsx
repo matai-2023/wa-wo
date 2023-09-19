@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { GiClothes } from 'react-icons/gi'
 import { useAuth0 } from '@auth0/auth0-react'
 import { AiOutlineSearch } from 'react-icons/ai'
-// import Switch from '../DarkMode/DarkMode'
+import Switcher from '../DarkMode/DarkMode'
 function Header() {
   const [navOpened, setNavOpened] = useState(false)
   const { logout } = useAuth0()
@@ -23,10 +23,9 @@ function Header() {
       <div className="flex w-screen justify-between h-[120px] border-b-2 mr-8 ml-8 border-orange">
         <Title />
 
-        <div className="hidden lg:block absolute right-[100px] top-[30px]">
+        <div className="hidden invisible lg:visible lg:block absolute right-[100px] top-[30px]">
           <IfAuthenticated>
             <div className="flex right-0">
-              {/* <Switch /> */}
               <div className="mt-[14px] mr-4 hover:scale-125 ease-in hover:text-orange duration-100">
                 <Link className="text-3xl" to={'/find-friend'}>
                   <AiOutlineSearch />
@@ -53,9 +52,12 @@ function Header() {
                   <GiClothes />
                 </Link>
               </div>
+              <div className="mt-4 mr-4">
+                <Switcher />
+              </div>
               <div className="mt-4 mr-6 hover:scale-125 ease-in  duration-100">
                 <button
-                  className=" text-black font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
+                  className=" text-black dark:text-white font-bold hover:max-w-full transition-all duration-500 h-0.5  hover:text-blue-400 mb-2"
                   onClick={handleLogout}
                 >
                   Sign out
