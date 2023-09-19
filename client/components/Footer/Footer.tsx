@@ -37,7 +37,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <div className="flex justify-center mt-[100px]">
+    <div className="flex w-full justify-center mt-[100px]">
       <div className="container">
         <div className="pt-0 sm:pt-10 pb-0 border-t-2 border-primary-light dark:border-secondary-dark mb-0">
           {/* Footer social links */}

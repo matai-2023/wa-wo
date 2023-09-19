@@ -10,6 +10,12 @@
   }
 }
 
+html {
+  width: 100vw;
+}
+body {
+  width: 100vw;
+}
 h5 {
   font-family: 'Luckiest Guy', cursive;
 }
