@@ -1,4 +1,11 @@
+import fsPromises from 'node:fs/promises'
 import connection from './connection.ts'
+import path from 'node:path/posix'
+import * as Path from 'node:path/posix'
+import * as URL from 'node:url'
+
+const __filename = URL.fileURLToPath(import.meta.url)
+const __dirname = Path.dirname(__filename)
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
@@ -142,11 +149,16 @@ export async function addOutfit(
 }
 
 export async function removeOutfit(id: number, db = connection) {
-  await db('outfits')
-    .join('comments', 'comments.outfit_id', 'outfits.id')
-    .join('likes', 'likes.outfit_id', 'outfits.id')
-    .where('outfits.id', id)
-    .del()
+  const item = await db('outfits').where('id', id).select('img').first()
+  const filePath = path.join(__dirname, '../../public', item.img)
+  try {
+    await fsPromises.unlink(filePath)
+  } catch (err) {
+    console.log('Dont worry about this error the file is just not in our sever')
+  }
+  await db('likes').where('outfit_id', id).del()
+  await db('comments').where('outfit_id', id).del()
+  await db('outfits').where('id', id).del()
 }
 
 //---------------------------------------------------------

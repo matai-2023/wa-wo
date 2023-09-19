@@ -1,11 +1,20 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { addOutfit } from '../../apis/api'
-import { OutfitToAdd } from '../../../server/db/outfits'
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query'
+import { deleteOutfit, getAllOutfits } from '../../apis/api'
+import { useAuth0 } from '@auth0/auth0-react'
 
-export default function useAddOutfit() {
+function useOutfits() {
+  const { getAccessTokenSilently } = useAuth0()
   const queryClient = useQueryClient()
+  const { data } = useQuery({
+    queryKey: ['outfits'],
+    queryFn: async () => {
+      const accessToken = await getAccessTokenSilently()
+      const response = await getAllOutfits(accessToken)
+      return response
+    },
+  })
 
-  const mutationAddOutfit = useMutation({
+  const outfitDelMutation = useMutation({
     mutationFn: ({ id, token }: { id: number; token: string }) =>
       deleteOutfit(id, token),
     onSuccess: () => {
@@ -13,5 +22,7 @@ export default function useAddOutfit() {
     },
   })
 
-  return { mutationDelOutfit }
+  return { data, outfitDelMutation }
 }
+
+export default useOutfits
