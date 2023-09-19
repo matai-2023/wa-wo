@@ -1,12 +1,26 @@
+import fsPromises from 'node:fs/promises'
 import { AddWardrobe } from '../../types/MyWardrobe.ts'
-
+// '../../public/images/'
 import connection from './connection.ts'
+import path from 'node:path/posix'
+import * as URL from 'node:url'
+import * as Path from 'node:path/posix'
+
+const __filename = URL.fileURLToPath(import.meta.url)
+const __dirname = Path.dirname(__filename)
 
 export async function getAllwardrobe(auth0Id: string, db = connection) {
   return await db('wardrobe').where('user_id', auth0Id).select()
 }
 
 export async function deleteItem(id: number, db = connection) {
+  const item = await db('wardrobe').where('id', id).select('image').first()
+  const filePath = path.join(__dirname, '../../public', item.image)
+  try {
+    await fsPromises.unlink(filePath)
+  } catch (err) {
+    console.log('Dont worry about this error')
+  }
   await db.transaction(async (trx) => {
     // Find the corresponding 'outfits' records that reference the item to be deleted
     const outfitsToUpdate = await trx('outfits')
