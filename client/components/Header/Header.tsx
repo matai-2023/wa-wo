@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { GiClothes } from 'react-icons/gi'
 import { useAuth0 } from '@auth0/auth0-react'
 import { AiOutlineSearch } from 'react-icons/ai'
+// import Switch from '../DarkMode/DarkMode'
 function Header() {
   const [navOpened, setNavOpened] = useState(false)
   const { logout } = useAuth0()
@@ -25,6 +26,7 @@ function Header() {
         <div className="hidden lg:block absolute right-[100px] top-[30px]">
           <IfAuthenticated>
             <div className="flex right-0">
+              {/* <Switch /> */}
               <div className="mt-[14px] mr-4 hover:scale-125 ease-in hover:text-orange duration-100">
                 <Link className="text-3xl" to={'/find-friend'}>
                   <AiOutlineSearch />
