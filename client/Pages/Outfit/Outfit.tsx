@@ -1,15 +1,25 @@
+//Hooks
 import useFriendList from '../../hooks/useFriendList'
 import useOutfit from './useCommentHook'
+import useOutfits from './outfitHook'
+import { useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router-dom'
+//Components
 import Comments from '../../components/Comment/Comment'
 import CommentForm from '../../components/Comment/CommentForm'
 import { useState } from 'react'
 import { BiSolidTShirt } from 'react-icons/bi'
 import LikeButton from '../../components/LikeButton/LikeButton'
+
 import { useAuth0 } from '@auth0/auth0-react'
 import useOutfits from './outfitHook'
 import { deleteOutfit } from '../../apis/api'
 import { useNavigate } from 'react-router-dom'
 import { ImBin } from 'react-icons/im'
+
+
+//Functions -----------------------------------------------------------------
+
 export default function Outfit() {
   const { getAccessTokenSilently, user } = useAuth0()
   const [filter, setFilter] = useState('')
