@@ -43,21 +43,6 @@ function AddItem() {
 
   //---------------------------------------------------------
   //---------------------------------------------------------
-  //Getting user id from internal database
-  //---------------------------------------------------------
-  //---------------------------------------------------------
-
-  const { data } = useQuery({
-    queryKey: ['data'],
-    queryFn: async () => {
-      const token = await getAccessTokenSilently()
-      const response = await getUser(token)
-      return response
-    },
-  })
-
-  //---------------------------------------------------------
-  //---------------------------------------------------------
   //Making form to add
   //---------------------------------------------------------
   //---------------------------------------------------------
@@ -66,9 +51,7 @@ function AddItem() {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     await handleAdd(formData)
-    // await addItem(formData, token)
-    // queryClient.invalidateQueries(['wardrobe'])
-    // navigate('/my-wardrobe')
+    queryClient.invalidateQueries(['wardrobe'])
   }
 
   //---------------------------------------------------------
@@ -137,13 +120,20 @@ function AddItem() {
           <label className="font-semibold" htmlFor="category">
             Category *
           </label>
-          <input
+          <select name="category">
+            <option value={'top'}>Top</option>
+            <option value={'bottom'}>Bottom</option>
+            <option value={'outer'}>Outer</option>
+            <option value={'footwear'}>Footwear</option>
+            <option value={'accessories'}>Accessories</option>
+          </select>
+          {/* <input
             className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
             type="text"
             name="category"
             id="category"
             required
-          />
+          /> */}
         </div>
         <div className="mx-auto text-center text-xl lg:text-2xl lg:h-[70px]">
           <Button>Add!</Button>
