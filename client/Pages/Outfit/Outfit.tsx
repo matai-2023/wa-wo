@@ -3,7 +3,7 @@ import useOutfit from './useCommentHook'
 import Comments from '../../components/Comment/Comment'
 import CommentForm from '../../components/Comment/CommentForm'
 import { useState } from 'react'
-
+import Icon from '../../components/UI/Icon/Icon'
 import { BiSolidTShirt } from 'react-icons/bi'
 
 import LikeButton from '../../components/LikeButton/LikeButton'
@@ -13,6 +13,12 @@ export default function Outfit() {
   const friendList = customFriendList.data
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
+
+  async function handleDeleteItem(id: number) {
+    const token = await getAccessTokenSilently()
+    mutationDel.mutate({ id: id, token: token })
+  }
+
   return (
     <>
       <div className="flex md:justify-between justify-center  mt-32 mb-32 mr-16 ml-16  text-4xl ">
@@ -115,6 +121,15 @@ export default function Outfit() {
                         </div>
                         <div className="m-2 cursor-pointer hover:text-3xl">
                           <BiSolidTShirt />
+
+                          <button
+                            data-testid="testing"
+                            onClick={() => handleDeleteOutfit(id)}
+                          >
+                            <Icon className="bg-blue-500 text-white p-2 rounded hover:bg-blue-800">
+                              <i className="fa-solid fa-trash" />
+                            </Icon>
+                          </button>
                         </div>
                       </div>
                     </div>
