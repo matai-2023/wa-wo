@@ -7,10 +7,30 @@ interface Props {
 }
 export default function CommentForm(props: Props) {
   const { getAccessTokenSilently } = useAuth0()
+  //-----------------------------------------------
+  //-----------------------------------------------
+  //State for showing the comment bar--------------
+  //-----------------------------------------------
+  //-----------------------------------------------
   const [showing, setShowing] = useState(true)
+  //-----------------------------------------------
+  //-----------------------------------------------
+  //State to handle the input change in comment bar
+  //-----------------------------------------------
+  //-----------------------------------------------
   const [input, setInput] = useState('')
+  //-----------------------------------------------
+  //-----------------------------------------------
+  //custom hook to handle adding comment
+  //-----------------------------------------------
+  //-----------------------------------------------
   const customMutation = useComments(props.outfitId)
   const mutationAdd = customMutation.commentAddMutation
+  //-----------------------------------------------
+  //-----------------------------------------------
+  //Function to handle adding comments into database
+  //-----------------------------------------------
+  //-----------------------------------------------
   async function handleClick() {
     const token = await getAccessTokenSilently()
     mutationAdd.mutate({
@@ -20,6 +40,12 @@ export default function CommentForm(props: Props) {
     })
     setShowing(!showing)
   }
+
+  //-----------------------------------------------
+  //-----------------------------------------------
+  //Rendering--------------------------------------
+  //-----------------------------------------------
+  //-----------------------------------------------
   return (
     <>
       <button

@@ -7,11 +7,14 @@ import { User } from '../../../types/User'
 import { Link } from 'react-router-dom'
 
 import { FaUserFriends } from 'react-icons/fa'
+import useUser from '../../hooks/useUser'
 function FindFriends() {
-  const { user, getAccessTokenSilently } = useAuth0()
-
-  const currentUserAuth0Id = user?.name
-
+  const { getAccessTokenSilently } = useAuth0()
+  //---------------------------------------------------------
+  //Getting user nickname to not show in search box----------
+  //---------------------------------------------------------
+  const customUser = useUser()
+  const currentUser = customUser.data
   //---------------------------------------------------------
   //setting up search queries, friend list to render---------
   //---------------------------------------------------------
@@ -36,7 +39,8 @@ function FindFriends() {
   async function handleClick() {
     const values = data?.filter(
       (item) =>
-        item.nickname.includes(searchQ) && item.nickname !== currentUserAuth0Id
+        item.nickname.includes(searchQ) &&
+        item.nickname.toLowerCase() !== currentUser.nickname?.toLowerCase()
     ) as User[]
     setFriends(values)
   }
@@ -49,7 +53,7 @@ function FindFriends() {
       const values = data?.filter(
         (item) =>
           item.nickname.includes(searchQ) &&
-          item.nickname !== currentUserAuth0Id
+          item.nickname !== currentUser.nickname
       ) as User[]
       if (values?.length == 0) {
         setFriends([{ auth0_id: '', nickname: 'No friends found' }])

@@ -15,21 +15,41 @@ import { ImBin } from 'react-icons/im'
 //Functions -----------------------------------------------------------------
 export default function Outfit() {
   const { getAccessTokenSilently, user } = useAuth0()
+  //----------------------------------------------------------
+  //State to handle what to show when clicking Sort-----------
+  //----------------------------------------------------------
   const [filter, setFilter] = useState('')
+  //----------------------------------------------------------
+  //Getting friendlist to show on left nav--------------------
+  //----------------------------------------------------------
   const customFriendList = useFriendList()
   const friendList = customFriendList.data
+  //----------------------------------------------------------
+  //Getting all outfits to display----------------------------
+  //----------------------------------------------------------
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
+  //Navigate hook set up--------------------------------------
   const navigate = useNavigate()
-
+  //----------------------------------------------------------
+  //custom hook to handle delete outfits----------------------
+  //----------------------------------------------------------
   const customize = useOutfits()
   const mutationDelete = customize.outfitDelMutation
+  //----------------------------------------------------------
+  //Getting userId to show/not show the delete buttons--------
+  //----------------------------------------------------------
   const userId = user?.sub
+  //----------------------------------------------------------
+  //Handle clicking delete button-----------------------------
+  //----------------------------------------------------------
   async function handleDeleteOutfit(id: number) {
     const token = await getAccessTokenSilently()
     mutationDelete.mutate({ id: id, token: token })
   }
-
+  //----------------------------------------------------------
+  //Rendering-------------------------------------------------
+  //----------------------------------------------------------
   return (
     <>
       <div className="flex md:justify-between justify-center  mt-32 mb-32 mr-16 ml-16  text-4xl ">

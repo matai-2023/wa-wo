@@ -1,11 +1,11 @@
 {
   "workbench.colorCustomizations": {
-    "tab.activeBorder": "#34ebab",
-    "titleBar.activeBackground": "#34ebab",
+    "tab.activeBorder": "#2596be",
+    "titleBar.activeBackground": "#2596be",
     "titleBar.activeForeground": "#ffffff",
-    "statusBar.background": "#34ebab",
+    "statusBar.background": "#2596be",
     "statusBar.foreground": "#ffffff"
   },
-  "window.title": "~[client]~${separator}${separator}${separator}${separator}${separator}${separator}${separator}${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}${appName}"
+  "window.title": "~[server]~${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${separator}${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}${appName}"
 
 }

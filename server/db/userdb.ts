@@ -1,21 +1,26 @@
 import { User } from '../../types/User'
 import db from './connection'
 
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function getUser(auth0Id: string) {
   return await db('users').where('auth0_id', auth0Id).select().first()
 }
-
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function getFriends(userId: string) {
   return await db('friendList')
     .join('users', 'friendList.friend_id', 'users.auth0_id')
     .select('users.auth0_id', 'nickname')
     .where('friendList.user_id', userId)
 }
-
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function getAllUsers() {
   return await db('users').select()
 }
-
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function upsertUser(user: User) {
   await db('users').insert(user).onConflict('auth0_id').merge()
 }
@@ -23,6 +28,8 @@ export interface Relationship {
   user_id: string
   friend_id: string
 }
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function addFriend(relationship: Relationship) {
   const friends = await db('friendList')
     .where('user_id', relationship.user_id)
@@ -41,7 +48,8 @@ export async function addFriend(relationship: Relationship) {
     throw new Error('Duplicate!')
   }
 }
-
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function delFriend(relationship: Relationship) {
   await db('friendList')
     .where('user_id', relationship.user_id)
