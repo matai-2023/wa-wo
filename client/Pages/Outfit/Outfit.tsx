@@ -10,13 +10,7 @@ import CommentForm from '../../components/Comment/CommentForm'
 import { useState } from 'react'
 import { BiSolidTShirt } from 'react-icons/bi'
 import LikeButton from '../../components/LikeButton/LikeButton'
-
-import { useAuth0 } from '@auth0/auth0-react'
-import useOutfits from './outfitHook'
-import { deleteOutfit } from '../../apis/api'
-import { useNavigate } from 'react-router-dom'
 import { ImBin } from 'react-icons/im'
-
 
 //Functions -----------------------------------------------------------------
 
