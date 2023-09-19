@@ -17,7 +17,7 @@ function Home() {
     queryFn: async () => {
       const accessToken = await getAccessTokenSilently()
       const response = await getUser(accessToken)
-      console.log(accessToken)
+ 
 
       if (response?.nickname) navigate('/my-wardrobe')
       if (!response?.nickname) navigate('/profile')
