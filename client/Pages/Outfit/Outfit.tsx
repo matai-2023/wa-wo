@@ -9,7 +9,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import useOutfits from './outfitHook'
 import { deleteOutfit } from '../../apis/api'
 import { useNavigate } from 'react-router-dom'
-
+import { ImBin } from 'react-icons/im'
 export default function Outfit() {
   const { getAccessTokenSilently, user } = useAuth0()
   const [filter, setFilter] = useState('')
@@ -73,7 +73,7 @@ export default function Outfit() {
                       </h1>
                       <div className=" relative w-[300px] lg:w-[450px]  h-[450px] shadow-2xl overflow-hidden hover:scale-105 ease-in duration-200 ">
                         <img
-                          className="w-full  p-4 rounded-md h-full object-cover "
+                          className="w-full p-4 rounded-md h-full object-cover"
                           src={item.img}
                         />
                       </div>
@@ -86,7 +86,7 @@ export default function Outfit() {
                     </div>
 
                     <div className="flex flex-col h-auto lg:h-[700px] w-full xl:w-2/5 ">
-                      <div className=" uppercase lg:mt-10 mr-4 mt-4 ml-4 lg:mb-0 p-2 flex flex-col lg:h-[200px]">
+                      <div className=" uppercase lg:mt-10 mr-4 mt-4 ml-14 lg:ml-4 lg:mb-0 p-2 flex flex-col lg:h-[200px]">
                         <div className=" flex flex-row items-center lg:flex-col lg:items-start xl:flex xl:flex-row xl:items-center">
                           <p className="text-md lg:text-lg text-orange font-semibold mr-4">
                             top:{' '}
@@ -120,21 +120,22 @@ export default function Outfit() {
                           <p className="text-sm lg:text-lg">{item.footer}</p>
                         </div>
                       </div>
-                      <div className="h-auto mt-14 mr-6 mb-4 ml-6 lg:mt-[80px]">
+                      <div className="h-auto mt-14 mr-[80px] lg:mr-6 mb-4 ml-16 lg:ml-6 lg:mt-[80px]">
                         <p className="uppercase font-semibold text-orange text-md lg:text-lg">
                           description:
                         </p>
                         <p className="text-sm lg:text-lg">{item.description}</p>
                       </div>
                       <div className="flex w-auto items-center justify-center   lg:h-[200px] ">
-                        <div className="p-2 cursor-pointer text-2xl hover:text-3xl">
+                        <div className="m-2 cursor-pointer text-2xl hover:text-3xl">
                           <LikeButton outfitId={item.id} />
                         </div>
-                        <div className="m-2 cursor-pointer hover:text-3xl">
+                        <div className="m-4 cursor-pointer hover:text-3xl">
                           <BiSolidTShirt
                             onClick={() => navigate(`/friend/${item.user_id}`)}
                           />
-
+                        </div>
+                        <div className="m-4 cursor-pointer hover:text-3xl">
                           {userId == item.user_id && (
                             <ImBin
                               onClick={() => handleDeleteOutfit(item.id)}
@@ -157,7 +158,9 @@ export default function Outfit() {
                 alt=""
               />
             </a>
-            <p className="absolute top-0 font-semibold text-2xl m-2">ZARA</p>
+            <p className="absolute top-0 font-semibold text-2xl dark:text-black m-2">
+              ZARA
+            </p>
             <button className="absolute bottom-2 text-xl text-white">
               shop now
             </button>
