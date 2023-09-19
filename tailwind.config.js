@@ -3,6 +3,7 @@ export default {
   content: ['./index.html', './client/**/*.{js,ts,jsx,tsx}'],
 
   theme: {
+    darkMode: 'class',
     extend: {
       fontFamily: {
         lucky: ['"Luckiest Guy"'],

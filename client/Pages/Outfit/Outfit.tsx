@@ -17,6 +17,7 @@ export default function Outfit() {
   const friendList = customFriendList.data
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
+
   const customize = useOutfits()
   const mutationDelete = customize.outfitDelMutation
   const userId = user?.sub
@@ -25,6 +26,7 @@ export default function Outfit() {
     mutationDelete.mutate({ id: id, token: token })
   }
  
+
 
   return (
     <>
@@ -61,12 +63,15 @@ export default function Outfit() {
           <div className="flex flex-col">
             <div className="flex flex-col w-full ml-[40px]">
               {outfitList &&
-                outfitList.map((item: any) => (
+                outfitList.reverse().map((item: any) => (
                   <div
                     className="flex flex-col h-full border-b-2 items-center mr-8 m-2 lg:h-auto xl:justify-around xl:flex xl:flex-row "
                     key={item.id}
                   >
                     <div className="flex flex-col items-center mt-8 mb-8">
+                      <h1 className="text-2xl italic underline tracking-widest uppercase font-semibold mb-4 ">
+                        {` ${item.nickname} `}
+                      </h1>
                       <div className=" relative w-[300px] lg:w-[450px]  h-[450px] shadow-2xl overflow-hidden hover:scale-105 ease-in duration-200 ">
                         <img
                           className="w-full  p-4 rounded-md h-full object-cover "
@@ -76,8 +81,8 @@ export default function Outfit() {
                       <div className="flex mt-6 ml-4 mb-4">
                         <CommentForm outfitId={item.id} />
                       </div>
-                      <div className="border-2 m-4 w-full rounded-md list-none pl-4 h-auto  overflow-auto">
-                        <Comments user_id={item.user_id} outfitId={item.id} />
+                      <div className="border-2 m-4 w-full max-h-[200px] rounded-md list-none pl-4 h-auto  overflow-auto">
+                        <Comments outfitId={item.id} />
                       </div>
                     </div>
 
@@ -117,8 +122,8 @@ export default function Outfit() {
                         </div>
                       </div>
                       <div className="h-auto mt-14 mr-6 mb-4 ml-6 lg:mt-[80px]">
-                        <p className="uppercase font-semibold text-md lg:text-lg p-2">
-                          description
+                        <p className="uppercase font-semibold text-orange text-md lg:text-lg">
+                          description:
                         </p>
                         <p className="text-sm lg:text-lg">{item.description}</p>
                       </div>
@@ -145,7 +150,7 @@ export default function Outfit() {
           </div>
         </div>
         <div className="sticky invisible md:visible">
-          <div className="relative sticky  border-2 ] h-[350px] w-[150px] mr-6 ml-2 top-[100px]">
+          <div className="relative sticky  border-2 ] h-[350px] w-[120px] mr-6 ml-2 top-[100px]">
             <a href="https://www.zara.com/nz/">
               <img
                 className="object-cover shadow-lg w-full h-full hover:scale-110 ease-in duration-200"
@@ -154,12 +159,19 @@ export default function Outfit() {
               />
             </a>
             <p className="absolute top-0 font-semibold text-2xl m-2">ZARA</p>
+            <button className="absolute bottom-2 text-xl text-white">
+              shop now
+            </button>
             <a href="https://nz.kowtowclothing.com/">
+              {' '}
               <img
-                className=" border-2 object-cover  w-full h-full mt-6 hover:scale-110 ease-in duration-200"
+                className="border-2 object-cover relative w-full h-full mt-6 hover:scale-110 ease-in duration-200"
                 src="/kt.jpeg"
                 alt=""
               />
+              <p className="absolute text-white font-bold text-xl italic right-[15px] top-[380px]">
+                15% <br /> OFF
+              </p>
             </a>
           </div>
         </div>
