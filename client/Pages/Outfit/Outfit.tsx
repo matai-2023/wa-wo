@@ -16,15 +16,15 @@ export default function Outfit() {
 
   return (
     <>
-      <div className="flex md:justify-between  mt-32 mb-32 mr-16 ml-16  text-4xl border-b-[5px]">
-        <h1 className="italic text-2xl left-[100px] lg:text-[40px] mb-2">
+      <div className="flex md:justify-between justify-center  mt-32 mb-32 mr-16 ml-16  text-4xl ">
+        <h1 className="italic text-2xl left-[100px] border-b-[5px] w-11/12 lg:text-[40px] mb-2">
           oOtd
         </h1>
       </div>
-      <div className="flex">
+      <div className="flex w-screen">
         <div className="sticky">
           <div
-            className="overflow-auto sticky w-auto lg:w-[300px] h-[700px] top-[40px]  flex flex-col items-center  border-r-2 text-md lg:text-xl mb-[20px] "
+            className="break-all overflow-y-auto sticky w-[150px] lg:w-[300px] h-[700px] top-[40px]  flex flex-col items-center  border-r-2 text-md lg:text-xl mb-[20px] "
             id="FRIENDLIST"
           >
             <button
@@ -45,27 +45,26 @@ export default function Outfit() {
               ))}
           </div>
         </div>
-        <div className="flex flex-col h-auto w-screen">
-          <div className="flex flex-col ">
-            <div className="flex flex-col ml-[40px]">
+        <div className="flex flex-col h-auto w-full">
+          <div className="flex flex-col">
+            <div className="flex flex-col w-full ml-[40px]">
               {outfitList &&
                 outfitList.map((item: any) => (
                   <div
-                    className="flex flex-col h-full border-b-2  mr-8 m-2 lg:h-auto xl:justify-around xl:flex xl:flex-row "
+                    className="flex flex-col h-full border-b-2 items-center mr-8 m-2 lg:h-auto xl:justify-around xl:flex xl:flex-row "
                     key={item.id}
                   >
-                    <div className="flex flex-col mt-8 mb-8">
-                      <div className=" relative w-full md:mr-[40px] shadow-2xl overflow-hidden hover:scale-105 ease-in duration-200 ">
+                    <div className="flex flex-col items-center mt-8 mb-8">
+                      <div className=" relative w-[300px] lg:w-[450px]  h-[450px] shadow-2xl overflow-hidden hover:scale-105 ease-in duration-200 ">
                         <img
-                          className="w-full  p-4 rounded-md h-[450px] object-cover "
+                          className="w-full  p-4 rounded-md h-full object-cover "
                           src={item.img}
                         />
                       </div>
                       <div className="flex mt-6 ml-4 mb-4">
                         <CommentForm outfitId={item.id} />
                       </div>
-
-                      <div className="border-2 m-4 rounded-md list-none pl-4 h-[250px] sm:h-[230px] md:h-[120px]  lg:h-[260px] xl:h-[120px] overflow-auto">
+                      <div className="border-2 m-4 w-full rounded-md list-none pl-4 h-auto  overflow-auto">
                         <Comments outfitId={item.id} />
                       </div>
                     </div>
@@ -125,8 +124,8 @@ export default function Outfit() {
             </div>
           </div>
         </div>
-        <div className="sticky invisible sm:visible">
-          <div className="relative sticky  border-2 h-[250px] w-[100px] md:h-[350px] md:w-[150px] mr-6 ml-2 top-[100px]">
+        <div className="sticky invisible md:visible">
+          <div className="relative sticky  border-2 ] h-[350px] w-[150px] mr-6 ml-2 top-[100px]">
             <a href="https://www.zara.com/nz/">
               <img
                 className="object-cover w-full h-full hover:scale-110 ease-in duration-200"

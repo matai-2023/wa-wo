@@ -54,9 +54,16 @@ export default function AddOutfitForm() {
 
   return (
     <>
-      <div>
-        <form onSubmit={handleSubmit} className="flex flex-col w-30">
-          <select name="top">
+      <div className="flex flex-col justify-center items-center mt-[100px]">
+        <h2 className="font-bold text-[30px]">Add new item</h2>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col items-center w-[300px] lg:w-[600px]  p-8 border-4 border-orange rounded-md mt-[50px]"
+        >
+          <select
+            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            name="top"
+          >
             <option value={''}>Choose from Top</option>
             {tops?.map((item) => (
               <option key={item.id} value={item.id}>
@@ -64,7 +71,10 @@ export default function AddOutfitForm() {
               </option>
             ))}
           </select>
-          <select name="bottom">
+          <select
+            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            name="bottom"
+          >
             <option value={''}>Choose from Bottom</option>
             {bottom?.map((item) => (
               <option key={item.id} value={item.id}>
@@ -72,7 +82,10 @@ export default function AddOutfitForm() {
               </option>
             ))}
           </select>
-          <select name="outer">
+          <select
+            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            name="outer"
+          >
             <option value={''}>Choose from Outers</option>
             {outer?.map((item) => (
               <option key={item.id} value={item.id}>
@@ -80,7 +93,10 @@ export default function AddOutfitForm() {
               </option>
             ))}
           </select>
-          <select name="accessories">
+          <select
+            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            name="accessories"
+          >
             <option value={''}>Choose from Accessories</option>
             {acc?.map((item) => (
               <option key={item.id} value={item.id}>
@@ -88,7 +104,10 @@ export default function AddOutfitForm() {
               </option>
             ))}
           </select>
-          <select name="footwear">
+          <select
+            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            name="footwear"
+          >
             <option value={''}>Choose from Footwear</option>
             {footwear?.map((item) => (
               <option key={item.id} value={item.id}>
@@ -96,13 +115,21 @@ export default function AddOutfitForm() {
               </option>
             ))}
           </select>
-          <input type="file" name="image" required />
           <input
-            placeholder="describe your outfit!"
+            type="file"
+            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            name="image"
+            required
+          />
+          <input
+            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            placeholder="Describe your outfit!"
             name="description"
             required
           />
-          <Button>Add This Outfit!</Button>
+          <div className="mt-[50px]">
+            <Button>Add This Outfit!</Button>
+          </div>
         </form>
       </div>
     </>

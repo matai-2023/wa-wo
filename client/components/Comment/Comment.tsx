@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import useComments from './commentHook'
 
 interface Props {
@@ -8,7 +9,7 @@ export default function Comment(props: Props) {
   const commentsList = commentHook.data
   return (
     <>
-      <div className="p-4">
+      <div className="p-4 w-full">
         {commentsList &&
           commentsList.map((item: any) => (
             <li

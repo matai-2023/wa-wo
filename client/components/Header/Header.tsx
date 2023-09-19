@@ -19,10 +19,8 @@ function Header() {
 
   return (
     <>
-      <div className="flex justify-between h-[120px] border-b-2 mr-8 ml-8 border-orange">
-        <div>
-          <Title />
-        </div>
+      <div className="flex w-screen justify-between h-[120px] border-b-2 mr-8 ml-8 border-orange">
+        <Title />
 
         <div className="hidden lg:block absolute right-[100px] top-[30px]">
           <IfAuthenticated>
