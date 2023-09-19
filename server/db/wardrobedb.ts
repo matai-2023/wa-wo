@@ -19,7 +19,7 @@ export async function deleteItem(id: number, db = connection) {
   try {
     await fsPromises.unlink(filePath)
   } catch (err) {
-    console.log(err)
+    console.log('Dont worry about this error')
   }
   await db.transaction(async (trx) => {
     // Find the corresponding 'outfits' records that reference the item to be deleted
