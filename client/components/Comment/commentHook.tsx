@@ -1,6 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
-import { addAComments, getCommentsOfOutfit } from '../../apis/api'
+import {
+  addAComments,
+  getCommentsOfOutfit,
+  deleteAComment,
+} from '../../apis/api'
+
 function useComments(outfitId: number) {
   const { getAccessTokenSilently } = useAuth0()
   const queryClient = useQueryClient()
@@ -28,7 +33,15 @@ function useComments(outfitId: number) {
     },
   })
 
-  return { data, commentAddMutation }
+  const commentDelMutation = useMutation({
+    mutationFn: ({ id, token }: { id: number; token: string }) =>
+      deleteAComment(id, token),
+    onSuccess: () => {
+      queryClient.invalidateQueries(['comments'])
+    },
+  })
+
+  return { data, commentAddMutation, commentDelMutation }
 }
 
 export default useComments
