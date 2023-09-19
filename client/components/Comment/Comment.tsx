@@ -1,9 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import useComments from './commentHook'
 import { RxCross2 } from 'react-icons/rx'
-import { useEffect, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { getUser } from '../../apis/api'
 
 interface Props {
   outfitId: number
@@ -15,7 +12,7 @@ export default function Comment(props: Props) {
   const delComment = commentHook.commentDelMutation
   //-----------------------------------------------
   //-----------------------------------------------
-
+  //Grabbing user auth0_id
   const userId = user?.sub
   //-----------------------------------------------
   //-----------------------------------------------

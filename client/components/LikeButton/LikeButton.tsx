@@ -7,21 +7,40 @@ interface Props {
 }
 export default function LikeButton(props: Props) {
   const { getAccessTokenSilently } = useAuth0()
+  //-----------------------------------------------
+  //-----------------------------------------------
+  //Grabbing data with custom hooks
+  //-----------------------------------------------
+  //-----------------------------------------------
   const isLike = useLike(props.outfitId)
   const currentLike = isLike.data
   const mutationLike = isLike.mutationAddLike
   const mutationUnlike = isLike.mutationRemoveLike
 
+  //-----------------------------------------------
+  //-----------------------------------------------
+  //Handle clicking Like button--------------------
+  //-----------------------------------------------
+  //-----------------------------------------------
   async function handleLike() {
     const token = await getAccessTokenSilently()
     mutationLike.mutate({ outfitId: props.outfitId, token: token })
   }
-
+  //-----------------------------------------------
+  //-----------------------------------------------
+  //Handle clicking Unlike button------------------
+  //-----------------------------------------------
+  //-----------------------------------------------
   async function handleUnLike() {
     const token = await getAccessTokenSilently()
     mutationUnlike.mutate({ outfitId: props.outfitId, token: token })
   }
 
+  //-----------------------------------------------
+  //-----------------------------------------------
+  //Rendering--------------------------------------
+  //-----------------------------------------------
+  //-----------------------------------------------
   return (
     <div className="m-2 cursor-pointer hover:text-3xl">
       {currentLike && currentLike.check === false && (

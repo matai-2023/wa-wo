@@ -198,7 +198,7 @@ export async function deleteAComment(id: number, token: string) {
 //--------------------------------------------------------
 //--------------------------------------------------------
 //--------------------------------------------------------
-//     /api/v1/likes/:outfitId
+
 export async function addLike({
   outfitId,
   token,

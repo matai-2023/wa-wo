@@ -4,23 +4,22 @@ import { useNavigate } from 'react-router'
 import { getUser } from '../../apis/api'
 import { useQuery } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
-import Title from '../../components/Title/Title'
-import { GiDuration } from 'react-icons/gi'
 function Home() {
   const { getAccessTokenSilently } = useAuth0()
   const navigate = useNavigate()
-
+  //----------------------------------------------------------
   //Check user with useQuery see if they exist in our database
-  //Redirect them to the right place
+  //Redirect them to the right place--------------------------
+  //----------------------------------------------------------
   useQuery({
     queryKey: ['users'],
     queryFn: async () => {
       const accessToken = await getAccessTokenSilently()
       const response = await getUser(accessToken)
- 
-
+      //Navigation
       if (response?.nickname) navigate('/my-wardrobe')
       if (!response?.nickname) navigate('/profile')
+      //Return something so no error thrown
       return []
     },
   })

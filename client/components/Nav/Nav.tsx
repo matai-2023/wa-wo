@@ -1,6 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
+
 import Switcher from '../DarkMode/DarkMode'
+
 interface Props {
   toggleMenu: () => void
 }
@@ -70,14 +72,12 @@ function Nav(props: Props) {
           </button>
         </li>
         <li>
-          {isAuthenticated && (
-            <button
-              className="text-orange text-[20px] hover:scale-125 ease-in duration-100 font-bold hover:max-w-full h-0.5  hover:text-blue-400 mb-2 mt-4"
-              onClick={handleLogout}
-            >
-              Sign out
-            </button>
-          )}
+          <button
+            className="text-orange text-[20px] hover:scale-125 ease-in duration-100 font-bold hover:max-w-full h-0.5  hover:text-blue-400 mb-2 mt-4"
+            onClick={handleLogout}
+          >
+            Sign out
+          </button>
         </li>
       </ul>
       <div className="flex w-[50px] text-black justify-end">
