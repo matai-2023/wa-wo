@@ -3,12 +3,11 @@ import useOutfit from './useCommentHook'
 import Comments from '../../components/Comment/Comment'
 import CommentForm from '../../components/Comment/CommentForm'
 import { useState } from 'react'
-import Icon from '../../components/UI/Icon/Icon'
 import { BiSolidTShirt } from 'react-icons/bi'
 import LikeButton from '../../components/LikeButton/LikeButton'
 import { useAuth0 } from '@auth0/auth0-react'
 import useOutfits from './outfitHook'
-import { deleteOutfit } from '../../apis/api'
+import { ImBin } from 'react-icons/im'
 
 export default function Outfit() {
   const { getAccessTokenSilently, user } = useAuth0()
@@ -25,8 +24,6 @@ export default function Outfit() {
     const token = await getAccessTokenSilently()
     mutationDelete.mutate({ id: id, token: token })
   }
- 
-
 
   return (
     <>
@@ -127,19 +124,18 @@ export default function Outfit() {
                         </p>
                         <p className="text-sm lg:text-lg">{item.description}</p>
                       </div>
-                      <div className="flex w-auto items-center justify-center items-end text-2xl lg:h-[200px] ">
-                        <div className="m-2 cursor-pointer hover:text-3xl">
+                      <div className="flex w-auto items-center justify-center   lg:h-[200px] ">
+                        <div className="p-2 cursor-pointer text-2xl hover:text-3xl">
                           <LikeButton outfitId={item.id} />
                         </div>
-                        <div className="m-2 cursor-pointer hover:text-3xl">
+                        <div className="p-4 cursor-pointer text-2xl hover:text-3xl">
                           <BiSolidTShirt />
-
+                        </div>
+                        <div className="p-4 cursor-pointer text-2xl hover:text-3xl">
                           {userId == item.user_id && (
-                            <button onClick={() => handleDeleteOutfit(item.id)}>
-                              <Icon className="bg-blue-500 text-white p-2 rounded hover:bg-blue-800">
-                                <i className="fa-solid fa-trash" />
-                              </Icon>
-                            </button>
+                            <ImBin
+                              onClick={() => handleDeleteOutfit(item.id)}
+                            />
                           )}
                         </div>
                       </div>
