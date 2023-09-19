@@ -24,7 +24,7 @@ export default function Outfit() {
     const token = await getAccessTokenSilently()
     mutationDelete.mutate({ id: id, token: token })
   }
-  console.log(outfitList)
+ 
 
   return (
     <>
