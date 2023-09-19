@@ -135,7 +135,7 @@ router.post('/comment', validateAccessToken, async (req, res) => {
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
-//GET /api/v1/outfits/comments/delete------------------------------
+//GET /api/v1/outfits/comments/delete----------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
@@ -154,4 +154,27 @@ router.delete('/comments/delete', validateAccessToken, async (req, res) => {
   }
 })
 
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//GET /api/v1/outfits/comments/delete----------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+
+router.delete('/delete/:id', validateAccessToken, async (req, res) => {
+  const userId = req.auth?.payload.sub
+  if (!userId) {
+    res.status(401).json({ message: 'Please provide an id' })
+    return
+  }
+  try {
+    const id = Number(req.params.id)
+    await db.removeOutfit(id)
+    res.status(200).json({ message: 'deleted successfully' })
+  } catch (e) {
+    console.error(e)
+    res.status(500).json({ message: 'Unable to delete item' })
+  }
+})
 export default router
