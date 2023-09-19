@@ -65,9 +65,9 @@ function AddItem() {
       <h2 className="font-bold text-[30px]">Add new item</h2>
       <form
         onSubmit={handleSubmit}
-        className="w-[300px] lg:w-[600px] space-y-4 p-8 border-4 border-orange rounded-md mt-[50px]"
+        className="w-[300px] lg:w-[600px]  p-8 border-4 border-orange rounded-md mt-[50px]"
       >
-        <div className="space-y-2">
+        <div className="mb-4">
           <label className="font-semibold" htmlFor="item">
             Item *
           </label>
@@ -79,36 +79,51 @@ function AddItem() {
             required
           />
         </div>
-        <div className="space-y-2">
+        <div className="mb-4">
           <label className="font-semibold" htmlFor="description">
             Description *
           </label>
           <input
-            className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
+            className="text-black border-2 h-[40px]  w-full rounded-md p-4 text-xl outline-orange"
             type="text"
             name="description"
             id="description"
             required
           />
         </div>
-        <div className="space-y-2">
+        <div className="mb-4">
           <label className="font-semibold" htmlFor="part">
             Part *
           </label>
           <input
-            className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
+            className="text-black border-2 h-[40px]  w-full rounded-md p-4 text-xl outline-orange"
             type="text"
             name="part"
             id="part"
             required
           />
         </div>
-        <div className="space-y-2">
+        <div className="flex flex-col">
+          <label className="font-semibold" htmlFor="category">
+            Category *
+          </label>
+          <select
+            name="category"
+            className=" m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+          >
+            <option value={'top'}>Top</option>
+            <option value={'bottom'}>Bottom</option>
+            <option value={'outer'}>Outer</option>
+            <option value={'footwear'}>Footwear</option>
+            <option value={'accessories'}>Accessories</option>
+          </select>
+        </div>
+        <div className="space-y-2 flex flex-col">
           <label className="font-semibold" htmlFor="image">
             Image *
           </label>
           <input
-            className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
+            className=" m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
             type="file"
             name="image"
             accept="images/*"
@@ -116,26 +131,7 @@ function AddItem() {
             required
           />
         </div>
-        <div className="space-y-1">
-          <label className="font-semibold" htmlFor="category">
-            Category *
-          </label>
-          <select name="category">
-            <option value={'top'}>Top</option>
-            <option value={'bottom'}>Bottom</option>
-            <option value={'outer'}>Outer</option>
-            <option value={'footwear'}>Footwear</option>
-            <option value={'accessories'}>Accessories</option>
-          </select>
-          {/* <input
-            className="text-black border-2 h-[40px] w-full rounded-md p-4 text-xl outline-orange"
-            type="text"
-            name="category"
-            id="category"
-            required
-          /> */}
-        </div>
-        <div className="mx-auto text-center text-xl lg:text-2xl lg:h-[70px]">
+        <div className="mx-auto text-center text-xl mt-[50px] lg:text-2xl lg:h-[70px]">
           <Button>Add!</Button>
         </div>
       </form>

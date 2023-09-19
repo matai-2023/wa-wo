@@ -61,7 +61,7 @@ export default function AddOutfitForm() {
           className="flex flex-col items-center w-[300px] lg:w-[600px]  p-8 border-4 border-orange rounded-md mt-[50px]"
         >
           <select
-            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            className="w-full m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
             name="top"
           >
             <option value={''}>Choose from Top</option>
@@ -72,7 +72,7 @@ export default function AddOutfitForm() {
             ))}
           </select>
           <select
-            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            className="w-full m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
             name="bottom"
           >
             <option value={''}>Choose from Bottom</option>
@@ -83,7 +83,7 @@ export default function AddOutfitForm() {
             ))}
           </select>
           <select
-            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            className="w-full m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
             name="outer"
           >
             <option value={''}>Choose from Outers</option>
@@ -94,7 +94,7 @@ export default function AddOutfitForm() {
             ))}
           </select>
           <select
-            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            className="w-full m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
             name="accessories"
           >
             <option value={''}>Choose from Accessories</option>
@@ -105,7 +105,7 @@ export default function AddOutfitForm() {
             ))}
           </select>
           <select
-            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            className="w-full m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
             name="footwear"
           >
             <option value={''}>Choose from Footwear</option>
@@ -117,12 +117,12 @@ export default function AddOutfitForm() {
           </select>
           <input
             type="file"
-            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            className="w-full m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
             name="image"
             required
           />
           <input
-            className="w-[250px] m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
+            className="w-full m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
             placeholder="Describe your outfit!"
             name="description"
             required
