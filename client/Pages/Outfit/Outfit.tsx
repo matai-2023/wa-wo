@@ -140,10 +140,13 @@ export default function Outfit() {
             <a href="https://nz.kowtowclothing.com/">
               {' '}
               <img
-                className="border-2 object-cover  w-full h-full mt-6 hover:scale-110 ease-in duration-200"
+                className="border-2 object-cover relative w-full h-full mt-6 hover:scale-110 ease-in duration-200"
                 src="/kt.jpeg"
                 alt=""
               />
+              <p className="absolute text-white font-bold text-xl italic right-[15px] top-[380px]">
+                15% <br /> OFF
+              </p>
             </a>
           </div>
         </div>
