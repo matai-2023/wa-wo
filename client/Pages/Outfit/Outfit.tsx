@@ -13,7 +13,6 @@ export default function Outfit() {
   const friendList = customFriendList.data
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
-
   return (
     <>
       <div className="flex md:justify-between justify-center  mt-32 mb-32 mr-16 ml-16  text-4xl ">
@@ -65,7 +64,7 @@ export default function Outfit() {
                         <CommentForm outfitId={item.id} />
                       </div>
                       <div className="border-2 m-4 w-full rounded-md list-none pl-4 h-auto  overflow-auto">
-                        <Comments outfitId={item.id} />
+                        <Comments user_id={item.user_id} outfitId={item.id} />
                       </div>
                     </div>
 
