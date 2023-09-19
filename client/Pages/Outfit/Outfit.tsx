@@ -128,7 +128,7 @@ export default function Outfit() {
           <div className="relative sticky  border-2 ] h-[350px] w-[150px] mr-6 ml-2 top-[100px]">
             <a href="https://www.zara.com/nz/">
               <img
-                className="object-cover w-full h-full hover:scale-110 ease-in duration-200"
+                className="object-cover shadow-lg w-full h-full hover:scale-110 ease-in duration-200"
                 src="/ad.png"
                 alt=""
               />
@@ -136,7 +136,7 @@ export default function Outfit() {
             <p className="absolute top-0 font-semibold text-2xl m-2">ZARA</p>
             <a href="https://nz.kowtowclothing.com/">
               <img
-                className=" border-2 object-cover w-full h-full mt-6 hover:scale-110 ease-in duration-200"
+                className=" border-2 object-cover  w-full h-full mt-6 hover:scale-110 ease-in duration-200"
                 src="/kt.jpeg"
                 alt=""
               />
