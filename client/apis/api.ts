@@ -159,6 +159,12 @@ export async function addOutfit(newOutfit: FormData, token: string) {
     .send(newOutfit)
 }
 
+export async function deleteOutfit(id: number, token: string) {
+  await request
+    .delete(`/api/v1/outfits/delete/${id}`)
+    .set('Authorization', `Bearer ${token}`)
+}
+
 export async function addAComments({
   comment,
   outfitId,

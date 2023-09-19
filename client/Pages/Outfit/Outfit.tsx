@@ -3,17 +3,31 @@ import useOutfit from './useCommentHook'
 import Comments from '../../components/Comment/Comment'
 import CommentForm from '../../components/Comment/CommentForm'
 import { useState } from 'react'
-
+import Icon from '../../components/UI/Icon/Icon'
 import { BiSolidTShirt } from 'react-icons/bi'
-
 import LikeButton from '../../components/LikeButton/LikeButton'
+import { useAuth0 } from '@auth0/auth0-react'
+import useOutfits from './outfitHook'
+import { deleteOutfit } from '../../apis/api'
+
 export default function Outfit() {
+  const { getAccessTokenSilently, user } = useAuth0()
   const [filter, setFilter] = useState('')
   const customFriendList = useFriendList()
   const friendList = customFriendList.data
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
-  console.log(outfitList)
+
+  const customize = useOutfits()
+  const mutationDelete = customize.outfitDelMutation
+  const userId = user?.sub
+  async function handleDeleteOutfit(id: number) {
+    const token = await getAccessTokenSilently()
+    mutationDelete.mutate({ id: id, token: token })
+  }
+ 
+
+
   return (
     <>
       <div className="flex md:justify-between justify-center  mt-32 mb-32 mr-16 ml-16  text-4xl ">
@@ -119,6 +133,14 @@ export default function Outfit() {
                         </div>
                         <div className="m-2 cursor-pointer hover:text-3xl">
                           <BiSolidTShirt />
+
+                          {userId == item.user_id && (
+                            <button onClick={() => handleDeleteOutfit(item.id)}>
+                              <Icon className="bg-blue-500 text-white p-2 rounded hover:bg-blue-800">
+                                <i className="fa-solid fa-trash" />
+                              </Icon>
+                            </button>
+                          )}
                         </div>
                       </div>
                     </div>
