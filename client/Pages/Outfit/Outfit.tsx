@@ -13,6 +13,7 @@ export default function Outfit() {
   const friendList = customFriendList.data
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
+  console.log(outfitList)
   return (
     <>
       <div className="flex md:justify-between justify-center  mt-32 mb-32 mr-16 ml-16  text-4xl ">
@@ -48,12 +49,15 @@ export default function Outfit() {
           <div className="flex flex-col">
             <div className="flex flex-col w-full ml-[40px]">
               {outfitList &&
-                outfitList.map((item: any) => (
+                outfitList.reverse().map((item: any) => (
                   <div
                     className="flex flex-col h-full border-b-2 items-center mr-8 m-2 lg:h-auto xl:justify-around xl:flex xl:flex-row "
                     key={item.id}
                   >
                     <div className="flex flex-col items-center mt-8 mb-8">
+                      <h1 className="text-2xl italic underline tracking-widest uppercase font-semibold mb-4 ">
+                        {` ${item.nickname} `}
+                      </h1>
                       <div className=" relative w-[300px] lg:w-[450px]  h-[450px] shadow-2xl overflow-hidden hover:scale-105 ease-in duration-200 ">
                         <img
                           className="w-full  p-4 rounded-md h-full object-cover "
@@ -64,7 +68,7 @@ export default function Outfit() {
                         <CommentForm outfitId={item.id} />
                       </div>
                       <div className="border-2 m-4 w-full max-h-[200px] rounded-md list-none pl-4 h-auto  overflow-auto">
-                        <Comments user_id={item.userId} outfitId={item.id} />
+                        <Comments outfitId={item.id} />
                       </div>
                     </div>
 
@@ -104,8 +108,8 @@ export default function Outfit() {
                         </div>
                       </div>
                       <div className="h-auto mt-14 mr-6 mb-4 ml-6 lg:mt-[80px]">
-                        <p className="uppercase font-semibold text-md lg:text-lg p-2">
-                          description
+                        <p className="uppercase font-semibold text-orange text-md lg:text-lg">
+                          description:
                         </p>
                         <p className="text-sm lg:text-lg">{item.description}</p>
                       </div>

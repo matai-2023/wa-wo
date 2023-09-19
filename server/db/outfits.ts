@@ -19,7 +19,8 @@ export async function getAllOutfits(db = connection) {
       'wardrobe_outer.name as outer',
       'wardrobe_accessories.name as accessories',
       'wardrobe_footwear.name as footwear',
-      'outfits.date_posted'
+      'outfits.date_posted',
+      'users.nickname as nickname'
     )
     .leftJoin('wardrobe as wardrobe_top', 'outfits.top_id', 'wardrobe_top.id')
     .leftJoin(
@@ -42,12 +43,14 @@ export async function getAllOutfits(db = connection) {
       'outfits.footwear_id',
       'wardrobe_footwear.id'
     )
+    .leftJoin('users', 'users.auth0_id', 'outfits.user_id')
 
   // Map the results to the desired format
   const formattedOutfits = outfits.map((outfit) => ({
     id: outfit.id,
     user_id: outfit.user_id,
     img: outfit.img,
+    nickname: outfit.nickname,
     top: outfit.top || '',
     bottom: outfit.bottom || '',
     outer: outfit.outer || '',

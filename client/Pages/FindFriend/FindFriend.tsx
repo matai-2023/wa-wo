@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import TextBox from '../../components/UI/TextBox/TextBox'
 import { useAuth0 } from '@auth0/auth0-react'
-import Button from '../../components/UI/Button/Button'
 import { useQuery } from '@tanstack/react-query'
 import { getAllUsers } from '../../apis/api'
 import { User } from '../../../types/User'
