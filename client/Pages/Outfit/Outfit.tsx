@@ -7,7 +7,8 @@ import { BiSolidTShirt } from 'react-icons/bi'
 import LikeButton from '../../components/LikeButton/LikeButton'
 import { useAuth0 } from '@auth0/auth0-react'
 import useOutfits from './outfitHook'
-import { ImBin } from 'react-icons/im'
+import { deleteOutfit } from '../../apis/api'
+import { useNavigate } from 'react-router-dom'
 
 export default function Outfit() {
   const { getAccessTokenSilently, user } = useAuth0()
@@ -16,6 +17,7 @@ export default function Outfit() {
   const friendList = customFriendList.data
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
+  const navigate = useNavigate()
 
   const customize = useOutfits()
   const mutationDelete = customize.outfitDelMutation
@@ -128,10 +130,11 @@ export default function Outfit() {
                         <div className="p-2 cursor-pointer text-2xl hover:text-3xl">
                           <LikeButton outfitId={item.id} />
                         </div>
-                        <div className="p-4 cursor-pointer text-2xl hover:text-3xl">
-                          <BiSolidTShirt />
-                        </div>
-                        <div className="p-4 cursor-pointer text-2xl hover:text-3xl">
+                        <div className="m-2 cursor-pointer hover:text-3xl">
+                          <BiSolidTShirt
+                            onClick={() => navigate(`/friend/${item.user_id}`)}
+                          />
+
                           {userId == item.user_id && (
                             <ImBin
                               onClick={() => handleDeleteOutfit(item.id)}
