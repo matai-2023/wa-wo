@@ -1,4 +1,3 @@
-import { AddWardrobe } from '../../../types/MyWardrobe'
 import Button from '../UI/Button/Button'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
@@ -15,6 +14,18 @@ import { addItem, getUser } from '../../apis/api'
 function AddItem() {
   const { getAccessTokenSilently } = useAuth0()
   const navigate = useNavigate()
+  //Checking user--------------------------------------------
+  useQuery({
+    queryKey: ['user'],
+    queryFn: async () => {
+      const accessToken = await getAccessTokenSilently()
+      const response = await getUser(accessToken)
+      //Navigation
+      if (!response?.nickname) navigate('/profile')
+      //Return something so no error thrown
+      return []
+    },
+  })
   //---------------------------------------------------------
   //---------------------------------------------------------
   //Mutation Add

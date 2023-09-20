@@ -39,7 +39,7 @@ function FindFriends() {
   async function handleClick() {
     const values = data?.filter(
       (item) =>
-        item.nickname.includes(searchQ) &&
+        item.nickname.toLowerCase().includes(searchQ) &&
         item.nickname.toLowerCase() !== currentUser.nickname?.toLowerCase()
     ) as User[]
     setFriends(values)
@@ -63,7 +63,6 @@ function FindFriends() {
       if (searchQ == '') setFriends([])
     }
   }, [searchQ])
-
   //---------------------------------------------------------
   //Handle input of key Enter to search----------------------
   //---------------------------------------------------------

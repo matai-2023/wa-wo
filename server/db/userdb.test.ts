@@ -54,7 +54,7 @@ describe('2. Get friends', () => {
   it('2.2 Should return the right friend', async () => {
     const friend = {
       auth0_id: 'auth0|6500f4b1f6aa1817d80e5465',
-      nickname: 'example@example.com',
+      nickname: 'ExampleGuy',
     }
     const friends = await getFriends('auth0|65010b645218b17b091d01fe')
     const realFriend = friends.find(
@@ -67,7 +67,7 @@ describe('2. Get friends', () => {
 describe('3. Get All Users', () => {
   it('Should return all registered users', async () => {
     const allUsers = await getAllUsers()
-    expect(allUsers).toHaveLength(3)
+    expect(allUsers).toHaveLength(7)
   })
 })
 

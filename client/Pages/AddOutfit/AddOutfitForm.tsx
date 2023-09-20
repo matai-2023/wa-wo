@@ -3,11 +3,23 @@ import Button from '../../components/UI/Button/Button'
 import useMyWardrobeHook from '../MyWardrobe/myWardrobeHook'
 import useAddOutfit from './useAddOutfit'
 import { useAuth0 } from '@auth0/auth0-react'
-
+import { useQuery } from '@tanstack/react-query'
+import { getUser } from '../../apis/api'
 export default function AddOutfitForm() {
   //-------------------------------------------------------
   const navigate = useNavigate()
   const { getAccessTokenSilently } = useAuth0()
+  useQuery({
+    queryKey: ['user'],
+    queryFn: async () => {
+      const accessToken = await getAccessTokenSilently()
+      const response = await getUser(accessToken)
+      //Navigation
+      if (!response?.nickname) navigate('/profile')
+      //Return something so no error thrown
+      return []
+    },
+  })
   //-------------------------------------------------------
   //-------------------------------------------------------
   //Constructing data to choose from-----------------------
@@ -48,7 +60,9 @@ export default function AddOutfitForm() {
     //-------------------------------------------------------
 
     const token = await getAccessTokenSilently()
+
     mutationAddOutfit.mutate({ newOutfit: form, token: token })
+
     navigate('/outfit')
   }
   //-----------------------------------------------
@@ -63,7 +77,7 @@ export default function AddOutfitForm() {
         <h2 className="font-bold text-[30px]">Add new item</h2>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col items-center w-[300px] lg:w-[600px]  p-8 border-4 border-orange rounded-md mt-[50px]"
+          className="flex flex-col dark:text-black  items-center w-[300px] lg:w-[600px]  p-8 border-4 border-orange rounded-md mt-[50px]"
         >
           <select
             className="w-full m-4 border-2 rounded-lg p-2 cursor-pointer hover:scale-105 duration-100 hover:border-orange hover:text-white hover:bg-orange"
