@@ -14,15 +14,15 @@ export async function seed(knex) {
     },
     {
       auth0_id: 'auth0|6508ddcd7e52c58fd7f13549',
-      nickName: 'youn@matai.com',
+      nickName: 'younie',
     },
     {
       auth0_id: 'auth0|650a38a60889cb914272a210',
-      nickName: 'neil@matai.com',
+      nickName: 'neil the Yes man',
     },
     {
       auth0_id: 'auth0|650a3940bc4a2acbef2ad546',
-      nickName: 'simon@matai.com',
+      nickName: 'siMon',
     },
     {
       auth0_id: 'auth0|650a39b70889cb914272a2ea',
