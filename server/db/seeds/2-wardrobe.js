@@ -671,5 +671,23 @@ export async function seed(knex) {
       part: '',
       image: '/images/navyfleece.jpeg',
     },
+    {
+      id: 75,
+      user_id: 'auth0|6508ddcd7e52c58fd7f13549',
+      name: 'Face knit',
+      description: 'Thick and cozy wooly knit',
+      category: 'top',
+      part: '',
+      image: '/images/faceknit.jpeg',
+    },
+    {
+      id: 76,
+      user_id: 'auth0|6508ddcd7e52c58fd7f13549',
+      name: '501 Jeans',
+      description: 'Straight jeans so classic',
+      category: 'bottom',
+      part: '',
+      image: '/images/levis501.jpeg',
+    },
   ])
 }
