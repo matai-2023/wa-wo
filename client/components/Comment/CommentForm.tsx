@@ -2,11 +2,19 @@ import { useState } from 'react'
 import useComments from './commentHook'
 import { useAuth0 } from '@auth0/auth0-react'
 import { AiFillMessage } from 'react-icons/ai'
+import useUser from '../../hooks/useUser'
+import { useQueryClient } from '@tanstack/react-query'
+
 interface Props {
   outfitId: number
 }
 export default function CommentForm(props: Props) {
   const { getAccessTokenSilently } = useAuth0()
+  //Check if user is in the server database-------------------
+  const currentUser = useUser()
+  const nickname = currentUser.data?.nickname
+  const isRegistered = nickname ? true : false
+
   //-----------------------------------------------
   //-----------------------------------------------
   //State for showing the comment bar--------------
@@ -52,7 +60,7 @@ export default function CommentForm(props: Props) {
         className="text-2xl hover:text-3xl hover:text-blue-400 transition-all"
         onClick={() => setShowing(!showing)}
       >
-        {showing && <AiFillMessage />}
+        {showing && isRegistered && <AiFillMessage />}
       </button>
       {!showing && (
         <div className="flex w-full justify-between items-center">

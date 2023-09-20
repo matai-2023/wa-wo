@@ -4,6 +4,7 @@ import useOutfit from './useCommentHook'
 import useOutfits from './outfitHook'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
+import { getUser } from '../../apis/api'
 //Components
 import Comments from '../../components/Comment/Comment'
 import CommentForm from '../../components/Comment/CommentForm'
@@ -16,6 +17,7 @@ import { Link } from 'react-router-dom'
 
 export default function Outfit() {
   const { getAccessTokenSilently, user } = useAuth0()
+ 
   //----------------------------------------------------------
   //State to handle what to show when clicking Sort-----------
   //----------------------------------------------------------
