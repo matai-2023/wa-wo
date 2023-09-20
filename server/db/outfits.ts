@@ -222,3 +222,13 @@ export async function addComment(
 export async function removeComment(id: number, db = connection) {
   await db('comments').where('id', id).delete()
 }
+//Function for testing purpose only
+export async function countAllComments(db = connection) {
+  const value = await db('comments').count('id as count').first()
+  return value?.count as number
+}
+
+export async function countAllOutfits(db = connection) {
+  const value = await db('outfits').count('id as count').first()
+  return value?.count as number
+}
