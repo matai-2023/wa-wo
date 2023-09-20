@@ -99,6 +99,7 @@ export default function Outfit() {
                         <img
                           className="w-full p-4 rounded-md h-full object-cover"
                           src={item.img}
+                          alt="outfit-images"
                         />
                       </div>
                       <div className="flex mt-6 ml-4 mb-4">
@@ -154,12 +155,12 @@ export default function Outfit() {
                         <div className="m-2 cursor-pointer text-2xl hover:text-3xl">
                           <LikeButton outfitId={item.id} />
                         </div>
-                        <div className="m-4 cursor-pointer hover:text-3xl">
+                        <div className="m-4 cursor-pointer text-[23px] hover:text-3xl">
                           <BiSolidTShirt
                             onClick={() => navigate(`/friend/${item.user_id}`)}
                           />
                         </div>
-                        <div className="m-4 cursor-pointer hover:text-3xl">
+                        <div className="m-4 cursor-pointer text-xl hover:text-3xl">
                           {userId == item.user_id && (
                             <ImBin
                               onClick={() => handleDeleteOutfit(item.id)}
@@ -173,8 +174,8 @@ export default function Outfit() {
             </div>
           </div>
         </div>
-        <div className="sticky invisible md:visible">
-          <div className="relative sticky  border-2 ] h-[350px] w-[120px] mr-6 ml-2 top-[100px]">
+        <div className="relative invisible md:visible">
+          <div className=" sticky border-2 ] h-[350px] w-[120px] mr-6 ml-2 top-[100px]">
             <a href="https://www.zara.com/nz/">
               <img
                 className="object-cover shadow-lg w-full h-full hover:scale-110 ease-in duration-200"
