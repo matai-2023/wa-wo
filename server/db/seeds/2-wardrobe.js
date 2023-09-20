@@ -491,7 +491,7 @@ export async function seed(knex) {
       image: '/images/kai-sweater.jpeg',
     },
     {
-      id: 53,
+      id: 55,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Khaki Ball Cap',
       description: 'Naylon cap',
@@ -500,7 +500,7 @@ export async function seed(knex) {
       image: '/images/khakicap.jpeg',
     },
     {
-      id: 54,
+      id: 56,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Black Blazer',
       description: 'Staple oversized blazer',
@@ -509,7 +509,7 @@ export async function seed(knex) {
       image: '/images/kowtowblazer.jpeg',
     },
     {
-      id: 55,
+      id: 57,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Ivory Pants',
       description: 'High waisted wide pants',
@@ -518,7 +518,7 @@ export async function seed(knex) {
       image: '/images/kt-wide.jpeg',
     },
     {
-      id: 56,
+      id: 58,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Baggy Jeans',
       description: 'Classic mid-blue jeans',
@@ -527,7 +527,7 @@ export async function seed(knex) {
       image: '/images/levis.jpeg',
     },
     {
-      id: 57,
+      id: 59,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Mary Jane',
       description: 'Chunky track sole shoes',
@@ -536,7 +536,7 @@ export async function seed(knex) {
       image: '/images/maryjane.jpeg',
     },
     {
-      id: 58,
+      id: 60,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Tortoise Sunnies',
       description: 'Classic oval shape sunglasses',
@@ -545,7 +545,7 @@ export async function seed(knex) {
       image: '/images/naomi.jpeg',
     },
     {
-      id: 59,
+      id: 61,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Grey sneakers',
       description: 'Classic sporty sneakers inspired by Steve Jobs',
@@ -554,7 +554,7 @@ export async function seed(knex) {
       image: '/images/nb992.jpeg',
     },
     {
-      id: 61,
+      id: 62,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Nice Hat',
       description: 'Brown hemp hat',
@@ -563,7 +563,7 @@ export async function seed(knex) {
       image: '/images/Nice.jpeg',
     },
     {
-      id: 62,
+      id: 63,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Nike Dunk',
       description: 'Can be worn everywhere',
@@ -572,7 +572,7 @@ export async function seed(knex) {
       image: '/images/nike.jpeg',
     },
     {
-      id: 63,
+      id: 64,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Check top',
       description: 'Lavender gingham check top, very cute!',
@@ -581,7 +581,7 @@ export async function seed(knex) {
       image: '/images/permanent.jpeg',
     },
     {
-      id: 64,
+      id: 65,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'White T-shirt with printing',
       description: 'Oversized t-shirt with film printing',
@@ -590,7 +590,7 @@ export async function seed(knex) {
       image: '/images/quietlife.jpeg',
     },
     {
-      id: 65,
+      id: 66,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Roses shorts',
       description: 'Cool rose print shorts for summer days',
@@ -599,7 +599,7 @@ export async function seed(knex) {
       image: '/images/rose-print-cotton-shorts.jpeg',
     },
     {
-      id: 66,
+      id: 67,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Silver shorts',
       description:
@@ -609,7 +609,7 @@ export async function seed(knex) {
       image: '/images/silver-shorts.jpeg',
     },
     {
-      id: 67,
+      id: 68,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Silver sunnies',
       description: 'Sporty looking wrap sunglasses',
@@ -618,7 +618,7 @@ export async function seed(knex) {
       image: '/images/silversunnies.jpeg',
     },
     {
-      id: 68,
+      id: 69,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Sun Club T-shirt',
       description: 'Light yellow T-shirt',
@@ -627,7 +627,7 @@ export async function seed(knex) {
       image: '/images/sunclub.jpeg',
     },
     {
-      id: 69,
+      id: 70,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Ugg Boots',
       description: 'Ugg ultra mini platform boots',
@@ -636,7 +636,7 @@ export async function seed(knex) {
       image: '/images/uggboots.jpeg',
     },
     {
-      id: 70,
+      id: 71,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Slip On',
       description: 'Classic checkerboard Vans',
@@ -645,13 +645,31 @@ export async function seed(knex) {
       image: '/images/vanscheckerboard.jpeg',
     },
     {
-      id: 71,
+      id: 72,
       user_id: 'auth0|6508ddcd7e52c58fd7f13549',
       name: 'Grey Sweatshirt',
       description: 'Wellness sweats',
       category: 'top',
       part: '',
       image: '/images/wellness.jpeg',
+    },
+    {
+      id: 73,
+      user_id: 'auth0|6508ddcd7e52c58fd7f13549',
+      name: 'Puffer Jacket',
+      description: 'My favourite puffer! So coooooool',
+      category: 'outer',
+      part: '',
+      image: '/images/hokusai.jpeg',
+    },
+    {
+      id: 74,
+      user_id: 'auth0|6508ddcd7e52c58fd7f13549',
+      name: 'Navy Fleece Jacket',
+      description: 'Very cozy and snuggly jacket',
+      category: 'outer',
+      part: '',
+      image: '/images/navyfleece.jpeg',
     },
   ])
 }
