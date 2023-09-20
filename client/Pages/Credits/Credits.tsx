@@ -7,9 +7,9 @@ export default function Credits() {
     const timer = setTimeout(
       () => {
         // Increment the value by 1, but reset to 0 if it reaches 10
-        if (state < 21) setState(state + 1)
+        if (state < 23) setState(state + 1)
       },
-      state == 0 ? 10 : 3500
+      state == 0 ? 10 : state == 22 ? 10000 : 4500
     ) // 10000 milliseconds = 10 seconds
 
     return () => {
@@ -257,7 +257,7 @@ export default function Credits() {
               />
             </div>
             <p className="flex justify-center items-center text-2xl">
-              Taking care of our physical WellBeing
+              Exercise is good for the soul
             </p>
           </motion.div>
         </>
@@ -301,7 +301,7 @@ export default function Credits() {
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
             >
-              Just
+              Cooking
             </p>
             <div className="flex items-center justify-center">
               <img
@@ -311,7 +311,7 @@ export default function Credits() {
               />
             </div>
             <p className="flex justify-center items-center text-2xl">
-              A little R&R
+              Yes Chef
             </p>
           </motion.div>
         </>
@@ -327,7 +327,9 @@ export default function Credits() {
             <p
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
-            ></p>
+            >
+              Being Helpful
+            </p>
             <div className="flex items-center justify-center">
               <img
                 src="cp/feedingtime.jpg"
@@ -336,7 +338,7 @@ export default function Credits() {
               />
             </div>
             <p className="flex justify-center items-center text-2xl">
-              A little R&R
+              Feeding time
             </p>
           </motion.div>
         </>
@@ -352,7 +354,9 @@ export default function Credits() {
             <p
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
-            ></p>
+            >
+              Stop stealing my phone
+            </p>
             <div className="flex items-center justify-center">
               <img
                 src="cp/friends.jpg"
@@ -360,7 +364,9 @@ export default function Credits() {
                 className="flex flex-col object-contain w- h-[450px] rounded-full border"
               />
             </div>
-            <p className="flex justify-center items-center text-2xl"></p>
+            <p className="flex justify-center items-center text-2xl">
+              Thanks guys
+            </p>
           </motion.div>
         </>
       )}
@@ -375,7 +381,9 @@ export default function Credits() {
             <p
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
-            ></p>
+            >
+              Its Humaid
+            </p>
             <div className="flex items-center justify-center">
               <img
                 src="cp/humaid.jpg"
@@ -383,7 +391,9 @@ export default function Credits() {
                 className="flex flex-col object-contain w- h-[450px] rounded-full border"
               />
             </div>
-            <p className="flex justify-center items-center text-2xl"></p>
+            <p className="flex justify-center items-center text-2xl">
+              Humaid Musa Mohammed Ali Memee
+            </p>
           </motion.div>
         </>
       )}
@@ -398,7 +408,9 @@ export default function Credits() {
             <p
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
-            ></p>
+            >
+              Personal projects
+            </p>
             <div className="flex items-center justify-center">
               <img
                 src="cp/keyboard.jpg"
@@ -406,7 +418,9 @@ export default function Credits() {
                 className="flex flex-col object-contain w- h-[450px] rounded-full border"
               />
             </div>
-            <p className="flex justify-center items-center text-2xl"></p>
+            <p className="flex justify-center items-center text-2xl">
+              That Looks heavy
+            </p>
           </motion.div>
         </>
       )}
@@ -421,7 +435,9 @@ export default function Credits() {
             <p
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
-            ></p>
+            >
+              Standup in the park
+            </p>
             <div className="flex items-center justify-center">
               <img
                 src="cp/lyingdown.jpg"
@@ -429,7 +445,9 @@ export default function Credits() {
                 className="flex flex-col object-contain w- h-[450px] rounded-full border"
               />
             </div>
-            <p className="flex justify-center items-center text-2xl"></p>
+            <p className="flex justify-center items-center text-2xl">
+              Why stand when you can sit?
+            </p>
           </motion.div>
         </>
       )}
@@ -444,7 +462,9 @@ export default function Credits() {
             <p
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
-            ></p>
+            >
+              MVP
+            </p>
             <div className="flex items-center justify-center">
               <img
                 src="cp/mvpboard.jpg"
@@ -452,7 +472,9 @@ export default function Credits() {
                 className="flex flex-col object-contain w- h-[450px] rounded-full border"
               />
             </div>
-            <p className="flex justify-center items-center text-2xl"></p>
+            <p className="flex justify-center items-center text-2xl">
+              Mostly very pissed
+            </p>
           </motion.div>
         </>
       )}
@@ -467,7 +489,9 @@ export default function Credits() {
             <p
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
-            ></p>
+            >
+              Sunny days
+            </p>
             <div className="flex items-center justify-center">
               <img
                 src="cp/park1.jpg"
@@ -475,7 +499,9 @@ export default function Credits() {
                 className="flex flex-col object-contain w- h-[450px] rounded-full border"
               />
             </div>
-            <p className="flex justify-center items-center text-2xl"></p>
+            <p className="flex justify-center items-center text-2xl">
+              Make the most of a good day
+            </p>
           </motion.div>
         </>
       )}
@@ -490,7 +516,9 @@ export default function Credits() {
             <p
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
-            ></p>
+            >
+              Cheers
+            </p>
             <div className="flex items-center justify-center">
               <img
                 src="cp/park2.jpg"
@@ -498,7 +526,9 @@ export default function Credits() {
                 className="flex flex-col object-contain w- h-[450px] rounded-full border"
               />
             </div>
-            <p className="flex justify-center items-center text-2xl"></p>
+            <p className="flex justify-center items-center text-2xl">
+              Whats life without friends
+            </p>
           </motion.div>
         </>
       )}
@@ -513,7 +543,9 @@ export default function Credits() {
             <p
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
-            ></p>
+            >
+              Hanging out
+            </p>
             <div className="flex items-center justify-center">
               <img
                 src="cp/tree.jpg"
@@ -521,7 +553,9 @@ export default function Credits() {
                 className="flex flex-col object-contain w- h-[450px] rounded-full border"
               />
             </div>
-            <p className="flex justify-center items-center text-2xl"></p>
+            <p className="flex justify-center items-center text-2xl">
+              Looking for girls up in the tree
+            </p>
           </motion.div>
         </>
       )}
@@ -536,7 +570,9 @@ export default function Credits() {
             <p
               className="flex flex-col items-center justify-center
       animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
-            ></p>
+            >
+              The Master Planner
+            </p>
             <div className="flex items-center justify-center">
               <img
                 src="cp/ryan&board.jpg"
@@ -544,11 +580,40 @@ export default function Credits() {
                 className="flex flex-col object-contain w- h-[450px] rounded-full border"
               />
             </div>
-            <p className="flex justify-center items-center text-2xl"></p>
+            <p className="flex justify-center items-center text-2xl">
+              He does not know what he is doing
+            </p>
           </motion.div>
         </>
       )}
       {state == 21 && (
+        <>
+          <motion.div
+            initial={{ opacity: 0, translateY: -50 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            exit={{ opacity: 0, translateY: 50 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <p
+              className="flex flex-col items-center justify-center
+      animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
+            >
+              Team Bonding
+            </p>
+            <div className="flex items-center justify-center">
+              <img
+                src="cp/hotpot.jpg"
+                alt=""
+                className="flex flex-col object-contain w- h-[450px] rounded-full border"
+              />
+            </div>
+            <p className="flex justify-center items-center text-2xl">
+              Hotpot night
+            </p>
+          </motion.div>
+        </>
+      )}
+      {state == 22 && (
         <div className="flex flex-col justify-center items-center gap-4">
           {data.map((item, i) => (
             <motion.div
@@ -561,6 +626,33 @@ export default function Credits() {
             </motion.div>
           ))}
         </div>
+      )}
+      {state == 23 && (
+        <>
+          <motion.div
+            initial={{ opacity: 0, translateY: -50 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            exit={{ opacity: 0, translateY: 50 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <p
+              className="flex flex-col items-center justify-center
+      animate-text bg-gradient-to-r from-orange via-purple-500 to-orange bg-clip-text text-transparent text-5xl font-black"
+            >
+              Team Undefined Insomnia
+            </p>
+            <div className="flex items-center justify-center">
+              <img
+                src="cp/us.jpg"
+                alt=""
+                className="flex flex-col object-contain w- h-[450px] rounded-full border"
+              />
+            </div>
+            <p className="flex justify-center items-center text-2xl">
+              Matai 2023
+            </p>
+          </motion.div>
+        </>
       )}
     </div>
   )
