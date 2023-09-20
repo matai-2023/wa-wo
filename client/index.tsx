@@ -51,7 +51,6 @@ export const routes = createRoutesFromElements(
       path="/friend/:id"
       element={<ProtectedComponent component={FriendsWardrobe} />}
     />
-
     <Route path="/outfit" element={<ProtectedComponent component={Outfit} />} />
     <Route
       path="/outfit/add"
