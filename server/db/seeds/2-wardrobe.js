@@ -672,6 +672,7 @@ export async function seed(knex) {
       image: '/images/navyfleece.jpeg',
     },
 
+
     {
       id: 75,
       user_id: 'auth0|650a38a60889cb914272a210',
@@ -765,6 +766,7 @@ export async function seed(knex) {
       category: 'accessories',
       part: 'tie',
       image: '/images/tie1.png',
+
     },
   ])
 }

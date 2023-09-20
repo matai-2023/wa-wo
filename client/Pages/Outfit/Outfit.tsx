@@ -30,6 +30,7 @@ export default function Outfit() {
   //----------------------------------------------------------
   const customOutfitList = useOutfit(filter)
   const outfitList = customOutfitList.data
+
   //Navigate hook set up--------------------------------------
   const navigate = useNavigate()
   //----------------------------------------------------------
@@ -59,7 +60,7 @@ export default function Outfit() {
             oOtd
           </h1>
           <Link
-            to={'/add-item'}
+            to={'/outfit/add'}
             className="uppercase hover:max-w-full md:mr-[40px] hover:scale-125 ease-in transition-all md:right-10  h-0.5 text-sm lg:text-[20px] hover:text-orange mb-2"
           >
             Outfit
@@ -148,9 +149,11 @@ export default function Outfit() {
                           </div>
                           <div className=" flex flex-row items-center lg:flex-col lg:items-start xl:flex xl:flex-row xl:items-center">
                             <p className="text-md lg:text-lg font-semibold text-orange mr-4">
-                              footer:{' '}
+                              footwear:{' '}
                             </p>
-                            <p className="text-sm lg:text-lg">{item.footer}</p>
+                            <p className="text-sm lg:text-lg">
+                              {item.footwear}
+                            </p>
                           </div>
                         </div>
                         <div className="h-auto mt-14 mr-[80px] lg:mr-6 mb-4 ml-16 lg:ml-6 lg:mt-[80px]">
