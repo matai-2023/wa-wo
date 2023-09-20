@@ -14,6 +14,8 @@ export default function useAddOutfit() {
       token: string
     }) => addOutfit(newOutfit, token),
     onSuccess: () => {
+      //Do not question this double invalidate!
+      queryClient.invalidateQueries(['outfits'])
       queryClient.invalidateQueries(['outfits'])
     },
   })
