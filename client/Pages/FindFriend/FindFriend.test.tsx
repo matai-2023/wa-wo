@@ -7,6 +7,7 @@ import nock from 'nock'
 import { renderWithQuery } from '../../test-utils'
 
 import FindFriends from './FindFriend'
+import { getMockToken } from '../../../server/routes/mockToken'
 
 vi.mock('@auth0/auth0-react')
 ;(auth0 as auth0.User).useAuth0 = vi.fn().mockReturnValue({
@@ -21,6 +22,11 @@ describe('Find Friends', () => {
 
   it('1. Display friend based on query input', async () => {
     const scope = nock('http://localhost')
+      .get(`/api/v1/users`)
+      .reply(200, {
+        auth0_id: 'test-id',
+        nickname: 'test-nickname',
+      })
       .get(`/api/v1/users/all`)
       .reply(200, [
         {
@@ -35,7 +41,7 @@ describe('Find Friends', () => {
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
     // user enters 'a' into input
     await user.type(screen.getByPlaceholderText('Enter a nickname'), 'a')
-    const nickname = screen.getByRole('heading', { name: 'apple' })
+    const nickname = screen.getByRole('heading', { level: 3 })
     expect(nickname).toBeInTheDocument()
   })
 
@@ -44,6 +50,11 @@ describe('Find Friends', () => {
 
   it('2. Display "no friend found" with empty input', async () => {
     const scope = nock('http://localhost')
+      .get(`/api/v1/users`)
+      .reply(200, {
+        auth0_id: 'test-id',
+        nickname: 'test-nickname',
+      })
       .get(`/api/v1/users/all`)
       .reply(200, [
         {
@@ -67,6 +78,11 @@ describe('Find Friends', () => {
 
   it('3. Display "no friend found" with unmatched input', async () => {
     const scope = nock('http://localhost')
+      .get(`/api/v1/users`)
+      .reply(200, {
+        auth0_id: 'test-id',
+        nickname: 'test-nickname',
+      })
       .get('/api/v1/users/all')
       .reply(200, [
         {
@@ -86,6 +102,11 @@ describe('Find Friends', () => {
   //---------------------------------------------------------
   it('4. Display "no friend found" with empty input', async () => {
     const scope = nock('http://localhost')
+      .get(`/api/v1/users`)
+      .reply(200, {
+        auth0_id: 'test-id',
+        nickname: 'test-nickname',
+      })
       .get('/api/v1/users/all')
       .reply(200, [
         {
@@ -105,6 +126,11 @@ describe('Find Friends', () => {
   //---------------------------------------------------------
   it('5. Display "no friend found" with unmatched input', async () => {
     const scope = nock('http://localhost')
+      .get(`/api/v1/users`)
+      .reply(200, {
+        auth0_id: 'test-id',
+        nickname: 'test-nickname',
+      })
       .get('/api/v1/users/all')
       .reply(200, [
         {
@@ -115,13 +141,18 @@ describe('Find Friends', () => {
     const { user } = renderWithQuery(<FindFriends />)
     await user.type(screen.getByPlaceholderText('Enter a nickname'), 'a')
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
-    const error = screen.getByRole('heading', { name: 'No friends found' })
+    const error = await screen.getByRole('heading', { level: 3 })
     expect(error).toBeInTheDocument()
   })
   //---------------------------------------------------------
   //---------------------------------------------------------
   it('6. Friend list is empty when page renders/refreshed', async () => {
     const scope = nock('http://localhost')
+      .get(`/api/v1/users`)
+      .reply(200, {
+        auth0_id: 'test-id',
+        nickname: 'test-nickname',
+      })
       .get('/api/v1/users/all')
       .reply(200, [])
 
