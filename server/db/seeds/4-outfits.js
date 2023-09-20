@@ -62,5 +62,17 @@ export async function seed(knex) {
       accessories_id: 7,
       footwear_id: 9,
     },
+    {
+      id: 6,
+      user_id: 'auth0|6508ddcd7e52c58fd7f13549',
+      img: '/images/outfits/hokusai.jpeg',
+      date_posted: new Date(Date.now()),
+      top_id: 2,
+      description: '5fuck',
+      bottom_id: 3,
+      outer_id: 4,
+      accessories_id: 7,
+      footwear_id: 9,
+    },
   ])
 }
