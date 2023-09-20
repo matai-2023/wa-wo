@@ -68,7 +68,10 @@ export async function getAllOutfits(db = connection) {
 
   return formattedOutfits
 }
-
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function getOutfitsByUserId(userId: string, db = connection) {
   const outfits = await db('outfits')
     .where('outfits.user_id', userId)
@@ -122,7 +125,10 @@ export async function getOutfitsByUserId(userId: string, db = connection) {
 
   return formattedOutfits
 }
-
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export interface OutfitToAdd {
   img: string
   top_id: number | null
@@ -132,7 +138,10 @@ export interface OutfitToAdd {
   footwear_id: number | null
   description: string
 }
-
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function addOutfit(
   userId: string,
   outfit: OutfitToAdd,
@@ -150,7 +159,10 @@ export async function addOutfit(
     date_posted: new Date(Date.now()),
   })
 }
-
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function removeOutfit(id: number, db = connection) {
   const item = await db('outfits').where('id', id).select('img').first()
   const filePath = path.join(__dirname, '../../public', item.img)
@@ -189,7 +201,8 @@ interface CommentToAdd {
   outfitId: number
   comment: string
 }
-
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function addComment(
   userId: string,
   comment: CommentToAdd,
@@ -202,7 +215,10 @@ export async function addComment(
     date_commented: new Date(Date.now()),
   })
 }
-
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 export async function removeComment(id: number, db = connection) {
   await db('comments').where('id', id).delete()
 }
