@@ -53,7 +53,7 @@ function FriendList() {
                         className="absolute top-3 right-0"
                         onClick={() => handleDeleteFriend(friend.auth0_id)}
                       >
-                        <Icon className="bg-warning text-sm lg:text-xl">
+                        <Icon className="bg-warning dark:text-white text-sm lg:text-xl">
                           <i className="fa-solid fa-trash" />
                         </Icon>
                       </button>
