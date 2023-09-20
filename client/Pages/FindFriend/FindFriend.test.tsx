@@ -7,7 +7,7 @@ import nock from 'nock'
 import { renderWithQuery } from '../../test-utils'
 
 import FindFriends from './FindFriend'
-import { getMockToken } from '../../../server/routes/mockToken'
+
 
 vi.mock('@auth0/auth0-react')
 ;(auth0 as auth0.User).useAuth0 = vi.fn().mockReturnValue({
