@@ -230,5 +230,17 @@ export async function seed(knex) {
       accessories_id: null,
       footwear_id: 63,
     },
+    {
+      id: 20,
+      user_id: 'auth0|6508ddcd7e52c58fd7f13549',
+      img: '/images/outfits/IMG_5459.jpeg',
+      date_posted: new Date(Date.now()),
+      top_id: null,
+      description: 'Casual and comfy',
+      bottom_id: 43,
+      outer_id: null,
+      accessories_id: null,
+      footwear_id: null,
+    },
   ])
 }
