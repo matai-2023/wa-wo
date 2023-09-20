@@ -67,7 +67,7 @@ describe('2. Get friends', () => {
 describe('3. Get All Users', () => {
   it('Should return all registered users', async () => {
     const allUsers = await getAllUsers()
-    expect(allUsers).toHaveLength(3)
+    expect(allUsers).toHaveLength(7)
   })
 })
 
