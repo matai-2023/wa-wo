@@ -62,7 +62,6 @@ function AddItem() {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     await handleAdd(formData)
-    queryClient.invalidateQueries(['wardrobe'])
   }
 
   //---------------------------------------------------------

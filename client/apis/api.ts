@@ -1,8 +1,6 @@
 import request from 'superagent'
 import { User } from '../../types/User'
-import { AddWardrobe, Wardrobe } from '../../types/MyWardrobe'
-import { OutfitToAdd } from '../../server/db/outfits'
-import { as } from 'vitest/dist/reporters-cb94c88b.js'
+import { Wardrobe } from '../../types/MyWardrobe'
 
 //-----------------------------------------------
 //-----------------------------------------------

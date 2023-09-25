@@ -1,7 +1,27 @@
 import express from 'express'
 import * as db from '../db/outfits'
+import path from 'node:path/posix'
 import validateAccessToken from '../auth0'
 import upload from '../multerSetup'
+import * as Path from 'node:path/posix'
+import * as URL from 'node:url'
+import { v2 as cloudinary } from 'cloudinary'
+
+const __filename = URL.fileURLToPath(import.meta.url)
+const __dirname = Path.dirname(__filename)
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//setting cloudinary----------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+cloudinary.config({
+  cloud_name: 'dzfzt0p5v',
+  api_key: '616443461267278',
+  api_secret: 'khF_PKqC60Ou9xGxfVvvJV0EUGg',
+})
+
 const router = express.Router()
 
 //---------------------------------------------------------
@@ -91,6 +111,17 @@ router.post(
       return
     }
     try {
+      const filePath = path.join(
+        __dirname,
+        '../../public',
+        `/images/${req.file?.filename}`
+      )
+
+      const result = await cloudinary.uploader.upload(filePath, {
+        folder: 'images',
+        resource_type: 'image', // Change as needed (auto, image, video, raw, etc.)
+      })
+
       const newOutfit = {
         top_id: req.body.top.length == 0 ? null : Number(req.body.top),
         bottom_id: req.body.bottom.length == 0 ? null : Number(req.body.bottom),
@@ -102,8 +133,11 @@ router.post(
         footwear_id:
           req.body.footwear.length == 0 ? null : Number(req.body.footwear),
         description: req.body.description,
-        img: `/images/${req.file?.filename}`,
+        img: result.secure_url,
+        public_id: result.public_id,
       }
+      console.log(newOutfit)
+      await db.deleteOutfitImages(`images/${req.file?.filename}`)
       await db.addOutfit(userId, newOutfit)
       res.status(201).json({ message: 'Added successfully' })
     } catch (error) {
