@@ -68,10 +68,16 @@ const queryClient = new QueryClient()
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
-      domain="youn.au.auth0.com"
-      clientId="6BcrxurWcfVZiNadfzUFs7kyxSwFx908"
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      domain={import.meta.env.VITE_AUTH0_DOMAIN as string}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID as string}
       redirectUri={window.location.origin}
-      audience="https://wardrobe/api"
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      audience={import.meta.env.VITE_AUTH0_AUDIENCE as string}
     >
       <QueryClientProvider client={queryClient}>
         <AppProvider />
