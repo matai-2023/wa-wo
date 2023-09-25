@@ -23,6 +23,7 @@ import FriendsWardrobe from './Pages/FriendsWardrobe/FriendsWardrobe.tsx'
 import Credits from './Pages/Credits/Credits.tsx'
 import Outfit from './Pages/Outfit/Outfit.tsx'
 import AddOutfitForm from './Pages/AddOutfit/AddOutfitForm.tsx'
+import Test from './Pages/Testing/Test.tsx'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
@@ -56,6 +57,7 @@ export const routes = createRoutesFromElements(
       path="/outfit/add"
       element={<ProtectedComponent component={AddOutfitForm} />}
     />
+    <Route path="/testing" element={<Test />} />
     <Route path="/credit" element={<Credits />} />
   </Route>
 )

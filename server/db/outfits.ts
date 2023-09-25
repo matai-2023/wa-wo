@@ -3,7 +3,20 @@ import connection from './connection.ts'
 import path from 'node:path/posix'
 import * as Path from 'node:path/posix'
 import * as URL from 'node:url'
-
+import { v2 as cloudinary } from 'cloudinary'
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//setting cloudinary----------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+//---------------------------------------------------------
+cloudinary.config({
+  cloud_name: 'dzfzt0p5v',
+  api_key: '616443461267278',
+  api_secret: 'khF_PKqC60Ou9xGxfVvvJV0EUGg',
+})
+//seting file path-----------------------------------------
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
 //---------------------------------------------------------
@@ -137,6 +150,7 @@ export interface OutfitToAdd {
   accessories_id: number | null
   footwear_id: number | null
   description: string
+  public_id: string | null
 }
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
@@ -157,6 +171,7 @@ export async function addOutfit(
     footwear_id: outfit.footwear_id,
     description: outfit.description,
     date_posted: new Date(Date.now()),
+    public_id: outfit.public_id,
   })
 }
 //----------------------------------------------------------------------------
@@ -164,12 +179,19 @@ export async function addOutfit(
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 export async function removeOutfit(id: number, db = connection) {
-  const item = await db('outfits').where('id', id).select('img').first()
+  const item = await db('outfits').where('id', id).select().first()
   const filePath = path.join(__dirname, '../../public', item.img)
   try {
     await fsPromises.unlink(filePath)
   } catch (err) {
     console.log('Dont worry about this error the file is just not in our sever')
+  }
+  try {
+    // console.log(item.public_id)
+    const result = await cloudinary.uploader.destroy(item.public_id)
+    console.log('sucessfully', result)
+  } catch (error) {
+    console.error('Error deleting image:', error)
   }
   await db('likes').where('outfit_id', id).del()
   await db('comments').where('outfit_id', id).del()
@@ -231,4 +253,13 @@ export async function countAllComments(db = connection) {
 export async function countAllOutfits(db = connection) {
   const value = await db('outfits').count('id as count').first()
   return value?.count as number
+}
+
+export async function deleteOutfitImages(imgPath: string, db = connection) {
+  const filePath = path.join(__dirname, '../../public', imgPath)
+  try {
+    await fsPromises.unlink(filePath)
+  } catch (err) {
+    console.log('Dont worry about this error the file is just not in our sever')
+  }
 }

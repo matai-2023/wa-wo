@@ -6,7 +6,8 @@ export function up(knex) {
     table.string('description')
     table.string('category')
     table.string('part')
-    table.string('image')
+    table.string('image').notNullable()
+    table.string('public_id').nullable()
   })
 }
 
