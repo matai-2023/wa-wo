@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom'
 
 export default function Outfit() {
   const { getAccessTokenSilently, user } = useAuth0()
- 
+
   //----------------------------------------------------------
   //State to handle what to show when clicking Sort-----------
   //----------------------------------------------------------
@@ -69,7 +69,7 @@ export default function Outfit() {
             <i className="fa-solid fa-plus text-sm lg:text-2xl"></i>
           </Link>
         </div>
-        <div className="flex w-screen">
+        <div className="flex w-screen ">
           <div className="sticky">
             <div
               className="break-all overflow-y-auto sticky w-[150px] lg:w-[300px] h-[700px] top-[40px]  flex flex-col items-center  border-r-2 text-md lg:text-xl mb-[20px] "

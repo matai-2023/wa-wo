@@ -55,8 +55,8 @@ function FriendsWardrobe() {
     <>
       {' '}
       {isLoading && <div>Loading ...</div>}
-      <div className="w-auto flex mt-[100px]">
-        <div className="h-[700px] sticky top-[40px] flex flex-col place-content-evenly w-auto  border-r-2 text-md lg:text-xl mb-[20px] ">
+      <div className="w-auto flex flex-col sm:flex-row  sm:mt-[100px]">
+        <div className="h-[200px] sm:h-[700px] mb-[100px] relative sm:sticky top-[40px] flex flex-row flex-wrap sm:flex-col place-content-evenly sm:w-auto  sm:border-r-2 text-md lg:text-xl sm:mb-[20px]  ">
           <button
             className="m-6 hover:max-w-full hover:scale-125 ease-in duration-100  h-0.5 focus:text-blue-400 hover:text-blue-400"
             onClick={() => setFilter('')}
@@ -95,7 +95,7 @@ function FriendsWardrobe() {
           </button>
         </div>
         <div className="w-screen">
-          <div className="flex md:justify-between justify-evenly mb-16 mr-16 ml-16  text-4xl border-b-[5px] w-10/12">
+          <div className="flex md:justify-between justify-evenly m-8 sm:mt-16 sm:mr-16 sm:ml-16 text-4xl border-b-[5px] w-10/12">
             {nickname && (
               <h1 className="italic text-2xl lg:text-[40px]">
                 {nickname.nickname} Wardrobe
