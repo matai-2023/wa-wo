@@ -5,6 +5,7 @@ import connection from './connection.ts'
 import path from 'node:path/posix'
 import * as URL from 'node:url'
 import * as Path from 'node:path/posix'
+import { v2 as cloudinary } from 'cloudinary'
 
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
@@ -23,7 +24,7 @@ export async function getAllwardrobe(auth0Id: string, db = connection) {
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 export async function deleteItem(id: number, db = connection) {
-  const item = await db('wardrobe').where('id', id).select('image').first()
+  const item = await db('wardrobe').where('id', id).select().first()
   const filePath = path.join(__dirname, '../../public', item.image)
   try {
     await fsPromises.unlink(filePath)
@@ -31,6 +32,12 @@ export async function deleteItem(id: number, db = connection) {
     console.log(
       'Dont worry about this error the item just not in our filesystem. For more info check wardrobedb.ts'
     )
+  }
+  try {
+    const result = await cloudinary.uploader.destroy(item.public_id)
+    console.log('sucessfully', result)
+  } catch (error) {
+    console.error('Error deleting image:', error)
   }
   await db.transaction(async (trx) => {
     // Find the corresponding 'outfits' records that reference the item to be deleted
@@ -67,6 +74,15 @@ export async function deleteItem(id: number, db = connection) {
 
 export function addItem(newItem: AddWardrobe, db = connection) {
   return db('wardrobe').insert(newItem)
+}
+
+export async function deleteWardrobeImages(imgPath: string, db = connection) {
+  const filePath = path.join(__dirname, '../../public', imgPath)
+  try {
+    await fsPromises.unlink(filePath)
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 //-----------------------------------------------

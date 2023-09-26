@@ -4,9 +4,15 @@ import logger from '../db/logger.ts'
 import * as db from '../db/wardrobedb.ts'
 import { addItemSchema } from '../../types/MyWardrobe.ts'
 import upload from '../multerSetup.ts'
+import { v2 as cloudinary } from 'cloudinary'
+import * as Path from 'node:path/posix'
+import * as URL from 'node:url'
+import path from 'node:path/posix'
 
 const router = express.Router()
 
+const __filename = URL.fileURLToPath(import.meta.url)
+const __dirname = Path.dirname(__filename)
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 //GET api/v1/my-wardrobe/-----------------------------------------------------
@@ -42,15 +48,27 @@ router.post(
       return
     }
     try {
+      const filePath = path.join(
+        __dirname,
+        '../../public',
+        `/images/${req.file?.filename}`
+      )
+      const result = await cloudinary.uploader.upload(filePath, {
+        folder: 'images',
+        resource_type: 'image', // Change as needed (auto, image, video, raw, etc.)
+      })
+
       const newItem = {
         user_id: userId,
         name: req.body.name,
         description: req.body.description,
         category: req.body.category,
         part: req.body.part,
-        image: `/images/${req.file?.filename}`,
+        image: result.secure_url,
+        public_id: result.public_id,
       }
       await db.addItem(newItem)
+      await db.deleteWardrobeImages(`images/${req.file?.filename}`)
       res.status(201)
     } catch (e) {
       logger.error(e)
