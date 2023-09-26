@@ -9,18 +9,6 @@ import { v2 as cloudinary } from 'cloudinary'
 
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
-//---------------------------------------------------------
-//---------------------------------------------------------
-//---------------------------------------------------------
-//setting cloudinary----------------------------------------
-//---------------------------------------------------------
-//---------------------------------------------------------
-//---------------------------------------------------------
-cloudinary.config({
-  cloud_name: 'dzfzt0p5v',
-  api_key: '616443461267278',
-  api_secret: 'khF_PKqC60Ou9xGxfVvvJV0EUGg',
-})
 
 const router = express.Router()
 
