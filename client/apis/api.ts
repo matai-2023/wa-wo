@@ -94,7 +94,7 @@ export async function getMyWardrobe(token: string) {
 }
 
 export async function addItem(newItem: FormData, token: string) {
-  await request
+  return await request
     .post('/api/v1/my-wardrobe')
     .set('Authorization', `Bearer ${token}`)
     .send(newItem)

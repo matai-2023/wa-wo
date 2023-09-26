@@ -27,6 +27,7 @@ describe('GET /api/v1/my-wardrobe', () => {
         category: 'Ng',
         part: 'top',
         image: 'ur',
+        public_id: 'none',
       },
     ]
 

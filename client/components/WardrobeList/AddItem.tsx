@@ -46,12 +46,6 @@ function AddItem() {
   //---------------------------------------------------------
   //---------------------------------------------------------
 
-  async function handleAdd(newItem: FormData) {
-    const token = await getAccessTokenSilently()
-    mutationAdd.mutate({ newItem, token })
-    navigate('/my-wardrobe')
-  }
-
   //---------------------------------------------------------
   //---------------------------------------------------------
   //Making form to add
@@ -61,7 +55,9 @@ function AddItem() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    await handleAdd(formData)
+    const token = await getAccessTokenSilently()
+    await mutationAdd.mutate({ newItem: formData, token: token })
+    navigate('/my-wardrobe')
   }
 
   //---------------------------------------------------------

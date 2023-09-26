@@ -25,11 +25,9 @@ export async function getAllwardrobe(auth0Id: string, db = connection) {
 //----------------------------------------------------------------------------
 export async function deleteItem(id: number, db = connection) {
   const item = await db('wardrobe').where('id', id).select().first()
-  const filePath = path.join(__dirname, '../../public', item.image)
 
   try {
     const result = await cloudinary.uploader.destroy(item.public_id)
-    
   } catch (error) {
     console.error('Error deleting image:', error)
   }
@@ -75,7 +73,7 @@ export async function deleteWardrobeImages(imgPath: string, db = connection) {
   try {
     await fsPromises.unlink(filePath)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 

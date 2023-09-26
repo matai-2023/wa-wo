@@ -18,8 +18,6 @@ function useOutfits() {
     mutationFn: ({ id, token }: { id: number; token: string }) =>
       deleteOutfit(id, token),
     onSuccess: () => {
-      //Do not question this double invalidate
-      queryClient.invalidateQueries(['outfits'])
       queryClient.invalidateQueries(['outfits'])
     },
   })

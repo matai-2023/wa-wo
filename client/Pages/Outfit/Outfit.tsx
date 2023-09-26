@@ -97,7 +97,7 @@ export default function Outfit() {
             <div className="flex flex-col">
               <div className="flex flex-col w-full ml-[40px]">
                 {outfitList &&
-                  outfitList.reverse().map((item: any) => (
+                  outfitList.map((item: any) => (
                     <div
                       className="flex flex-col h-full border-b-2 items-center mr-8 m-2 lg:h-auto xl:justify-around xl:flex xl:flex-row "
                       key={item.id}
