@@ -124,7 +124,6 @@ router.post(
         img: result.secure_url,
         public_id: result.public_id,
       }
-      console.log(newOutfit)
       await db.deleteOutfitImages(`images/${req.file?.filename}`)
       await db.addOutfit(userId, newOutfit)
       res.status(201).json({ message: 'Added successfully' })

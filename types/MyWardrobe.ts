@@ -8,6 +8,7 @@ const wardrobeSchema = z.object({
   category: z.string(),
   part: z.string(),
   image: z.string(),
+  public_id: z.string(),
 })
 
 export const addItemSchema = z.object({
@@ -17,6 +18,7 @@ export const addItemSchema = z.object({
   category: z.string(),
   part: z.string(),
   image: z.string(),
+  public_id: z.string(),
 })
 
 export type Wardrobe = z.infer<typeof wardrobeSchema>

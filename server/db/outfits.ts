@@ -180,16 +180,9 @@ export async function addOutfit(
 //----------------------------------------------------------------------------
 export async function removeOutfit(id: number, db = connection) {
   const item = await db('outfits').where('id', id).select().first()
-  const filePath = path.join(__dirname, '../../public', item.img)
+
   try {
-    await fsPromises.unlink(filePath)
-  } catch (err) {
-    console.log('Dont worry about this error the file is just not in our sever')
-  }
-  try {
-    // console.log(item.public_id)
     const result = await cloudinary.uploader.destroy(item.public_id)
-    console.log('sucessfully', result)
   } catch (error) {
     console.error('Error deleting image:', error)
   }
