@@ -253,6 +253,8 @@ export async function deleteOutfitImages(imgPath: string, db = connection) {
   try {
     await fsPromises.unlink(filePath)
   } catch (err) {
-    console.log('Dont worry about this error the file is just not in our sever')
+    console.error(
+      'Dont worry about this error the file is just not in our sever'
+    )
   }
 }

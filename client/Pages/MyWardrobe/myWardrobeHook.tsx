@@ -12,7 +12,7 @@ function useMyWardrobeHook(filter: string) {
       const accessToken = await getAccessTokenSilently()
       const response = await getMyWardrobe(accessToken)
       const filtered =
-        filter == ''
+        filter == '' || filter == 'all'
           ? response
           : response.filter((item) => item.category == filter)
 

@@ -26,7 +26,7 @@ router.get('/', validateAccessToken, async (req, res) => {
       return
     }
     const myItems = await db.getAllwardrobe(userId)
-    res.json(myItems)
+    res.json(myItems.reverse())
   } catch (e) {
     res.status(500).json({ message: 'Unable to retrieve items 👕👖👟' })
   }
@@ -67,9 +67,9 @@ router.post(
         image: result.secure_url,
         public_id: result.public_id,
       }
-      await db.addItem(newItem)
       await db.deleteWardrobeImages(`images/${req.file?.filename}`)
-      res.status(201)
+      await db.addItem(newItem)
+      res.status(201).json({ message: 'Added successfully' })
     } catch (e) {
       logger.error(e)
       res.status(500).json({ message: 'Unable to add items' })

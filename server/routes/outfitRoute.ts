@@ -28,7 +28,7 @@ router.get('/all', validateAccessToken, async (req, res) => {
 
   try {
     const allOutfits = await db.getAllOutfits()
-    res.status(200).json(allOutfits)
+    res.status(200).json(allOutfits.reverse())
   } catch (error) {
     res.status(500).json({ message: 'Unable to retrieve outfits' })
   }
