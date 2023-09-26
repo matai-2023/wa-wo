@@ -26,16 +26,10 @@ export async function getAllwardrobe(auth0Id: string, db = connection) {
 export async function deleteItem(id: number, db = connection) {
   const item = await db('wardrobe').where('id', id).select().first()
   const filePath = path.join(__dirname, '../../public', item.image)
-  try {
-    await fsPromises.unlink(filePath)
-  } catch (err) {
-    console.log(
-      'Dont worry about this error the item just not in our filesystem. For more info check wardrobedb.ts'
-    )
-  }
+
   try {
     const result = await cloudinary.uploader.destroy(item.public_id)
-    console.log('sucessfully', result)
+    
   } catch (error) {
     console.error('Error deleting image:', error)
   }
