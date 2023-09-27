@@ -71,7 +71,7 @@ router.post(
       await db.addItem(newItem)
       res.status(201).json({ message: 'Added successfully' })
     } catch (e) {
-      logger.error(e)
+      console.error('Errors: ', e)
       res.status(500).json({ message: 'Unable to add items' })
     }
   }
