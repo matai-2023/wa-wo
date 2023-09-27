@@ -46,6 +46,7 @@
     "mock": "^0.1.1",
     "multer": "^1.4.5-lts.1",
     "nock": "^13.3.3",
+    "pg": "^8.11.3",
     "react-audio-player": "^0.17.0",
     "react-bootstrap-typeahead": "^6.2.3",
     "react-icon": "^1.0.0",

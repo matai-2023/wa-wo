@@ -1,8 +1,11 @@
 import * as Path from 'node:path'
 import * as URL from 'node:url'
+import dotenv from 'dotenv'
 
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
+
+dotenv.config({ path: Path.join(__dirname, '../../.env') })
 
 export default {
   development: {
@@ -34,13 +37,13 @@ export default {
   },
 
   production: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
+    client: 'pg',
     connection: {
-      filename: '/app/storage/prod.sqlite3',
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
     },
-    pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
+    migrations: {
+      tableName: 'knex_migrations',
     },
   },
 }
