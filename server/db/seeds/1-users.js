@@ -2,31 +2,31 @@ export async function seed(knex) {
   await knex('users').insert([
     {
       auth0_id: 'auth0|65010b645218b17b091d01fe',
-      nickName: 'MataiGuy',
+      nickname: 'MataiGuy',
     },
     {
       auth0_id: 'auth0|6500f4b1f6aa1817d80e5465',
-      nickName: 'ExampleGuy',
+      nickname: 'ExampleGuy',
     },
     {
       auth0_id: 'auth0|6501074ac25b71c07e590847',
-      nickName: 'AbcGuy',
+      nickname: 'AbcGuy',
     },
     {
       auth0_id: 'auth0|6508ddcd7e52c58fd7f13549',
-      nickName: 'younie',
+      nickname: 'younie',
     },
     {
       auth0_id: 'auth0|650a38a60889cb914272a210',
-      nickName: 'neil the Yes man',
+      nickname: 'neil the Yes man',
     },
     {
       auth0_id: 'auth0|650a3940bc4a2acbef2ad546',
-      nickName: 'siMon',
+      nickname: 'siMon',
     },
     {
       auth0_id: 'auth0|650a39b70889cb914272a2ea',
-      nickName: 'ryan@matai.com',
+      nickname: 'ryan@matai.com',
     },
   ])
 }

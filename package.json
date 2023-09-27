@@ -18,7 +18,7 @@
     "build": "run-s build:*",
     "build:client": "vite build",
     "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
-    "build:css": "tailwindcss -i client/styles/main.css -o public/output.css --watch",
+    "build:css": "tailwindcss -i client/styles/main.css -o public/output.css",
     "test": "NODE_ENV=test vitest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
@@ -46,6 +46,7 @@
     "mock": "^0.1.1",
     "multer": "^1.4.5-lts.1",
     "nock": "^13.3.3",
+    "pg": "^8.11.3",
     "react-audio-player": "^0.17.0",
     "react-bootstrap-typeahead": "^6.2.3",
     "react-icon": "^1.0.0",
@@ -106,5 +107,8 @@
     "semi": false,
     "singleQuote": true
   },
-  "browserslist": "> 2%, not dead"
+  "browserslist": "> 2%, not dead",
+  "engines": {
+    "node": "^16.x.x"
+  }
 }
