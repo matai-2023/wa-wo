@@ -5,12 +5,11 @@ import dotenv from 'dotenv'
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
 
-if (process.env.NODE_ENV === "production") {
-  dotenv.config();
+if (process.env.NODE_ENV === 'production') {
+  dotenv.config()
 } else {
-  dotenv.config({ path: Path.join(__dirname, "../../.env") });
+  dotenv.config({ path: Path.join(__dirname, '../../.env') })
 }
-
 export default {
   development: {
     client: 'sqlite3',
