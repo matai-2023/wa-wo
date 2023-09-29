@@ -5,7 +5,11 @@ import dotenv from 'dotenv'
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
 
-dotenv.config({ path: Path.join(__dirname, '../../.env') })
+if (process.env.NODE_ENV === "production") {
+  dotenv.config();
+} else {
+  dotenv.config({ path: Path.join(__dirname, "../../.env") });
+}
 
 export default {
   development: {
