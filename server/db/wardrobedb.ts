@@ -57,8 +57,16 @@ export async function deleteItem(id: number, db = connection) {
   })
 }
 
-export function addItem(newItem: AddWardrobe, db = connection) {
-  return db('wardrobe').insert(newItem)
+export async function addItem(newItem: AddWardrobe, db = connection) {
+  return await db('wardrobe').insert({
+    user_id: newItem.user_id,
+    name: newItem.name,
+    description: newItem.description,
+    category: newItem.category,
+    part: newItem.part,
+    image: newItem.image,
+    public_id: newItem.public_id,
+  })
 }
 
 //-----------------------------------------------
