@@ -94,10 +94,32 @@ export async function getMyWardrobe(token: string) {
 }
 
 export async function addItem(newItem: FormData, token: string) {
-  return await request
+  const newData = new FormData()
+  const file = newItem.get('image')
+  newData.append('file', file as File)
+  newData.append('upload_preset', 'my-uploads')
+  const response = await fetch(
+    'https://api.cloudinary.com/v1_1/neil2023/image/upload',
+    { method: 'POST', body: newData }
+  )
+  const cloudData = await response.json()
+  console.log(cloudData)
+  const name = newItem.get('name')?.valueOf() as string
+  const description = newItem.get('description')?.valueOf() as string
+  const part = newItem.get('part')?.valueOf() as string
+  const category = newItem.get('category')?.valueOf() as string
+  const dataToAdd = {
+    name,
+    description,
+    part,
+    category,
+    image: cloudData.secure_url,
+    public_id: cloudData.public_id,
+  }
+  await request
     .post('/api/v1/my-wardrobe')
     .set('Authorization', `Bearer ${token}`)
-    .send(newItem)
+    .send(dataToAdd)
 }
 
 export async function delItem(id: number, token: string) {
@@ -151,10 +173,35 @@ export async function getCommentsOfOutfit(outfitId: number, token: string) {
 }
 
 export async function addOutfit(newOutfit: FormData, token: string) {
+  const newData = new FormData()
+  const file = newOutfit.get('image')
+  newData.append('file', file as File)
+  newData.append('upload_preset', 'my-uploads')
+  const response = await fetch(
+    'https://api.cloudinary.com/v1_1/neil2023/image/upload',
+    { method: 'POST', body: newData }
+  )
+  const cloudData = await response.json()
+  const top = newOutfit.get('top')?.valueOf() as string
+  const bottom = newOutfit.get('bottom')?.valueOf() as string
+  const outer = newOutfit.get('outer')?.valueOf() as string
+  const acc = newOutfit.get('accessories')?.valueOf() as string
+  const footwear = newOutfit.get('footwear')?.valueOf() as string
+  const description = newOutfit.get('description')?.valueOf() as string
+  const dataToAdd = {
+    top,
+    bottom,
+    outer,
+    acc,
+    footwear,
+    description,
+    image: cloudData.secure_url,
+    public_id: cloudData.public_id,
+  }
   await request
     .post(`/api/v1/outfits`)
     .set('Authorization', `Bearer ${token}`)
-    .send(newOutfit)
+    .send(dataToAdd)
 }
 
 export async function deleteOutfit(id: number, token: string) {

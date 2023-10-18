@@ -1,14 +1,6 @@
 import express from 'express'
 import * as db from '../db/outfits'
-import path from 'node:path/posix'
 import validateAccessToken from '../auth0'
-import upload from '../multerSetup'
-import * as Path from 'node:path/posix'
-import * as URL from 'node:url'
-import { v2 as cloudinary } from 'cloudinary'
-
-const __filename = URL.fileURLToPath(import.meta.url)
-const __dirname = Path.dirname(__filename)
 
 const router = express.Router()
 
@@ -88,50 +80,31 @@ router.get('/all/:id', validateAccessToken, async (req, res) => {
 //---------------------------------------------------------
 //---------------------------------------------------------
 
-router.post(
-  '/',
-  upload.single('image'),
-  validateAccessToken,
-  async (req, res) => {
-    const userId = req.auth?.payload.sub
-    if (!userId) {
-      res.status(401).json({ message: 'Please provide an id' })
-      return
-    }
-    try {
-      const filePath = path.join(
-        __dirname,
-        '../../public',
-        `/images/${req.file?.filename}`
-      )
-
-      const result = await cloudinary.uploader.upload(filePath, {
-        folder: 'images',
-        resource_type: 'image', // Change as needed (auto, image, video, raw, etc.)
-      })
-
-      const newOutfit = {
-        top_id: req.body.top.length == 0 ? null : Number(req.body.top),
-        bottom_id: req.body.bottom.length == 0 ? null : Number(req.body.bottom),
-        outer_id: req.body.outer.length == 0 ? null : Number(req.body.outer),
-        accessories_id:
-          req.body.accessories.length == 0
-            ? null
-            : Number(req.body.accessories),
-        footwear_id:
-          req.body.footwear.length == 0 ? null : Number(req.body.footwear),
-        description: req.body.description,
-        img: result.secure_url,
-        public_id: result.public_id,
-      }
-      await db.deleteOutfitImages(`images/${req.file?.filename}`)
-      await db.addOutfit(userId, newOutfit)
-      res.status(201).json({ message: 'Added successfully' })
-    } catch (error) {
-      res.status(500).json({ message: 'Unable to add outfit' })
-    }
+router.post('/', validateAccessToken, async (req, res) => {
+  const userId = req.auth?.payload.sub
+  if (!userId) {
+    res.status(401).json({ message: 'Please provide an id' })
+    return
   }
-)
+  try {
+    const newOutfit = {
+      top_id: req.body.top.length == 0 ? null : Number(req.body.top),
+      bottom_id: req.body.bottom.length == 0 ? null : Number(req.body.bottom),
+      outer_id: req.body.outer.length == 0 ? null : Number(req.body.outer),
+      accessories_id:
+        req.body.acc.length == 0 ? null : Number(req.body.accessories),
+      footwear_id:
+        req.body.footwear.length == 0 ? null : Number(req.body.footwear),
+      description: req.body.description,
+      img: req.body.image,
+      public_id: req.body.public_id,
+    }
+    await db.addOutfit(userId, newOutfit)
+    res.status(201).json({ message: 'Added successfully' })
+  } catch (error) {
+    res.status(500).json({ message: 'Unable to add outfit' })
+  }
+})
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------

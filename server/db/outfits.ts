@@ -1,8 +1,4 @@
-import fsPromises from 'node:fs/promises'
 import connection from './connection.ts'
-import path from 'node:path/posix'
-import * as Path from 'node:path/posix'
-import * as URL from 'node:url'
 import { v2 as cloudinary } from 'cloudinary'
 //---------------------------------------------------------
 //---------------------------------------------------------
@@ -12,13 +8,10 @@ import { v2 as cloudinary } from 'cloudinary'
 //---------------------------------------------------------
 //---------------------------------------------------------
 cloudinary.config({
-  cloud_name: 'dzfzt0p5v',
-  api_key: '616443461267278',
-  api_secret: 'khF_PKqC60Ou9xGxfVvvJV0EUGg',
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
 })
-//seting file path-----------------------------------------
-const __filename = URL.fileURLToPath(import.meta.url)
-const __dirname = Path.dirname(__filename)
 //---------------------------------------------------------
 //---------------------------------------------------------
 //---------------------------------------------------------
@@ -182,7 +175,7 @@ export async function removeOutfit(id: number, db = connection) {
   const item = await db('outfits').where('id', id).select().first()
 
   try {
-    const result = await cloudinary.uploader.destroy(item.public_id)
+    await cloudinary.uploader.destroy(item.public_id)
   } catch (error) {
     console.error('Error deleting image:', error)
   }
@@ -246,15 +239,4 @@ export async function countAllComments(db = connection) {
 export async function countAllOutfits(db = connection) {
   const value = await db('outfits').count('id as count').first()
   return value?.count as number
-}
-
-export async function deleteOutfitImages(imgPath: string, db = connection) {
-  const filePath = path.join(__dirname, '../../public', imgPath)
-  try {
-    await fsPromises.unlink(filePath)
-  } catch (err) {
-    console.error(
-      'Dont worry about this error the file is just not in our sever'
-    )
-  }
 }

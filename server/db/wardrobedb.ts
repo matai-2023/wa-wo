@@ -1,10 +1,5 @@
-import fsPromises from 'node:fs/promises'
 import { AddWardrobe } from '../../types/MyWardrobe.ts'
-// '../../public/images/'
 import connection from './connection.ts'
-import path from 'node:path/posix'
-import * as URL from 'node:url'
-import * as Path from 'node:path/posix'
 import { v2 as cloudinary } from 'cloudinary'
 
 //----------------------------------------------------------------------------
@@ -12,8 +7,6 @@ import { v2 as cloudinary } from 'cloudinary'
 //Setting up file path to delete purposes-------------------------------------
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
-const __filename = URL.fileURLToPath(import.meta.url)
-const __dirname = Path.dirname(__filename)
 
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
@@ -66,15 +59,6 @@ export async function deleteItem(id: number, db = connection) {
 
 export function addItem(newItem: AddWardrobe, db = connection) {
   return db('wardrobe').insert(newItem)
-}
-
-export async function deleteWardrobeImages(imgPath: string, db = connection) {
-  const filePath = path.join(__dirname, '../../public', imgPath)
-  try {
-    await fsPromises.unlink(filePath)
-  } catch (err) {
-    console.error(err)
-  }
 }
 
 //-----------------------------------------------

@@ -1,18 +1,9 @@
 import express from 'express'
 import validateAccessToken from '../auth0.ts'
-import logger from '../db/logger.ts'
 import * as db from '../db/wardrobedb.ts'
-import { addItemSchema } from '../../types/MyWardrobe.ts'
-import upload from '../multerSetup.ts'
-import { v2 as cloudinary } from 'cloudinary'
-import * as Path from 'node:path/posix'
-import * as URL from 'node:url'
-import path from 'node:path/posix'
 
 const router = express.Router()
 
-const __filename = URL.fileURLToPath(import.meta.url)
-const __dirname = Path.dirname(__filename)
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 //GET api/v1/my-wardrobe/-----------------------------------------------------
@@ -37,45 +28,29 @@ router.get('/', validateAccessToken, async (req, res) => {
 //POST api/v1/my-wardrobe/----------------------------------------------------
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
-router.post(
-  '/',
-  upload.single('image'),
-  validateAccessToken,
-  async (req, res) => {
-    const userId = req.auth?.payload.sub
-    if (!userId) {
-      res.status(401).json({ error: 'Unauthorized' })
-      return
-    }
-    try {
-      const filePath = path.join(
-        __dirname,
-        '../../public',
-        `/images/${req.file?.filename}`
-      )
-      const result = await cloudinary.uploader.upload(filePath, {
-        folder: 'images',
-        resource_type: 'image', // Change as needed (auto, image, video, raw, etc.)
-      })
-
-      const newItem = {
-        user_id: userId,
-        name: req.body.name,
-        description: req.body.description,
-        category: req.body.category,
-        part: req.body.part,
-        image: result.secure_url,
-        public_id: result.public_id,
-      }
-      await db.deleteWardrobeImages(`images/${req.file?.filename}`)
-      await db.addItem(newItem)
-      res.status(201).json({ message: 'Added successfully' })
-    } catch (e) {
-      console.error('Errors: ', e)
-      res.status(500).json({ message: 'Unable to add items' })
-    }
+router.post('/', validateAccessToken, async (req, res) => {
+  const userId = req.auth?.payload.sub
+  if (!userId) {
+    res.status(401).json({ error: 'Unauthorized' })
+    return
   }
-)
+  try {
+    const newItem = {
+      user_id: userId,
+      name: req.body.name,
+      description: req.body.description,
+      category: req.body.category,
+      part: req.body.part,
+      image: req.body.image,
+      public_id: req.body.public_id,
+    }
+    await db.addItem(newItem)
+    res.status(201).json({ message: 'Added successfully' })
+  } catch (e) {
+    console.error('Errors: ', e)
+    res.status(500).json({ message: 'Unable to add items' })
+  }
+})
 
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
